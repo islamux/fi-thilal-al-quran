@@ -27,10 +27,10 @@ export default function BookmarkButton({
   return (
     <button
       onClick={handleToggle}
-      className={`p-2 rounded-lg transition-colors ${
+      className={`p-2 rounded-lg transition-all duration-200 ${
         active
-          ? "text-[var(--color-accent)] bg-[var(--color-accent-light)]"
-          : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-hover)]"
+          ? "text-[var(--color-accent)] bg-[var(--color-accent-light)] scale-110"
+          : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-hover)] hover:scale-105"
       }`}
       aria-label={active ? "إزالة الإشارة المرجعية" : "إضافة إشارة مرجعية"}
     >

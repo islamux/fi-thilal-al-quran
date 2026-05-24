@@ -18,10 +18,14 @@ export default function ReadingProgressBar() {
   }, []);
 
   return (
-    <div className="fixed top-14 left-0 right-0 h-1 z-50">
+    <div className="fixed top-14 left-0 right-0 h-1 z-50 bg-[var(--color-border-light)]">
       <div
-        className="h-full bg-[var(--color-accent)] transition-[width] duration-200 ease-out"
-        style={{ width: `${progress}%` }}
+        className="h-full rounded-r-full transition-[width] duration-200 ease-out"
+        style={{
+          width: `${progress}%`,
+          background: `linear-gradient(90deg, var(--color-accent), var(--color-accent-hover))`,
+          boxShadow: progress > 0 && progress < 100 ? `0 0 8px var(--color-accent)` : "none",
+        }}
       />
     </div>
   );
