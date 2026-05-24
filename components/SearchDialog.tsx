@@ -49,7 +49,7 @@ export default function SearchDialog({ open, onClose }: { open: boolean; onClose
           role="dialog"
           aria-modal="true"
           aria-label="بحث في في ظلال القرآن"
-          className="relative w-full max-w-2xl mx-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+          className="relative w-full max-w-2xl mx-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-2xl overflow-hidden anim-scale-in"
           onClick={(e) => e.stopPropagation()}
         >
         <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--color-border)]">
@@ -79,8 +79,8 @@ export default function SearchDialog({ open, onClose }: { open: boolean; onClose
                 onClick={onClose}
                 className="flex items-start gap-3 p-3 rounded-xl hover:bg-[var(--color-surface-hover)] transition-colors group"
               >
-                <div className="w-9 h-9 rounded-full bg-[var(--color-accent-light)] flex items-center justify-center shrink-0">
-                  <BookOpen size={16} className="text-[var(--color-accent)]" />
+                <div className="w-9 h-9 rounded-full gold-bg flex items-center justify-center shrink-0">
+                  <BookOpen size={16} className="text-white" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 text-sm">

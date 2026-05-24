@@ -10,25 +10,30 @@ export default function SurahNavFooter({
   next: SurahIndexEntry | null;
 }) {
   return (
-    <nav className="flex items-center justify-between gap-2 flex-wrap mt-12 pt-6 border-t border-[var(--color-border)]">
+    <nav className="flex items-center justify-between gap-4 mt-12 pt-8 border-t border-[var(--color-border)]">
       {prev ? (
         <Link
           href={`/surah/${prev.number}`}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors text-sm"
+          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl card-gilded"
         >
-          <ChevronRight size={18} />
-          <div className="text-right">
-            <div className="text-[var(--color-text-muted)] text-xs">السابقة</div>
-            <div className="font-medium">{prev.name}</div>
+          <ChevronRight
+            size={20}
+            className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors shrink-0"
+          />
+          <div className="text-right min-w-0">
+            <div className="text-xs text-[var(--color-text-muted)] mb-0.5">السورة السابقة</div>
+            <div className="font-[var(--font-amiri-quran)] text-lg text-[var(--color-text)] truncate">
+              {prev.name}
+            </div>
           </div>
         </Link>
       ) : (
-        <div />
+        <div className="flex-1" />
       )}
 
       <Link
         href="/"
-        className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+        className="shrink-0 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors px-3"
       >
         جميع السور
       </Link>
@@ -36,16 +41,21 @@ export default function SurahNavFooter({
       {next ? (
         <Link
           href={`/surah/${next.number}`}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors text-sm"
+          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl card-gilded"
         >
-          <div className="text-left">
-            <div className="text-[var(--color-text-muted)] text-xs">التالي</div>
-            <div className="font-medium">{next.name}</div>
+          <div className="text-left min-w-0">
+            <div className="text-xs text-[var(--color-text-muted)] mb-0.5">السورة التالية</div>
+            <div className="font-[var(--font-amiri-quran)] text-lg text-[var(--color-text)] truncate">
+              {next.name}
+            </div>
           </div>
-          <ChevronLeft size={18} />
+          <ChevronLeft
+            size={20}
+            className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors shrink-0"
+          />
         </Link>
       ) : (
-        <div />
+        <div className="flex-1" />
       )}
     </nav>
   );

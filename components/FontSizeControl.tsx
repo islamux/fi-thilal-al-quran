@@ -41,13 +41,17 @@ export default function FontSizeControl() {
     localStorage.removeItem(STORAGE_KEY);
   }
 
+  const atMin = size <= MIN;
+  const atMax = size >= MAX;
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2">
       {open && (
-        <div className="flex items-center gap-2 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl px-3 py-2 shadow-lg backdrop-blur-md">
+        <div className="flex items-center gap-2 glass border border-[var(--color-border)] rounded-xl px-3 py-2 shadow-lg anim-scale-in">
           <button
             onClick={() => change(-STEP)}
-            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors"
+            disabled={atMin}
+            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="تصغير الخط"
           >
             <ZoomOut size={18} />
@@ -55,16 +59,19 @@ export default function FontSizeControl() {
           <span className="text-sm font-medium tabular-nums min-w-[3ch] text-center">
             {size}
           </span>
+          <span className="text-xs text-[var(--color-text-muted)]">px</span>
           <button
             onClick={() => change(STEP)}
-            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors"
+            disabled={atMax}
+            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="تكبير الخط"
           >
             <ZoomIn size={18} />
           </button>
+          <div className="w-px h-6 bg-[var(--color-border)] mx-1" />
           <button
             onClick={reset}
-            className="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-accent)] px-2 transition-colors"
+            className="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-light)] px-2 py-1 rounded-lg transition-colors"
           >
             إعادة
           </button>
@@ -72,7 +79,7 @@ export default function FontSizeControl() {
       )}
       <button
         onClick={() => setOpen(!open)}
-        className="p-3 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-lg hover:shadow-xl hover:border-[var(--color-accent)] transition-all"
+        className="p-3 rounded-full glass border border-[var(--color-border)] shadow-lg hover:shadow-xl hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200"
         aria-label="التحكم بحجم الخط"
       >
         <Type size={20} />

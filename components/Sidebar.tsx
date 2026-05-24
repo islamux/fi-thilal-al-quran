@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { X, BookOpen, ChevronDown, ChevronLeft } from "lucide-react";
+import { X, ChevronDown, ChevronLeft } from "lucide-react";
 import type { SurahIndexEntry } from "@/lib/types";
 
 export default function Sidebar({
@@ -26,15 +26,19 @@ export default function Sidebar({
   );
 
   return (
-    <aside className="w-72 h-full overflow-y-auto border-l border-[var(--color-border)] bg-[var(--color-surface)]">
-      <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)]">
-        <h2 className="font-bold flex items-center gap-2">
-          <BookOpen size={18} />
-          السور
+    <aside className="w-72 h-full overflow-y-auto border-l border-[var(--color-border)] bg-[var(--color-background-secondary)]">
+      <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+        <h2 className="font-bold text-sm flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect width="16" height="16" rx="3" fill="var(--color-accent)"/>
+            <path d="M4 4h2v8H4V4zm6 0h2v8h-2V4z" fill="white" opacity="0.9"/>
+            <path d="M6 4h4v8H6V4z" fill="white"/>
+          </svg>
+          فهرس السور
         </h2>
         {onClose && (
-          <button onClick={onClose} aria-label="Close sidebar">
-            <X size={18} />
+          <button onClick={onClose} className="p-1 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors" aria-label="إغلاق القائمة">
+            <X size={16} />
           </button>
         )}
       </div>
@@ -43,37 +47,47 @@ export default function Sidebar({
         {juzList.map(([juz, surahList]) => {
           const isOpen = expandedJuz === parseInt(juz);
           return (
-            <div key={juz}>
-              <div className="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium hover:bg-[var(--color-surface-hover)] transition-colors">
+            <div key={juz} className="mb-1">
+              <div className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-all ${
+                isOpen ? "bg-[var(--color-surface)] border border-[var(--color-border-light)]" : "hover:bg-[var(--color-surface)]"
+              }`}>
                 <Link
                   href={`/juz/${juz}`}
-                  className="flex-1"
+                  className="flex-1 font-medium text-[var(--color-text)]"
                   onClick={() => setExpandedJuz(isOpen ? null : parseInt(juz))}
                 >
-                  الجزء {juz}
+                  <span className="gold-text ml-1 font-bold">الجزء</span> {juz}
                 </Link>
                 <button
                   onClick={() => setExpandedJuz(isOpen ? null : parseInt(juz))}
-                  className="p-0.5"
-                  aria-label={isOpen ? "طي قائمة السور" : "توسيع قائمة السور"}
+                  className="p-0.5 rounded hover:bg-[var(--color-surface-hover)] transition-colors"
+                  aria-label={isOpen ? "طي" : "توسيع"}
                   aria-expanded={isOpen}
                 >
-                  {isOpen ? <ChevronDown size={14} /> : <ChevronLeft size={14} />}
+                  {isOpen ? <ChevronDown size={14} className="text-[var(--color-accent)]" /> : <ChevronLeft size={14} className="text-[var(--color-text-muted)]" />}
                 </button>
               </div>
+
               {isOpen && (
-                <div className="mr-3 border-r-2 border-[var(--color-border-light)]">
+                <div className="mr-3 pr-2 border-r-2 border-[var(--color-accent)]/15 mt-1 space-y-0.5">
                   {surahList.map((s) => (
                     <Link
                       key={s.number}
                       href={`/surah/${s.number}`}
-                      className={`block px-3 py-1.5 text-sm rounded-r-lg transition-colors ${
+                      className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-r-lg transition-all ${
                         s.number === activeNumber
-                          ? "bg-[var(--color-accent-light)] text-[var(--color-accent)] font-medium"
-                          : "hover:bg-[var(--color-surface-hover)]"
+                          ? "bg-[var(--color-accent-light)] text-[var(--color-accent)] font-medium border-r-2 border-[var(--color-accent)]"
+                          : "hover:bg-[var(--color-surface)] text-[var(--color-text-secondary)]"
                       }`}
                     >
-                      {s.number}. {s.name}
+                      <span className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                        s.number === activeNumber
+                          ? "gold-bg text-white"
+                          : "bg-[var(--color-background-secondary)] text-[var(--color-text-muted)]"
+                      }`}>
+                        {s.number}
+                      </span>
+                      <span className="font-[var(--font-amiri-quran)]">{s.name}</span>
                     </Link>
                   ))}
                 </div>
