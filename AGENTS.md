@@ -87,7 +87,8 @@ The في ظلال القرآن project utilizes specialized AI agents to handle 
 2. **Create Branch:** Before starting any task, create a new branch following the naming convention (see below).
 3. **Execute Task:** Complete the assigned subtask using the appropriate agent persona.
 4. **Update Tracker:** Once finished, mark the subtask as `done`, append a `history_log` entry, and move the milestone to `completed` if all subtasks are finished.
-5. **Commit & Push:** Commit your changes with a descriptive message and push to the remote repository.
+5. **Activate Next Milestone:** Immediately move the next backlog milestone into `active` so the TUI's "Active Milestones" section always shows progress. Never leave `active` empty.
+6. **Commit & Push:** Commit your changes with a descriptive message and push to the remote repository.
 
 ---
 
