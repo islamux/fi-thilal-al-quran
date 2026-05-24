@@ -5,7 +5,7 @@
   "description": "في ظلال القرآن — Sayyid Qutb's renowned tafsir",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "python3 scripts/05-build-search-index.py && next build --webpack",
     "start": "next start",
     "lint": "next lint",
     "ccui": "node command-center/ccui.mjs",

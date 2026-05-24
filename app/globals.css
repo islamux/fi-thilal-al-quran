@@ -17,6 +17,8 @@
   --color-border-light: #f0ece4;
   --color-success: #2d6a4f;
   --color-error: #9b2c2c;
+  --color-verse-bg: rgba(201, 168, 76, 0.06);
+  --color-glass: rgba(255, 255, 255, 0.7);
 
   --font-tajawal: "Tajawal", sans-serif;
   --font-amiri-quran: "Amiri Quran", serif;
@@ -37,14 +39,71 @@
   --color-text-muted: #6a665e;
   --color-border: #2a2a42;
   --color-border-light: #1e1e32;
+  --color-verse-bg: rgba(226, 192, 106, 0.08);
+  --color-glass: rgba(30, 30, 50, 0.7);
 }
 
 html {
   direction: rtl;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-tajawal);
   background-color: var(--color-background);
   color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-text);
+}
+
+.dark ::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-text);
+}
+
+@utility glass {
+  background-color: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@utility verse-highlight {
+  background-color: var(--color-verse-bg);
+  border-radius: 4px;
+  padding: 0 2px;
+  transition: background-color 0.2s;
+}
+.verse-highlight:hover {
+  background-color: var(--color-accent-light);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@utility animate-scale-in {
+  animation: scale-in 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
