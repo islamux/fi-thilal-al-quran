@@ -381,7 +381,7 @@ screen.key(["t"], () => {
 });
 
 // ── File watcher ─────────────────────────────────────────────────────
-try { chokidar.watch(TRACKER_PATH, { ignoreInitial: true }).on("change", () => { data = load(); renderAll(true); }); } catch (e) {}
+try { chokidar.watch(TRACKER_PATH, { ignoreInitial: true, usePolling: true, interval: 500 }).on("change", () => { data = load(); renderAll(true); }); } catch (e) {}
 
 // ── Init ─────────────────────────────────────────────────────────────
 renderAll(true);

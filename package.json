@@ -5,12 +5,12 @@
   "description": "في ظلال القرآن — Sayyid Qutb's renowned tafsir",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "python3 scripts/05-build-search-index.py && next build --webpack",
     "start": "next start",
     "lint": "next lint",
     "ccui": "node command-center/ccui.mjs",
-    "extract": "echo 'TBD: run Python extraction pipeline'",
-    "validate": "echo 'TBD: validate content files'"
+    "extract": "python3 scripts/01-extract-text.py && python3 scripts/02-detect-surahs.py && python3 scripts/03-build-markdown.py",
+    "validate": "python3 scripts/04-validate.py"
   },
   "dependencies": {
     "@serwist/next": "9.5.11",

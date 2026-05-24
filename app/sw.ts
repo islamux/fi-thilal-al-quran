@@ -1,7 +1,10 @@
+/// <reference lib="webworker" />
+import type { PrecacheEntry } from "serwist";
 import { Serwist } from "serwist";
-import { registerRuntimeCaching } from "@serwist/sw";
 
-declare const self: ServiceWorkerGlobalScope;
+declare const self: ServiceWorkerGlobalScope & {
+  __SW_MANIFEST: (PrecacheEntry | string)[];
+};
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
@@ -9,7 +12,5 @@ const serwist = new Serwist({
   clientsClaim: true,
   navigationPreload: true,
 });
-
-registerRuntimeCaching(serwist, []);
 
 serwist.addEventListeners();
