@@ -1,0 +1,173 @@
+{
+  "project": {
+    "name": "في ظلال القرآن - Fi Thilal Al-Quran Digital Book",
+    "start_date": "2026-05-24",
+    "target_date": "2026-07-01",
+    "current_week": 1,
+    "schedule_status": "on_track",
+    "overall_progress": 12
+  },
+  "dashboard": {
+    "current_focus": "M1 complete — ready for M2: Content Pipeline",
+    "active_milestone": "M2: Content Pipeline",
+    "next_priority": "Write Python extraction pipeline (22 .doc → 114 .md)",
+    "blockers": "None",
+    "health": "good"
+  },
+  "milestones": {
+    "backlog": [
+      {
+        "id": "M2",
+        "title": "Content Pipeline — extract 22 .doc → 114 markdown files",
+        "domain": "Content",
+        "week": 2,
+        "phase": "content",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M2_001", "label": "Write 01-extract-text.py (LibreOffice .doc → .txt)", "status": "todo", "priority": "P1" },
+          { "id": "M2_002", "label": "Write 02-detect-surahs.py (surah boundary detection + index)", "status": "todo", "priority": "P1" },
+          { "id": "M2_003", "label": "Write 03-build-markdown.py (split + verse wrapping)", "status": "todo", "priority": "P1" },
+          { "id": "M2_004", "label": "Write 04-validate.py (quality checks)", "status": "todo", "priority": "P2" },
+          { "id": "M2_005", "label": "Run full pipeline, verify output", "status": "todo", "priority": "P1" },
+          { "id": "M2_006", "label": "Sample-read 5 surahs for quality", "status": "todo", "priority": "P2" }
+        ]
+      },
+      {
+        "id": "M3",
+        "title": "Core Components — SurahGrid, SurahReader, Sidebar, ClientShell",
+        "domain": "Features",
+        "week": 2,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M3_001", "label": "Write lib/contentLoader.ts", "status": "todo", "priority": "P1" },
+          { "id": "M3_002", "label": "Write ClientShell.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M3_003", "label": "Write SurahCard.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M3_004", "label": "Write SurahGrid.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M3_005", "label": "Write app/page.tsx (homepage)", "status": "todo", "priority": "P1" },
+          { "id": "M3_006", "label": "Write app/layout.tsx (RTL, fonts, metadata)", "status": "todo", "priority": "P1" },
+          { "id": "M3_007", "label": "Write app/surah/[number]/page.tsx (reader)", "status": "todo", "priority": "P1" },
+          { "id": "M3_008", "label": "Write Sidebar.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M3_009", "label": "Write SurahNavFooter.tsx", "status": "todo", "priority": "P2" }
+        ]
+      },
+      {
+        "id": "M4",
+        "title": "Special Components — QuranVerse, FontSize, ContinueReading",
+        "domain": "Features",
+        "week": 3,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M4_001", "label": "Write QuranVerse.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M4_002", "label": "Write FontSizeControl.tsx", "status": "todo", "priority": "P2" },
+          { "id": "M4_003", "label": "Write ContinueReading.tsx", "status": "todo", "priority": "P2" },
+          { "id": "M4_004", "label": "Write lib/readingProgress.ts", "status": "todo", "priority": "P2" },
+          { "id": "M4_005", "label": "Style globals.css with premium tokens", "status": "todo", "priority": "P1" }
+        ]
+      },
+      {
+        "id": "M5",
+        "title": "Search & PWA — FlexSearch, Serwist, offline",
+        "domain": "Features",
+        "week": 3,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M5_001", "label": "Write lib/search.ts (FlexSearch index)", "status": "todo", "priority": "P1" },
+          { "id": "M5_002", "label": "Write search data generation script", "status": "todo", "priority": "P1" },
+          { "id": "M5_003", "label": "Write SearchDialog.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M5_004", "label": "Configure Serwist PWA in next.config.ts", "status": "todo", "priority": "P1" },
+          { "id": "M5_005", "label": "Create manifest.json + PWA icons", "status": "todo", "priority": "P2" }
+        ]
+      },
+      {
+        "id": "M6",
+        "title": "Bookmarks & Progress — localStorage hooks",
+        "domain": "Features",
+        "week": 4,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M6_001", "label": "Write lib/bookmarks.ts", "status": "todo", "priority": "P1" },
+          { "id": "M6_002", "label": "Write BookmarkButton.tsx", "status": "todo", "priority": "P1" },
+          { "id": "M6_003", "label": "Integrate ReadingProgressBar into surah page", "status": "todo", "priority": "P2" }
+        ]
+      },
+      {
+        "id": "M7",
+        "title": "Juz Navigation — JuzGrid, route, sidebar toggle",
+        "domain": "Features",
+        "week": 4,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M7_001", "label": "Write JuzGrid.tsx", "status": "todo", "priority": "P2" },
+          { "id": "M7_002", "label": "Write app/juz/[number]/page.tsx", "status": "todo", "priority": "P2" },
+          { "id": "M7_003", "label": "Add juz toggle to Sidebar.tsx", "status": "todo", "priority": "P2" }
+        ]
+      },
+      {
+        "id": "M8",
+        "title": "Polish & QA — dark mode, responsive, build verification",
+        "domain": "QA",
+        "week": 5,
+        "phase": "qa",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M8_001", "label": "Dark mode audit across all components", "status": "todo", "priority": "P1" },
+          { "id": "M8_002", "label": "Responsive audit (mobile, tablet, desktop)", "status": "todo", "priority": "P1" },
+          { "id": "M8_003", "label": "Add loading states + error boundaries", "status": "todo", "priority": "P2" },
+          { "id": "M8_004", "label": "Accessibility audit (ARIA, keyboard, screen reader)", "status": "todo", "priority": "P2" },
+          { "id": "M8_005", "label": "Build verification + Lighthouse audit", "status": "todo", "priority": "P1" },
+          { "id": "M8_006", "label": "Polish animations and micro-interactions", "status": "todo", "priority": "P2" }
+        ]
+      }
+    ],
+    "active": [],
+    "completed": [
+      {
+        "id": "M1",
+        "title": "Project Scaffolding — init Next.js, install deps, configure",
+        "domain": "Infrastructure",
+        "week": 1,
+        "phase": "setup",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M1_001", "label": "Initialize package.json + install all dependencies", "status": "done", "priority": "P1" },
+          { "id": "M1_002", "label": "Configure TypeScript 6.0.3 + tsconfig.json", "status": "done", "priority": "P1" },
+          { "id": "M1_003", "label": "Configure TailwindCSS 4.3.0 + PostCSS", "status": "done", "priority": "P1" },
+          { "id": "M1_004", "label": "Create globals.css + CSS variables + dark mode", "status": "done", "priority": "P1" },
+          { "id": "M1_005", "label": "Configure next.config.ts with Serwist", "status": "done", "priority": "P1" },
+          { "id": "M1_006", "label": "Set up ESLint", "status": "done", "priority": "P2" },
+          { "id": "M1_007", "label": "Create app/layout.tsx (RTL + fonts)", "status": "done", "priority": "P1" },
+          { "id": "M1_008", "label": "Create app/page.tsx placeholder", "status": "done", "priority": "P1" },
+          { "id": "M1_009", "label": "Verify pnpm dev runs successfully", "status": "done", "priority": "P1" }
+        ]
+      }
+    ]
+  },
+  "agents": [],
+  "history_log": [
+    {
+      "timestamp": "2026-05-24T00:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "design_approved",
+      "description": "Design specification approved. Implementation plan created with 8 milestones. Ready to scaffold."
+    },
+    {
+      "timestamp": "2026-05-24T18:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_completed",
+      "description": "M1: Project Scaffolding — Next.js 16.2.6, React 19.2.6, TailwindCSS 4.3.0, TypeScript 6.0.3, Serwist 9.5.11, FlexSearch 0.8.212, lucide-react 1.16.0. Git initialized, branch chore/project-scaffold created. pnpm dev verified working."
+    }
+  ]
+}
