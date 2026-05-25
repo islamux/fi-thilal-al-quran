@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { X, ChevronDown, ChevronLeft } from "lucide-react";
+import { X, ChevronDown, ChevronLeft, Bookmark } from "lucide-react";
 import type { SurahIndexEntry } from "@/lib/types";
 
 export default function Sidebar({
@@ -44,6 +44,14 @@ export default function Sidebar({
       </div>
 
       <div className="p-2">
+        <Link
+          href="/bookmarks"
+          className="flex items-center gap-2 px-3 py-2.5 mb-2 rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-accent)] transition-colors"
+        >
+          <Bookmark size={16} />
+          المفضلة
+        </Link>
+
         {juzList.map(([juz, surahList]) => {
           const isOpen = expandedJuz === parseInt(juz);
           return (
@@ -69,14 +77,14 @@ export default function Sidebar({
               </div>
 
               {isOpen && (
-                <div className="mr-3 pr-2 border-r-2 border-[var(--color-accent)]/15 mt-1 space-y-0.5">
+                <div className="mr-3 pr-2 mt-1 space-y-0.5 border-r-2 border-transparent">
                   {surahList.map((s) => (
                     <Link
                       key={s.number}
                       href={`/surah/${s.number}`}
-                      className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-r-lg transition-all ${
+                      className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg transition-all ${
                         s.number === activeNumber
-                          ? "bg-[var(--color-accent-light)] text-[var(--color-accent)] font-medium border-r-2 border-[var(--color-accent)]"
+                          ? "bg-[var(--color-accent-light)] text-[var(--color-accent)] font-medium"
                           : "hover:bg-[var(--color-surface)] text-[var(--color-text-secondary)]"
                       }`}
                     >

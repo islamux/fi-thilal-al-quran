@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { SurahIndexEntry } from "@/lib/types";
+import GoldDivider from "./GoldDivider";
 
 export default function JuzGrid({
   juz,
@@ -11,14 +12,7 @@ export default function JuzGrid({
   return (
     <section>
       <div className="text-center mb-10">
-        <div className="flex justify-center mb-4">
-          <svg width="100" height="16" viewBox="0 0 100 16" fill="none">
-            <line x1="0" y1="8" x2="30" y2="8" stroke="var(--color-accent)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5"/>
-            <circle cx="50" cy="8" r="4" fill="var(--color-accent)" opacity="0.2"/>
-            <circle cx="50" cy="8" r="1.5" fill="var(--color-accent)"/>
-            <line x1="70" y1="8" x2="100" y2="8" stroke="var(--color-accent)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5"/>
-          </svg>
-        </div>
+        <GoldDivider variant="default" className="mb-4" />
         <h1 className="font-[var(--font-amiri-quran)] text-4xl leading-relaxed gold-text">
           الجزء {juz}
         </h1>

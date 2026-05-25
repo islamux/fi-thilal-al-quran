@@ -77,12 +77,9 @@ body {
   background: linear-gradient(135deg, #d4a843, #c9a84c, #b8922b) !important;
 }
 
-/* Gold gradient text */
+/* Gold text — solid color */
 .gold-text {
-  background: linear-gradient(135deg, #d4a843, #c9a84c, #b8922b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent);
 }
 
 /* Gold top bar */

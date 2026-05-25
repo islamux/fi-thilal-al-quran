@@ -36,15 +36,18 @@ export default async function SurahPage({
   if (!surah) notFound();
 
   const { prev, next } = getAdjacentSurahs(num);
+  const allSurahs = getAllSurahs() as SurahIndexEntry[];
 
   return (
-    <ClientShell>
+    <ClientShell surahs={allSurahs} activeNumber={num}>
       <SurahContent
         number={surah.number}
         name={surah.name}
         juz={surah.juz}
         verses={surah.verses}
         content={surah.content}
+        prevNumber={prev?.number}
+        nextNumber={next?.number}
       />
       <div className="max-w-4xl mx-auto px-4 pb-12">
         <SurahNavFooter prev={prev} next={next} />

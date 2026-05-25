@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 import QuranVerse from "./QuranVerse";
 import FontSizeControl from "./FontSizeControl";
 import BookmarkButton from "./BookmarkButton";
 import ReadingProgressBar from "./ReadingProgressBar";
+import GoldDivider from "./GoldDivider";
 import { useReadingProgress } from "@/lib/readingProgress";
+import { toggleBookmark } from "@/lib/bookmarks";
 
 export default function SurahContent({
   number,
@@ -13,15 +16,45 @@ export default function SurahContent({
   juz,
   verses,
   content,
+  prevNumber,
+  nextNumber,
 }: {
   number: number;
   name: string;
   juz: number;
   verses: number;
   content: string;
+  prevNumber?: number;
+  nextNumber?: number;
 }) {
+  const router = useRouter();
   const { saveProgress } = useReadingProgress();
   const saved = useRef(false);
+  const [bookmarkToggle, setBookmarkToggle] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handler = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement).tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+
+      if (e.key === "b") {
+        e.preventDefault();
+        toggleBookmark(number, name);
+        setBookmarkToggle((n) => n + 1);
+      }
+      if (e.key === "ArrowRight" && nextNumber) {
+        e.preventDefault();
+        router.push(`/surah/${nextNumber}`);
+      }
+      if (e.key === "ArrowLeft" && prevNumber) {
+        e.preventDefault();
+        router.push(`/surah/${prevNumber}`);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [number, name, prevNumber, nextNumber, router]);
 
   useEffect(() => {
     if (saved.current) return;
@@ -56,24 +89,10 @@ export default function SurahContent({
       <article className="max-w-4xl mx-auto px-4 py-10">
         <header className="text-center mb-12">
           <div className="flex justify-center mb-2">
-            <BookmarkButton surah={number} surahName={name} />
+            <BookmarkButton key={bookmarkToggle} surah={number} surahName={name} />
           </div>
 
-          {/* Gold decorative divider */}
-          <div className="flex justify-center mb-4">
-            <svg width="160" height="24" viewBox="0 0 160 24" fill="none">
-              <line x1="0" y1="12" x2="48" y2="12" stroke="var(--color-accent)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5"/>
-              <circle cx="64" cy="12" r="6" fill="var(--color-accent)" opacity="0.12"/>
-              <circle cx="64" cy="12" r="3" fill="var(--color-accent)" opacity="0.3"/>
-              <circle cx="64" cy="12" r="1" fill="var(--color-accent)"/>
-              <rect x="76" y="8" width="8" height="8" rx="1.5" fill="var(--color-accent)" opacity="0.15"/>
-              <rect x="78" y="10" width="4" height="4" rx="0.5" fill="var(--color-accent)" opacity="0.3"/>
-              <circle cx="96" cy="12" r="6" fill="var(--color-accent)" opacity="0.12"/>
-              <circle cx="96" cy="12" r="3" fill="var(--color-accent)" opacity="0.3"/>
-              <circle cx="96" cy="12" r="1" fill="var(--color-accent)"/>
-              <line x1="112" y1="12" x2="160" y2="12" stroke="var(--color-accent)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5"/>
-            </svg>
-          </div>
+          <GoldDivider variant="wide" className="mb-4" />
 
           <h1 className="font-[var(--font-amiri-quran)] text-4xl md:text-5xl leading-relaxed text-[var(--color-text)] mb-4">
             سورة {name}
@@ -91,15 +110,7 @@ export default function SurahContent({
             </span>
           </div>
 
-          {/* Gold bottom divider */}
-          <div className="flex items-center justify-center gap-3 my-6">
-            <div className="h-px flex-1 max-w-24 bg-gradient-to-l from-[var(--color-accent)]/40 to-transparent" />
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <rect x="5" y="5" width="2" height="2" rx="0.5" fill="var(--color-accent)" opacity="0.6"/>
-              <rect x="3" y="3" width="6" height="6" rx="1" fill="var(--color-accent)" opacity="0.15"/>
-            </svg>
-            <div className="h-px flex-1 max-w-24 bg-gradient-to-r from-[var(--color-accent)]/40 to-transparent" />
-          </div>
+          <GoldDivider variant="narrow" className="my-6" />
         </header>
 
         {/* Reading pane */}
