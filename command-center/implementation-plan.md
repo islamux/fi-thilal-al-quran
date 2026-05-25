@@ -244,3 +244,25 @@
 8. Polish animations: hover states, page transitions, micro-interactions
 
 **Acceptance:** Build passes, Lighthouse > 90, all features working.
+
+---
+
+## M12: Full Offline PWA — Cache All Content for Offline Reading
+
+**Branch:** `feat/offline-pwa`
+
+**Tasks:**
+1. Update `sw.ts` with explicit runtime caching rules for search data, static content
+2. Create `OfflineBanner` component that shows when offline + works when cached pages load
+3. Programmatic cache-all on first visit — iterate all 114 surah + 30 juz + home URLs in service worker message
+4. Cache `/search-data.json` on install/activate so search works offline
+5. Add "Available Offline" badge + "Save All for Offline" button in sidebar/settings
+6. Build verification + full offline test (airplane mode, verify 149 routes + search)
+
+**Key Files:**
+- `app/sw.ts` — runtime caching rules, cache-all logic
+- `components/ClientShell.tsx` — offline banner, cache status
+- `components/Sidebar.tsx` — "Save All for Offline" button
+- `next.config.ts` — Serwist config (cacheOnNavigation already true)
+
+**Acceptance:** All 149 routes work in offline mode. Search works offline. Offline indicator shows correctly. Build passes.

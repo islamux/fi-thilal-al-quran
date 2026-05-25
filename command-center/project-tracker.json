@@ -8,16 +8,34 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "Design audit & polish — fixing ban violations (P0), sidebar integration (P0), gold dial-back (P1), bookmarks page (P1)",
-    "active_milestone": "M11 — Design Audit & Polish: Ban Violations, Feature Gaps",
-    "next_priority": "Sidebar integration (P0), homepage gradient text fix (P0), gold overuse dial-back (P1)",
+    "current_focus": "Planning M12 — Full Offline PWA: cache all content for offline reading",
+    "active_milestone": "None — all milestones completed",
+    "next_priority": "M12 — runtime caching rules, cache-all on first load, search data caching, offline indicator",
     "blockers": "None",
-    "health": "needs_attention"
+    "health": "on_track"
   },
   "milestones": {
     "backlog": [],
     "backlog": [],
-    "active": [],
+    "active": [
+      {
+        "id": "M12",
+        "title": "Full Offline PWA — Cache All Content for Offline Reading",
+        "domain": "PWA",
+        "week": 7,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M12_001", "label": "Add runtime caching rules in sw.ts for search-data.json, static content, and navigation", "status": "todo", "priority": "P0" },
+          { "id": "M12_002", "label": "Create offline detection indicator — show banner when offline, removed cached pages still work", "status": "todo", "priority": "P1" },
+          { "id": "M12_003", "label": "Programmatic cache-all on first load — cache all 114 surah pages + 30 juz pages + home page", "status": "todo", "priority": "P0" },
+          { "id": "M12_004", "label": "Cache search data JSON — ensure /search-data.json is cached on service worker install/activate", "status": "todo", "priority": "P0" },
+          { "id": "M12_005", "label": "Add 'Available Offline' badge on saved content and a 'Save All for Offline' button in settings/sidebar", "status": "todo", "priority": "P2" },
+          { "id": "M12_006", "label": "Test full offline scenario — disable network, verify all 149 routes + search work", "status": "todo", "priority": "P0" }
+        ]
+      }
+    ],
     "completed": [
       {
         "id": "M11",
@@ -365,6 +383,18 @@
       "agent_id": "nextjs-specialist",
       "action": "milestone_completed",
       "description": "M11: Design Audit & Polish — All 9 subtasks done. Fixes: gradient text ban (solid gold color), Sidebar integrated into ClientShell (mobile overlay + fixed desktop), gold overuse dialed back (hero accent + section headers only), side-stripe borders removed (full background tint), /bookmarks route built (list/delete/navigate), keyboard shortcuts (/, ArrowRight/ArrowLeft, b), error pages hardened (العودة إلى الرئيسية link), GoldDivider component extracted (3 variants). Build passes — 149 routes."
+    },
+    {
+      "timestamp": "2026-05-25T15:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M12: Full Offline PWA — Cache All Content for Offline Reading. Backlog. 6 subtasks: runtime caching rules, offline indicator, programmatic cache-all, search data caching, offline badge + save button, full offline test."
+    },
+    {
+      "timestamp": "2026-05-25T15:05:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Moved to active. Branch: feat/offline-pwa. Starting M12_001."
     }
   ]
 }

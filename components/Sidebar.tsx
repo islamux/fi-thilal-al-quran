@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ChevronDown, ChevronLeft, Bookmark } from "lucide-react";
+import { X, ChevronDown, ChevronLeft, Bookmark, Download } from "lucide-react";
 import type { SurahIndexEntry } from "@/lib/types";
+import { cacheAllPages, useCacheProgress } from "@/lib/useOffline";
 
 export default function Sidebar({
   surahs,
@@ -46,11 +47,19 @@ export default function Sidebar({
       <div className="p-2">
         <Link
           href="/bookmarks"
-          className="flex items-center gap-2 px-3 py-2.5 mb-2 rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-accent)] transition-colors"
+          className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-accent)] transition-colors"
         >
           <Bookmark size={16} />
           المفضلة
         </Link>
+
+        <button
+          onClick={cacheAllPages}
+          className="flex items-center gap-2 px-3 py-2.5 mb-2 w-full rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-accent)] transition-colors"
+        >
+          <Download size={16} />
+          حفظ الكل للاستخدام دون اتصال
+        </button>
 
         {juzList.map(([juz, surahList]) => {
           const isOpen = expandedJuz === parseInt(juz);
