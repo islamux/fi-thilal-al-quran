@@ -8,16 +8,38 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "All milestones complete — project is feature-complete and visually polished",
-    "active_milestone": "None — all milestones complete",
-    "next_priority": "User review and feedback, further refinements",
+    "current_focus": "Design audit & polish — fixing ban violations (P0), sidebar integration (P0), gold dial-back (P1), bookmarks page (P1)",
+    "active_milestone": "M11 — Design Audit & Polish: Ban Violations, Feature Gaps",
+    "next_priority": "Sidebar integration (P0), homepage gradient text fix (P0), gold overuse dial-back (P1)",
     "blockers": "None",
-    "health": "excellent"
+    "health": "needs_attention"
   },
   "milestones": {
     "backlog": [],
+    "backlog": [],
     "active": [],
     "completed": [
+      {
+        "id": "M11",
+        "title": "Design Audit & Polish: Ban Violations, Feature Gaps",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-25T14:45:00.000Z",
+        "subtasks": [
+          { "id": "M11_001", "label": "Fix gradient text ban — replace gold-text class with solid gold color on homepage hero and sidebar labels", "status": "done", "priority": "P0" },
+          { "id": "M11_002", "label": "Integrate Sidebar into ClientShell — connect hamburger menu to mobile overlay drawer, render as fixed sidebar on desktop", "status": "done", "priority": "P0" },
+          { "id": "M11_003", "label": "Dial back gold overuse — audit homepage gold elements against ≤10% rule, reduce to hero accent + section headers only", "status": "done", "priority": "P1" },
+          { "id": "M11_004", "label": "Replace side-stripe borders in Sidebar — remove border-r-2 gold accents, use full background tint for active state instead", "status": "done", "priority": "P1" },
+          { "id": "M11_005", "label": "Build Bookmarks page — create /bookmarks route showing all saved surahs with delete and navigate-to-surah actions", "status": "done", "priority": "P1" },
+          { "id": "M11_006", "label": "Add keyboard shortcuts — '/' opens search, ArrowRight/ArrowLeft for surah nav, 'b' toggles bookmark", "status": "done", "priority": "P2" },
+          { "id": "M11_007", "label": "Harden error pages — add 'العودة إلى الرئيسية' link and navigation on all error boundaries", "status": "done", "priority": "P2" },
+          { "id": "M11_008", "label": "Extract gold decorative SVGs — create reusable GoldDivider component, remove inlines from SurahContent, JuzGrid, homepage", "status": "done", "priority": "P3" },
+          { "id": "M11_009", "label": "Build verification — 148+ routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" }
+        ]
+      },
       {
         "id": "M10",
         "title": "Comprehensive Visual Overhaul — The Gilded Library Complete Edition",
@@ -45,7 +67,6 @@
           { "id": "M10_015", "label": "Build verification — 148 routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" }
         ]
       },
-    "completed": [
       {
         "id": "M3",
         "title": "Core Components — SurahGrid, SurahReader, Sidebar, ClientShell",
@@ -326,6 +347,24 @@
       "agent_id": "orchestrator",
       "action": "milestone_completed",
       "description": "M10: Comprehensive Visual Overhaul — All 15 subtasks done. globals.css: rich warm bg gradient + paper grid + gilded-card/gold utilities. page.tsx: gold gradient hero title + ornate gold decor + premium stat pills. All components: gilded-card base, gold gradient badges with sheen hover, gold accent on Sidebar/SearchDialog/JuzGrid/ContinueReading, premium SurahContent with gold-bordered pane, SurahNavFooter with gilded-card hover, FontSizeControl/ReadingProgressBar/BookmarkButton polished. Build passes (148 routes). Project at 100%."
+    },
+    {
+      "timestamp": "2026-05-25T14:17:54.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M11: Design Audit & Polish — Created from UI/UX critique (score 22/40). 9 subtasks addressing ban violations (gradient text, side-stripe borders), feature gaps (sidebar not rendered, no bookmarks page), and polish (gold overuse, keyboard shortcuts, error pages, SVG extraction). Backlog."
+    },
+    {
+      "timestamp": "2026-05-25T14:18:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M11: Design Audit & Polish — Moved from backlog to active. Branch: fix/design-audit-polish. Starting work."
+    },
+    {
+      "timestamp": "2026-05-25T14:45:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_completed",
+      "description": "M11: Design Audit & Polish — All 9 subtasks done. Fixes: gradient text ban (solid gold color), Sidebar integrated into ClientShell (mobile overlay + fixed desktop), gold overuse dialed back (hero accent + section headers only), side-stripe borders removed (full background tint), /bookmarks route built (list/delete/navigate), keyboard shortcuts (/, ArrowRight/ArrowLeft, b), error pages hardened (العودة إلى الرئيسية link), GoldDivider component extracted (3 variants). Build passes — 149 routes."
     }
   ]
 }

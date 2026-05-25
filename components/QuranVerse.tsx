@@ -60,35 +60,30 @@ export default function QuranVerse({ content }: { content: string }) {
 
       const trimmed = line.trim();
       if (!trimmed) {
-        return <div key={i} className="h-4" />;
+        return <div key={i} className="h-5" />;
       }
 
       const tokens = tokenizeLine(trimmed);
       if (tokens.length === 0) {
         return (
-          <p key={i} className="text-lg leading-relaxed mb-4">
+          <p key={i} className="text-lg leading-relaxed mb-5">
             {trimmed}
           </p>
         );
       }
 
       return (
-        <p key={i} className="text-lg leading-relaxed mb-4">
+        <p key={i} className="text-lg leading-relaxed mb-5 group hover:bg-[var(--color-verse-bg)] transition-colors duration-200 rounded-lg px-2 -mx-2">
           {tokens.map((token, j) =>
             token.type === "verse" ? (
               <span
                 key={j}
-                className="font-[var(--font-amiri-quran)] text-[1.3em] leading-relaxed group relative"
-                title={`الآية ${token.number}`}
+                className="font-[var(--font-amiri-quran)] text-[1.3em] leading-relaxed"
               >
-                {"﴿"}
+                <span className="verse-bracket">﴿</span>
                 {token.text}
-                {"﴾"}
-                <sup
-                  className="font-[var(--font-tajawal)] text-xs text-[var(--color-accent)] mr-0.5 cursor-help"
-                >
-                  {token.number}
-                </sup>{" "}
+                <span className="verse-bracket">﴾</span>
+                <span className="verse-badge">{token.number}</span>{" "}
               </span>
             ) : (
               <span key={j}>{token.text}</span>

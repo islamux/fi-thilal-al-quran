@@ -35,9 +35,10 @@ export default async function JuzPage({
   if (juz < 1 || juz > JUZ_COUNT) notFound();
 
   const surahs = getSurahsByJuz(juz) as SurahIndexEntry[];
+  const allSurahs = getAllSurahs() as SurahIndexEntry[];
 
   return (
-    <ClientShell>
+    <ClientShell surahs={allSurahs}>
       <div className="max-w-7xl mx-auto px-4 py-8">
         <JuzGrid juz={juz} surahs={surahs} />
       </div>
