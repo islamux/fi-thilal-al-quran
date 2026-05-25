@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Menu, Search, Sun, Moon } from "lucide-react";
 import SearchDialog from "./SearchDialog";
 import Sidebar from "./Sidebar";
+import OfflineBanner from "./OfflineBanner";
+import { cacheAllPages } from "@/lib/useOffline";
 import type { SurahIndexEntry } from "@/lib/types";
 
 export default function ClientShell({
@@ -30,6 +32,16 @@ export default function ClientShell({
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const id = setTimeout(() => {
+      if (navigator.serviceWorker?.controller) {
+        cacheAllPages();
+      }
+    }, 3000);
+    return () => clearTimeout(id);
   }, []);
 
   const toggleDark = () => {
@@ -123,6 +135,7 @@ export default function ClientShell({
       </footer>
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <OfflineBanner />
     </div>
   );
 }
