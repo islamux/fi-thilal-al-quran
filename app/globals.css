@@ -1,48 +1,134 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f5efe6;
-  --color-background-secondary: #ede6d8;
-  --color-surface: #fdfaf5;
-  --color-surface-hover: #f5efe6;
+  --font-tajawal: "Tajawal", sans-serif;
+  --font-amiri-quran: "Amiri Quran", serif;
+
   --color-primary: #1a365d;
   --color-primary-hover: #2a4a7f;
   --color-accent: #c9a84c;
   --color-accent-hover: #d4b85a;
-  --color-accent-dark: #a8882e;
   --color-accent-light: #f5e6b8;
-  --color-text: #2c1810;
-  --color-text-secondary: #6b5a4a;
-  --color-text-muted: #9a8a7a;
-  --color-border: #e2dcd0;
-  --color-border-light: #ede6d8;
+  --color-accent-dark: #8b7333;
+  --color-accent-text: #8b7333;
+
+  --color-bg: #faf8f5;
+  --color-bg-secondary: #f0ece4;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f5f0e8;
+
+  --color-text: #1a1a2e;
+  --color-text-secondary: #5a5a6e;
+  --color-text-muted: #6b6b7e;
+
+  --color-warm-border: #e2dcd0;
+  --color-light-border: #f0ece4;
+
+  --color-dark-bg: #0f0f1a;
+  --color-dark-surface: #1e1e32;
+  --color-dark-primary: #7eb8e8;
+  --color-dark-accent: #e2c06a;
+  --color-dark-text: #e8e4de;
+
+  --color-verse-bg: rgba(201, 168, 76, 0.1);
+  --color-glass: rgba(250, 248, 245, 0.8);
+  --color-glass-dark: rgba(15, 15, 26, 0.8);
   --color-success: #2d6a4f;
   --color-error: #9b2c2c;
-  --color-verse-bg: rgba(201, 168, 76, 0.08);
-  --color-glass: rgba(255, 255, 255, 0.75);
 
-  --font-tajawal: "Tajawal", sans-serif;
-  --font-amiri-quran: "Amiri Quran", serif;
+  /* Design_New Colors */
+  --color-parchment-cream: #FAF8F5;
+  --color-warm-stone: #F0ECE4;
+  --color-warm-ash: #F5F0E8;
+  --color-gilded-gold: #C5A028;
+  --color-gilded-gold-hover: #D4B85A;
+  --color-gilded-gold-light: #F5E6B8;
+  --color-on-surface: #1a1a2e;
+  --color-on-surface-variant: #43474e;
+  --color-faded-ink: #5A5A6E;
+  --color-greyed-ink: #9A9AAE;
+  --color-secondary: #755b00;
+  --color-secondary-container: #fed977;
+  --color-primary-container: #1a365d;
+  --color-outline: #74777f;
+  --color-outline-variant: #c4c6cf;
+  --color-tertiary-container: #353634;
+  --color-on-tertiary-container: #9f9e9c;
+
+  /* Design_New Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-max-content-width: 1200px;
+
+  /* Design_New Font Families */
+  --font-display: "Tajawal", sans-serif;
+  --font-verse: "Amiri Quran", serif;
+  --font-body: "Tajawal", sans-serif;
+  --font-title: "Tajawal", sans-serif;
+  --font-headline: "Tajawal", sans-serif;
+  --font-label-sm: "Tajawal", sans-serif;
+
+  /* Design_New Font Sizes */
+  --font-size-display: 36px;
+  --font-size-headline: 24px;
+  --font-size-title: 18px;
+  --font-size-body: 16px;
+  --font-size-label-sm: 14px;
+  --font-size-verse: 20px;
+  --font-size-verse-large: 32px;
+
+  /* Design_New Line Heights */
+  --line-height-display: 1.2;
+  --line-height-headline: 1.3;
+  --line-height-title: 1.4;
+  --line-height-body: 1.8;
+  --line-height-label-sm: 21px;
+  --line-height-verse: 40px;
+  --line-height-verse-large: 60px;
 }
 
 .dark {
-  --color-background: #0f0f1a;
-  --color-background-secondary: #1a1a2e;
+  --color-bg: #0f0f1a;
+  --color-bg-secondary: #1a1a2e;
   --color-surface: #1e1e32;
   --color-surface-hover: #2a2a42;
   --color-primary: #7eb8e8;
   --color-primary-hover: #9ac8f0;
   --color-accent: #e2c06a;
   --color-accent-hover: #f0d080;
-  --color-accent-dark: #c9a84c;
   --color-accent-light: #3a2e1a;
+  --color-accent-dark: #c9a84c;
+  --color-accent-text: #e2c06a;
   --color-text: #e8e4de;
   --color-text-secondary: #a8a4a0;
   --color-text-muted: #6a665e;
-  --color-border: #2a2a42;
-  --color-border-light: #1e1e32;
-  --color-verse-bg: rgba(226, 192, 106, 0.08);
-  --color-glass: rgba(30, 30, 50, 0.7);
+  --color-warm-border: #2a2a42;
+  --color-light-border: #1e1e32;
+  --color-verse-bg: rgba(226, 192, 106, 0.1);
+  --color-glass: rgba(30, 30, 50, 0.8);
+
+  /* Design_New Dark Overrides */
+  --color-parchment-cream: #0F0F1A;
+  --color-warm-stone: #1E1E32;
+  --color-warm-ash: #2a2a42;
+  --color-gilded-gold: #e2c06a;
+  --color-gilded-gold-hover: #f0d080;
+  --color-gilded-gold-light: #3a2e1a;
+  --color-on-surface: #E8E4DE;
+  --color-on-surface-variant: #a8a4a0;
+  --color-faded-ink: #a8a4a0;
+  --color-greyed-ink: #6a665e;
+  --color-secondary: #e2c06a;
+  --color-secondary-container: #3a2e1a;
+  --color-primary-container: #2a4a7f;
+  --color-outline: #74777f;
+  --color-outline-variant: #43474e;
+  --color-tertiary-container: #2a2a42;
+  --color-on-tertiary-container: #a8a4a0;
 }
 
 html {
@@ -52,10 +138,9 @@ html {
 
 body {
   font-family: var(--font-tajawal);
-  background-color: var(--color-background);
-  background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+  background-color: var(--color-bg);
   color: var(--color-text);
+  line-height: 1.8;
 }
 
 ::selection {
@@ -63,76 +148,106 @@ body {
   color: var(--color-text);
 }
 
-/* ===== STANDARD CSS CLASSES (not @utility) ===== */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  vertical-align: middle;
+  user-select: none;
+}
 
-/* Glass effect */
-.glass {
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.glass-header {
   background-color: var(--color-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-warm-border);
 }
 
-/* Gold gradient background */
-.gold-bg {
-  background: linear-gradient(135deg, #d4a843, #c9a84c, #b8922b) !important;
+.font-verse {
+  font-family: var(--font-amiri-quran);
+  line-height: 2;
+  font-size: 1.25rem;
 }
 
-/* Gold text — solid color */
-.gold-text {
-  color: var(--color-accent);
+.quran-bracket {
+  color: var(--color-accent-text);
+  font-family: var(--font-amiri-quran);
 }
 
-/* Gold top bar */
-.gold-bar {
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-accent-hover), var(--color-accent), transparent);
+.highlight-match {
+  background-color: rgba(245, 230, 184, 0.6);
+  padding: 0 2px;
+  border-bottom: 2px solid var(--color-accent);
 }
 
-/* Premium card with gold hover */
-.card-gilded {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.04),
-    0 4px 12px rgba(0,0,0,0.03),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.verse-block .verse-content {
+  background-color: var(--color-verse-bg);
+  border-right: 4px solid var(--color-accent);
+  border-radius: 0.75rem 0 0 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease-out;
 }
 
-.card-gilded:hover {
-  border-color: var(--color-accent);
-  box-shadow:
-    0 4px 20px -4px rgba(201, 168, 76, 0.2),
-    0 8px 32px rgba(0,0,0,0.06);
-  transform: translateY(-2px);
+.verse-block:not(:first-child) .verse-content {
+  background-color: transparent;
+  border-right-color: transparent;
 }
 
-/* Gold border accent */
-.border-gold {
-  border-color: var(--color-accent) !important;
+.verse-block:not(:first-child):hover .verse-content {
+  background-color: var(--color-surface-hover);
+  border-right-color: var(--color-warm-border);
 }
 
-/* Gold shadow glow */
-.glow-gold {
-  box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+.verse-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-tajawal);
 }
 
-/* Gold shimmer animation */
-.shimmer-gold {
-  background: linear-gradient(
-    90deg,
-    var(--color-accent) 0%,
-    var(--color-accent-hover) 25%,
-    var(--color-accent) 50%,
-    var(--color-accent-hover) 75%,
-    var(--color-accent) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
 }
 
-/* Keyframes */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-warm-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+@utility ease-out-quart {
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -153,63 +268,46 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+.anim-fade-in { animation: fade-in 0.4s ease-out; }
+.anim-fade-in-up { animation: fade-in-up 0.5s ease-out; }
+.anim-scale-in { animation: scale-in 0.25s ease-out; }
+
+.stagger-1 { animation: stagger-in 0.5s ease-out both; animation-delay: 0ms; }
+.stagger-2 { animation: stagger-in 0.5s ease-out both; animation-delay: 100ms; }
+.stagger-3 { animation: stagger-in 0.5s ease-out both; animation-delay: 200ms; }
+.stagger-4 { animation: stagger-in 0.5s ease-out both; animation-delay: 300ms; }
+
+.offline-banner {
+  position: fixed;
+  bottom: 5rem;
+  right: 1rem;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent) 15%, var(--color-bg));
+  color: var(--color-accent-text);
+  font-size: 0.875rem;
 }
 
-/* Animation classes */
-.anim-fade-in {
-  animation: fade-in 0.4s ease-out;
+@media (min-width: 1024px) {
+  .offline-banner {
+    bottom: 1rem;
+  }
 }
 
-.anim-fade-in-up {
-  animation: fade-in-up 0.5s ease-out;
+.active-nav-border {
+  border-right: 2px solid var(--color-secondary);
 }
 
-.anim-scale-in {
-  animation: scale-in 0.25s ease-out;
+.search-backdrop {
+  background-image: linear-gradient(rgba(250, 248, 245, 0.97), rgba(250, 248, 245, 0.97)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='60' opacity='0.04'%3E%EF%B8%BF%3C/text%3E%3C/svg%3E");
 }
 
-.stagger-1 {
-  animation: stagger-in 0.5s ease-out both;
-  animation-delay: 0ms;
+.dark .search-backdrop {
+  background-image: linear-gradient(rgba(15, 15, 26, 0.97), rgba(15, 15, 26, 0.97)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='60' opacity='0.04'%3E%EF%B8%BF%3C/text%3E%3C/svg%3E");
 }
 
-.stagger-2 {
-  animation: stagger-in 0.5s ease-out both;
-  animation-delay: 100ms;
-}
-
-.stagger-3 {
-  animation: stagger-in 0.5s ease-out both;
-  animation-delay: 200ms;
-}
-
-.stagger-4 {
-  animation: stagger-in 0.5s ease-out both;
-  animation-delay: 300ms;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
