@@ -8,14 +8,35 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "M12 — Full Offline PWA",
-    "active_milestone": "M12 — Full Offline PWA",
-    "next_priority": "M12_001: Add runtime caching rules in sw.ts for search-data.json, static content, and navigation",
+    "current_focus": "M17 — Design_New Remaining Alignment",
+    "active_milestone": "M17 — Design_New Remaining Alignment",
+    "next_priority": "M17_001: Add surah/juz reading context in desktop header",
     "blockers": "None",
     "health": "on_track"
   },
   "milestones": {
     "backlog": [
+      {
+        "id": "M17",
+        "title": "Design_New Remaining Alignment — Prototype Gaps",
+        "domain": "Design",
+        "week": 5,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M17_001", "label": "Add surah/juz reading context in desktop header (_1 lines 153-155)", "status": "todo", "priority": "P0" },
+          { "id": "M17_002", "label": "Add 'في ظلال الآية' label above tafsir paragraphs in QuranVerse (_1 line 230)", "status": "todo", "priority": "P0" },
+          { "id": "M17_003", "label": "Fix bottom nav button shapes: rounded-xl not rounded-full (_1 lines 293, 305)", "status": "todo", "priority": "P0" },
+          { "id": "M17_004", "label": "Add dark:border-outline-variant to header border (_3 line 150)", "status": "todo", "priority": "P0" },
+          { "id": "M17_005", "label": "Add font-extrabold tracking-tight to header title (_3 line 152)", "status": "todo", "priority": "P0" },
+          { "id": "M17_006", "label": "Search page: larger icon (text-[32px]), h-16 input, correct padding (_2 line 192)", "status": "todo", "priority": "P0" },
+          { "id": "M17_007", "label": "Search page: add 'الأكثر صلة' sort dropdown in results counter (_2 lines 233-236)", "status": "todo", "priority": "P1" },
+          { "id": "M17_008", "label": "Search results: add bookmark button, gold verse box, warm-stone tags, font-title link (_2)", "status": "todo", "priority": "P0" },
+          { "id": "M17_009", "label": "Update Sidebar profile to use img avatar pattern (_3 lines 196-198)", "status": "todo", "priority": "P2" },
+          { "id": "M17_010", "label": "Build verification after all M17 fixes", "status": "todo", "priority": "P0" }
+        ]
+      },
       {
         "id": "M15",
         "title": "UI/UX Aesthetic Refinements (The Gilded Library)",
@@ -53,20 +74,24 @@
     ],
     "active": [
       {
-        "id": "M12",
-        "title": "Full Offline PWA — Cache All Content for Offline Reading",
-        "domain": "PWA",
-        "week": 7,
-        "phase": "features",
+        "id": "M17",
+        "title": "Design_New Remaining Alignment — Prototype Gaps",
+        "domain": "Design",
+        "week": 5,
+        "phase": "polish",
         "drift_days": 0,
-        "is_key_milestone": true,
+        "is_key_milestone": false,
         "subtasks": [
-          { "id": "M12_001", "label": "Add runtime caching rules in sw.ts for search-data.json, static content, and navigation", "status": "todo", "priority": "P0" },
-          { "id": "M12_002", "label": "Create offline detection indicator — show banner when offline, removed cached pages still work", "status": "todo", "priority": "P1" },
-          { "id": "M12_003", "label": "Programmatic cache-all on first load — cache all 114 surah pages + 30 juz pages + home page", "status": "todo", "priority": "P0" },
-          { "id": "M12_004", "label": "Cache search data JSON — ensure /search-data.json is cached on service worker install/activate", "status": "todo", "priority": "P0" },
-          { "id": "M12_005", "label": "Add 'Available Offline' badge on saved content and a 'Save All for Offline' button in settings/sidebar", "status": "todo", "priority": "P2" },
-          { "id": "M12_006", "label": "Test full offline scenario — disable network, verify all 149 routes + search work", "status": "todo", "priority": "P0" }
+          { "id": "M17_001", "label": "Add surah/juz reading context in desktop header (_1 lines 153-155)", "status": "in_progress", "priority": "P0" },
+          { "id": "M17_002", "label": "Add 'في ظلال الآية' label above tafsir paragraphs in QuranVerse (_1 line 230)", "status": "todo", "priority": "P0" },
+          { "id": "M17_003", "label": "Fix bottom nav button shapes: rounded-xl not rounded-full (_1 lines 293, 305)", "status": "todo", "priority": "P0" },
+          { "id": "M17_004", "label": "Add dark:border-outline-variant to header border (_3 line 150)", "status": "todo", "priority": "P0" },
+          { "id": "M17_005", "label": "Add font-extrabold tracking-tight to header title (_3 line 152)", "status": "todo", "priority": "P0" },
+          { "id": "M17_006", "label": "Search page: larger icon (text-[32px]), h-16 input, correct padding (_2 line 192)", "status": "todo", "priority": "P0" },
+          { "id": "M17_007", "label": "Search page: add 'الأكثر صلة' sort dropdown in results counter (_2 lines 233-236)", "status": "todo", "priority": "P1" },
+          { "id": "M17_008", "label": "Search results: add bookmark button, gold verse box, warm-stone tags, font-title link (_2)", "status": "todo", "priority": "P0" },
+          { "id": "M17_009", "label": "Update Sidebar profile to use img avatar pattern (_3 lines 196-198)", "status": "todo", "priority": "P2" },
+          { "id": "M17_010", "label": "Build verification after all M17 fixes", "status": "todo", "priority": "P0" }
         ]
       }
     ],
@@ -636,6 +661,12 @@
         "agent_id": "nextjs-specialist",
         "action": "milestone_activated",
         "description": "M12: Full Offline PWA — Moved to active from backlog. Branch: feat/offline-pwa. 6 subtasks: runtime caching, offline indicator, programmatic cache-all, search-data cache, offline badge, full offline test."
+      },
+      {
+        "timestamp": "2026-05-26T02:35:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestone_activated",
+        "description": "M17: Design_New Remaining Alignment — Moved to active. 10 subtasks for remaining prototype gaps. Branch: refactor/design-new-remaining-gaps."
       }
   ]
 }
