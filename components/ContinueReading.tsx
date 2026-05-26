@@ -31,7 +31,7 @@ export default function ContinueReading() {
         </div>
         <Link
           href={`/surah/${last.surah}`}
-          className="relative z-10 mt-xl md:mt-0 px-xl py-md bg-white text-secondary font-title rounded-lg hover:bg-warm-ash dark:hover:bg-tertiary-container dark:text-secondary dark:bg-dark-surface transition-colors flex items-center gap-sm active:scale-95"
+          className="relative z-10 mt-xl md:mt-0 px-xl py-md bg-white text-secondary font-title rounded-lg hover:bg-warm-ash dark:hover:bg-tertiary-container dark:text-secondary dark:bg-dark-surface transition-colors flex items-center gap-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           <span>متابعة القراءة</span>
           <span className="material-symbols-outlined">arrow_back</span>

@@ -8,7 +8,7 @@ export default function OfflineBanner() {
 
   if (progress && progress.done < progress.total) {
     return (
-      <div className="fixed bottom-4 right-4 z-50 px-4 py-2 rounded-xl bg-[var(--color-surface)] border border-[var(--color-accent)] shadow-lg text-sm text-[var(--color-text-secondary)]">
+      <div className="fixed bottom-20 lg:bottom-4 right-4 z-50 px-4 py-2 rounded-xl bg-surface border border-accent text-sm text-text-secondary">
         تحميل للاستخدام دون اتصال... {progress.done}/{progress.total}
       </div>
     );
@@ -17,7 +17,7 @@ export default function OfflineBanner() {
   if (!offline) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 px-4 py-2 rounded-xl bg-amber-50 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 shadow-lg text-sm text-amber-800 dark:text-amber-200">
+    <div className="offline-banner">
       أنت غير متصل — المحتوى المحفوظ متاح للقراءة
     </div>
   );

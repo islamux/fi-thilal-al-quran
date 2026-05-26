@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&amp;family=Amiri+Quran&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e8e5ff",
+                    "primary-container": "#1a365d",
+                    "secondary-fixed-dim": "#e6c364",
+                    "primary-fixed": "#d6e3ff",
+                    "outline": "#74777f",
+                    "inverse-surface": "#2f2e43",
+                    "brick-red": "#9B2C2C",
+                    "surface-tint": "#455f88",
+                    "warm-border": "#E2DCD0",
+                    "secondary-container": "#fed977",
+                    "gilded-gold-hover": "#D4B85A",
+                    "on-tertiary-fixed-variant": "#474745",
+                    "on-secondary-container": "#785d00",
+                    "tertiary": "#20211f",
+                    "outline-variant": "#c4c6cf",
+                    "on-surface-variant": "#43474e",
+                    "dark-primary": "#7EB8E8",
+                    "parchment-cream": "#FAF8F5",
+                    "on-secondary-fixed": "#241a00",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#adc7f7",
+                    "dark-text": "#E8E4DE",
+                    "faded-ink": "#5A5A6E",
+                    "dark-bg": "#0F0F1A",
+                    "secondary-fixed": "#ffe08f",
+                    "on-secondary-fixed-variant": "#584400",
+                    "background": "#fcf8ff",
+                    "warm-stone": "#F0ECE4",
+                    "on-primary-fixed": "#001b3c",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#86a0cd",
+                    "on-surface": "#1a1a2e",
+                    "greyed-ink": "#9A9AAE",
+                    "surface-container": "#efecff",
+                    "dark-surface": "#1E1E32",
+                    "on-primary": "#ffffff",
+                    "ink-navy-hover": "#2A4A7F",
+                    "surface": "#fcf8ff",
+                    "primary": "#002045",
+                    "primary-fixed-dim": "#adc7f7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#dad7f3",
+                    "tertiary-container": "#353634",
+                    "inverse-on-surface": "#f2efff",
+                    "surface-container-highest": "#e2e0fc",
+                    "forest-green": "#2D6A4F",
+                    "on-background": "#1a1a2e",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c8c6c4",
+                    "on-secondary": "#ffffff",
+                    "gilded-gold-light": "#F5E6B8",
+                    "error": "#ba1a1a",
+                    "secondary": "#755b00",
+                    "warm-ash": "#F5F0E8",
+                    "surface-variant": "#e2e0fc",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#e4e2df",
+                    "on-tertiary-container": "#9f9e9c",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "surface-container-low": "#f5f2ff",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#1b1c1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "xxl": "48px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "max-content-width": "1200px"
+            },
+            "fontFamily": {
+                    "display": ["Tajawal"],
+                    "verse": ["Amiri Quran"],
+                    "body": ["Tajawal"],
+                    "title": ["Tajawal"],
+                    "label-sm": ["Tajawal"],
+                    "headline": ["Tajawal"],
+                    "display-mobile": ["Tajawal"]
+            },
+            "fontSize": {
+                    "display": ["36px", {"lineHeight": "1.2", "letterSpacing": "0", "fontWeight": "700"}],
+                    "verse": ["20px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "body": ["16px", {"lineHeight": "28.8px", "fontWeight": "400"}],
+                    "title": ["18px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "label-sm": ["14px", {"lineHeight": "21px", "fontWeight": "400"}],
+                    "headline": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF8F5; /* parchment-cream */
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .quran-text {
+            font-family: 'Amiri Quran', serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F0ECE4;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E2DCD0;
+            border-radius: 10px;
+        }
+        .active-nav-border {
+            border-right: 2px solid #755b00;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full h-[56px] flex justify-between items-center px-md lg:px-xl z-50 bg-parchment-cream/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-warm-border dark:border-outline-variant glass-header">
+<div class="flex items-center gap-md">
+<h1 class="font-headline text-headline text-primary dark:text-dark-primary font-extrabold tracking-tight">في ظلال القرآن</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative hidden md:block">
+<input class="w-64 bg-white border border-warm-border rounded-xl px-md py-xs text-label-sm focus:ring-0 focus:border-secondary outline-none transition-colors" placeholder="بحث في السور والآيات..." type="text"/>
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+<button class="p-sm hover:bg-warm-ash rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+<button class="p-sm hover:bg-warm-ash rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (RTL Fixed Right) -->
+<aside class="fixed right-0 top-0 h-full w-[280px] flex flex-col p-md z-40 bg-warm-stone dark:bg-dark-surface hidden lg:flex border-l border-warm-border pt-[72px]">
+<div class="mb-xl">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-headline text-title">ق</div>
+<h2 class="font-headline text-title text-primary dark:text-dark-primary">المكتبة القرآنية</h2>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">تصفح في ظلال القرآن</p>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<a class="flex items-center gap-md p-md rounded-lg text-secondary dark:text-secondary-fixed-dim bg-warm-ash dark:bg-tertiary-container border-r-2 border-secondary transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="book_2">book_2</span>
+<span>السور</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-warm-ash dark:hover:bg-tertiary-container transition-all font-label-sm text-label-sm active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="segment">segment</span>
+<span>الأجزاء</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-warm-ash dark:hover:bg-tertiary-container transition-all font-label-sm text-label-sm active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span>العلامات</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant dark:text-on-tertiary-container hover:bg-warm-ash dark:hover:bg-tertiary-container transition-all font-label-sm text-label-sm active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span>البحث</span>
+</a>
+</nav>
+<div class="mt-auto p-md border-t border-warm-border/50">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-warm-ash border border-warm-border">
+<img alt="Profile" data-alt="A small, circular profile avatar of a scholarly man with a neat beard, wearing a traditional white head covering. The background is a warm neutral tone, consistent with the academic and contemplative Digital Reading Room aesthetic. High-quality digital portrait lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDCHGddLs9-S-t2CcQRxbNfUX1wu5xHPhtI7eipOXiPatsIU3Uu6mP2lKaGSMcbFczmxmVAcmhrkEcFsJkW0DQA1k0MFWhzqWhXjwvPt6ybu4eWUy5c6IQna1X6QG9D7Q54pneJlix2YVNnTXi8Uthp6NdDePxORSg4gVlKwVghLAWBDtnFIPXfaxhVx0MD3An3B3Cs6RE24lsNZHG4qV4Acil32erQTnebiK5zeubkotILfmCvV5IcnCptozuslIOzrlupCj39kE"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-primary">أحمد القارئ</span>
+<span class="text-[10px] text-greyed-ink">قارئ نشط</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:mr-[280px] pt-[80px] px-md lg:px-xxl min-h-screen pb-xl max-w-screen-2xl mx-auto">
+<!-- Continue Reading Banner -->
+<section class="mb-xl">
+<div class="relative group overflow-hidden rounded-xl bg-secondary dark:bg-secondary-container p-xl flex flex-col md:flex-row items-center justify-between text-white shadow-sm transition-all duration-300">
+<div class="absolute inset-0 bg-gradient-to-l from-secondary-container/20 to-transparent pointer-events-none"></div>
+<div class="relative z-10 text-right">
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80 mb-sm block">استمر في القراءة</span>
+<h3 class="font-headline text-headline mb-xs">سورة الكهف</h3>
+<p class="font-verse text-title italic opacity-90 mb-md">﴿ وَقُلِ الْحَقُّ مِن رَّبِّكُمْ ۖ فَمَن شَاءَ فَلْيُؤْمِن وَمَن شَاءَ فَلْيَكْفُرْ ﴾</p>
+<div class="flex items-center gap-sm">
+<span class="bg-white/20 backdrop-blur-md px-sm py-1 rounded text-xs">الجزء ١٥</span>
+<span class="bg-white/20 backdrop-blur-md px-sm py-1 rounded text-xs">الآية ٢٩</span>
+</div>
+</div>
+<button class="relative z-10 mt-xl md:mt-0 px-xl py-md bg-white text-secondary font-title rounded-lg hover:bg-warm-ash transition-colors flex items-center gap-sm active:scale-95">
+<span>متابعة القراءة</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</section>
+<!-- Search & Filter (Mobile) -->
+<div class="md:hidden mb-lg">
+<div class="relative">
+<input class="w-full bg-white border border-warm-border rounded-xl px-md py-md text-label-sm focus:border-secondary outline-none" placeholder="ابحث عن سورة..." type="text"/>
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between mb-lg border-b border-warm-border pb-md">
+<h2 class="font-headline text-headline text-primary">فهرس السور</h2>
+<div class="flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">sort</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+</div>
+</div>
+<!-- Surah Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Surah Card Component (Repeatable) -->
+<script>
+                const surahs = [
+                    { id: 1, name: "الفاتحة", type: "مكية", verses: 7, basmalah: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ" },
+                    { id: 2, name: "البقرة", type: "مدنية", verses: 286, basmalah: "الم" },
+                    { id: 3, name: "آل عمران", type: "مدنية", verses: 200, basmalah: "الم" },
+                    { id: 4, name: "النساء", type: "مدنية", verses: 176, basmalah: "يَا أَيُّهَا النَّاسُ" },
+                    { id: 5, name: "المائدة", type: "مدنية", verses: 120, basmalah: "يَا أَيُّهَا الَّذِينَ آمَنُوا" },
+                    { id: 6, name: "الأنعام", type: "مكية", verses: 165, basmalah: "الْحَمْدُ لِلَّهِ الَّذِي خَلَقَ" },
+                    { id: 7, name: "الأعراف", type: "مكية", verses: 206, basmalah: "المص" },
+                    { id: 8, name: "الأنفال", type: "مدنية", verses: 75, basmalah: "يَسْأَلُونَكَ عَنِ الأَنفَالِ" },
+                    { id: 9, name: "التوبة", type: "مدنية", verses: 129, basmalah: "بَرَاءَةٌ مِّنَ اللَّهِ" },
+                    { id: 10, name: "يونس", type: "مكية", verses: 109, basmalah: "الر" },
+                    { id: 11, name: "هود", type: "مكية", verses: 123, basmalah: "الر" },
+                    { id: 12, name: "يوسف", type: "مكية", verses: 111, basmalah: "الر" }
+                ];
+
+                document.write(surahs.map(surah => `
+                    <div class="group relative bg-white border border-warm-border p-md rounded-xl transition-all duration-300 hover:bg-warm-ash hover:border-secondary/30 cursor-pointer">
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-0 bg-secondary transition-all duration-300 group-hover:h-3/4"></div>
+                        <div class="flex justify-between items-start mb-md">
+                            <div class="w-10 h-10 rounded-full bg-gilded-gold-light border border-secondary/20 flex items-center justify-center font-label-sm text-secondary font-bold">
+                                ${surah.id}
+                            </div>
+                            <div class="text-left">
+                                <span class="block font-label-sm text-greyed-ink text-xs uppercase tracking-tight">${surah.type}</span>
+                                <span class="block font-label-sm text-greyed-ink text-xs">${surah.verses} آيات</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <h3 class="font-headline text-headline text-primary mb-xs group-hover:text-secondary transition-colors">${surah.name}</h3>
+                            <p class="quran-text text-on-surface-variant opacity-70 text-sm truncate" dir="rtl">${surah.basmalah}</p>
+                        </div>
+                    </div>
+                `).join(''));
+            </script>
+</div>
+<!-- Pagination or Load More -->
+<div class="mt-xxl flex justify-center">
+<button class="px-xl py-md border border-warm-border rounded-lg text-primary font-title hover:bg-warm-stone transition-all active:scale-95 flex items-center gap-sm">
+<span>عرض المزيد من السور</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-parchment-cream/95 backdrop-blur-md border-t border-warm-border flex justify-around items-center h-[64px] z-50">
+<button class="flex flex-col items-center gap-1 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book_2</span>
+<span class="text-[10px] font-medium">السور</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">segment</span>
+<span class="text-[10px] font-medium">الأجزاء</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-[10px] font-medium">العلامات</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">حسابي</span>
+</button>
+</nav>
+<!-- Decorative Library Elements -->
+<div class="fixed bottom-10 left-10 opacity-5 pointer-events-none hidden xl:block">
+<span class="material-symbols-outlined text-[120px]">menu_book</span>
+</div>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.add('scale-[0.98]');
+                setTimeout(() => card.classList.remove('scale-[0.98]'), 150);
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input');
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-105');
+                searchInput.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-105');
+            });
+        }
+    </script>
+</body></html>

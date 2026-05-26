@@ -25,6 +25,10 @@ export default function Home() {
         </div>
 
         <SurahGrid surahs={surahList} />
+
+        <div className="fixed bottom-0 left-0 p-6 opacity-10 pointer-events-none hidden lg:block">
+          <span className="material-symbols-outlined text-7xl text-gilded-gold select-none">auto_stories</span>
+        </div>
       </div>
     </ClientShell>
   );

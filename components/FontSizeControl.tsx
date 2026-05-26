@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ZoomIn, ZoomOut, Type } from "lucide-react";
 
 const STORAGE_KEY = "fi-thilal-font-size";
 const MIN = 14;
@@ -45,33 +44,33 @@ export default function FontSizeControl() {
   const atMax = size >= MAX;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2">
+    <div className="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-2">
       {open && (
-        <div className="flex items-center gap-2 glass border border-[var(--color-border)] rounded-xl px-3 py-2 shadow-lg anim-scale-in">
+        <div className="flex items-center gap-2 bg-glass backdrop-blur-[12px] border border-warm-border rounded-xl px-3 py-2 anim-scale-in">
           <button
             onClick={() => change(-STEP)}
             disabled={atMin}
-            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="p-1.5 rounded-lg hover:bg-surface-hover transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="تصغير الخط"
           >
-            <ZoomOut size={18} />
+            <span className="material-symbols-outlined text-lg text-text">zoom_out</span>
           </button>
-          <span className="text-sm font-medium tabular-nums min-w-[3ch] text-center">
+          <span className="text-sm font-medium tabular-nums min-w-[3ch] text-center text-text">
             {size}
           </span>
-          <span className="text-xs text-[var(--color-text-muted)]">px</span>
+          <span className="text-xs text-text-muted">px</span>
           <button
             onClick={() => change(STEP)}
             disabled={atMax}
-            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="p-1.5 rounded-lg hover:bg-surface-hover transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="تكبير الخط"
           >
-            <ZoomIn size={18} />
+            <span className="material-symbols-outlined text-lg text-text">zoom_in</span>
           </button>
-          <div className="w-px h-6 bg-[var(--color-border)] mx-1" />
+          <div className="w-px h-6 bg-warm-border mx-1" />
           <button
             onClick={reset}
-            className="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-light)] px-2 py-1 rounded-lg transition-colors"
+            className="text-xs text-text-muted hover:text-accent hover:bg-accent-light px-2 py-1 rounded-lg transition-colors"
           >
             إعادة
           </button>
@@ -79,10 +78,10 @@ export default function FontSizeControl() {
       )}
       <button
         onClick={() => setOpen(!open)}
-        className="p-3 rounded-full glass border border-[var(--color-border)] shadow-lg hover:shadow-xl hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200"
+        className="p-3 rounded-full bg-accent text-white hover:scale-110 active:scale-95 transition-all duration-200"
         aria-label="التحكم بحجم الخط"
       >
-        <Type size={20} />
+        <span className="material-symbols-outlined">format_size</span>
       </button>
     </div>
   );

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>في ظلال القرآن - البحث المتقدم</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&amp;family=Amiri+Quran&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e8e5ff",
+                      "primary-container": "#1a365d",
+                      "secondary-fixed-dim": "#e6c364",
+                      "primary-fixed": "#d6e3ff",
+                      "outline": "#74777f",
+                      "inverse-surface": "#2f2e43",
+                      "brick-red": "#9B2C2C",
+                      "surface-tint": "#455f88",
+                      "warm-border": "#E2DCD0",
+                      "secondary-container": "#fed977",
+                      "gilded-gold-hover": "#D4B85A",
+                      "on-tertiary-fixed-variant": "#474745",
+                      "on-secondary-container": "#785d00",
+                      "tertiary": "#20211f",
+                      "outline-variant": "#c4c6cf",
+                      "on-surface-variant": "#43474e",
+                      "dark-primary": "#7EB8E8",
+                      "parchment-cream": "#FAF8F5",
+                      "on-secondary-fixed": "#241a00",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#adc7f7",
+                      "dark-text": "#E8E4DE",
+                      "faded-ink": "#5A5A6E",
+                      "dark-bg": "#0F0F1A",
+                      "secondary-fixed": "#ffe08f",
+                      "on-secondary-fixed-variant": "#584400",
+                      "background": "#fcf8ff",
+                      "warm-stone": "#F0ECE4",
+                      "on-primary-fixed": "#001b3c",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#86a0cd",
+                      "on-surface": "#1a1a2e",
+                      "greyed-ink": "#9A9AAE",
+                      "surface-container": "#efecff",
+                      "dark-surface": "#1E1E32",
+                      "on-primary": "#ffffff",
+                      "ink-navy-hover": "#2A4A7F",
+                      "surface": "#fcf8ff",
+                      "primary": "#002045",
+                      "primary-fixed-dim": "#adc7f7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#dad7f3",
+                      "tertiary-container": "#353634",
+                      "inverse-on-surface": "#f2efff",
+                      "surface-container-highest": "#e2e0fc",
+                      "forest-green": "#2D6A4F",
+                      "on-background": "#1a1a2e",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#c8c6c4",
+                      "on-secondary": "#ffffff",
+                      "gilded-gold-light": "#F5E6B8",
+                      "error": "#ba1a1a",
+                      "secondary": "#755b00",
+                      "warm-ash": "#F5F0E8",
+                      "surface-variant": "#e2e0fc",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e4e2df",
+                      "on-tertiary-container": "#9f9e9c",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "surface-container-low": "#f5f2ff",
+                      "surface-bright": "#fcf8ff",
+                      "on-tertiary-fixed": "#1b1c1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "xxl": "48px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "max-content-width": "1200px"
+              },
+              "fontFamily": {
+                      "display": ["Tajawal"],
+                      "verse": ["Amiri Quran"],
+                      "body": ["Tajawal"],
+                      "title": ["Tajawal"],
+                      "label-sm": ["Tajawal"],
+                      "headline": ["Tajawal"],
+                      "display-mobile": ["Tajawal"]
+              },
+              "fontSize": {
+                      "display": ["36px", {"lineHeight": "1.2", "letterSpacing": "0", "fontWeight": "700"}],
+                      "verse": ["20px", {"lineHeight": "40px", "fontWeight": "400"}],
+                      "body": ["16px", {"lineHeight": "28.8px", "fontWeight": "400"}],
+                      "title": ["18px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                      "label-sm": ["14px", {"lineHeight": "21px", "fontWeight": "400"}],
+                      "headline": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>body {
+    background-color: #FAF8F5;
+    /* Parchment Cream */
+    font-family: "Tajawal", sans-serif;
+    overflow-x: hidden
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.search-backdrop {
+    background-image: linear-gradient(rgba(250, 248, 245, 0.9), rgba(250, 248, 245, 0.9)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuDeLi8WO_IodvM-uwrzmZxrN2lsvQtTrSjSWH12t__edLu8P0pK90hUrSOIwzxUIFdWi-kVNcXtu4eD3Q5lcMYpaa4odBeeKnsIciszwF-qQAN3DKotD4qPQdqyfgbn1W1XOGE-o0mrm4T8r7cvUsPM1kJwieze45KhgLIT-O-D0z40GILalDip0uoVGweEDK2AoS-IE67XMzM7mRoCOxPwVVAV6XT9uR_fd4iTd_TFWOBtEJpLniurG91iWtgAlu8rlarOguKpT7Q)
+    }
+.quran-bracket {
+    color: #755b00;
+    /* Gilded Gold */
+    font-family: "Amiri Quran", serif
+    }
+.highlight-match {
+    background-color: rgba(245, 230, 184, 0.6);
+    /* Gilded Gold Light */
+    padding: 0 2px;
+    border-bottom: 2px solid #755b00
+    }</style>
+</head>
+<body class="text-on-surface">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 left-0 w-full h-[56px] flex justify-between items-center px-md lg:px-xl bg-parchment-cream/80 dark:bg-dark-bg/80 backdrop-blur-md z-50 border-b border-warm-border">
+<div class="flex items-center gap-md">
+<span class="font-headline text-headline text-primary">في ظلال القرآن</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full hover:bg-warm-ash transition-colors duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+<button class="p-sm rounded-full hover:bg-warm-ash transition-colors duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- SIDE NAV BAR (Hidden on Mobile) -->
+<aside class="fixed right-0 top-0 h-full w-[280px] flex flex-col p-md z-40 bg-warm-stone hidden md:flex">
+<div class="mt-[64px] mb-xl px-sm">
+<h2 class="font-headline text-title text-primary">المكتبة القرآنية</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">تصفح في ظلال القرآن</p>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-md p-md rounded-xl text-on-surface-variant hover:bg-warm-ash transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="book_2">book_2</span>
+<span class="font-label-sm text-label-sm">السور</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-xl text-on-surface-variant hover:bg-warm-ash transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="segment">segment</span>
+<span class="font-label-sm text-label-sm">الأجزاء</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-xl text-on-surface-variant hover:bg-warm-ash transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-label-sm text-label-sm">العلامات</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-xl text-secondary bg-warm-ash border-r-2 border-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">البحث</span>
+</a>
+</nav>
+</aside>
+<!-- MAIN SEARCH VIEW CONTENT -->
+<main class="pt-[80px] md:mr-[280px] px-md lg:px-xxl min-h-screen">
+<!-- SEARCH INTERFACE SECTION -->
+<section class="max-w-max-content-width mx-auto py-xl">
+<!-- Header & Large Input -->
+<div class="mb-xxl text-center">
+<h1 class="font-display text-display mb-md text-primary">البحث العلمي الدقيق</h1>
+<p class="font-body text-body text-faded-ink mb-xl max-w-2xl mx-auto">
+                    ابحث في أعماق التفسير والتدبر للآيات الكريمة من خلال "في ظلال القرآن" لسيد قطب
+                </p>
+<div class="relative max-w-3xl mx-auto">
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-greyed-ink text-[32px]">search</span>
+<input class="w-full h-16 pr-[64px] pl-md rounded-xl border border-warm-border bg-white focus:border-secondary focus:ring-0 text-xl font-body transition-all shadow-sm" placeholder="ابحث عن آية، كلمة، أو موضوع..." type="text" value="إن مع العسر يسرا"/>
+</div>
+</div>
+<!-- FILTERS BENTO -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md mb-xl">
+<div class="md:col-span-1 bg-warm-stone p-md rounded-xl border border-warm-border">
+<label class="block font-label-sm text-label-sm text-greyed-ink mb-xs">السورة</label>
+<select class="w-full bg-transparent border-none focus:ring-0 font-title p-0 text-primary">
+<option>الكل</option>
+<option selected="">سورة الشرح</option>
+<option>سورة البقرة</option>
+<option>سورة الضحى</option>
+</select>
+</div>
+<div class="md:col-span-1 bg-warm-stone p-md rounded-xl border border-warm-border">
+<label class="block font-label-sm text-label-sm text-greyed-ink mb-xs">الجزء</label>
+<select class="w-full bg-transparent border-none focus:ring-0 font-title p-0 text-primary">
+<option>الكل</option>
+<option selected="">الجزء الثلاثون</option>
+<option>الجزء الأول</option>
+</select>
+</div>
+<div class="md:col-span-1 bg-warm-stone p-md rounded-xl border border-warm-border">
+<label class="block font-label-sm text-label-sm text-greyed-ink mb-xs">المجلد</label>
+<select class="w-full bg-transparent border-none focus:ring-0 font-title p-0 text-primary">
+<option>الكل</option>
+<option selected="">المجلد السادس</option>
+<option>المجلد الخامس</option>
+</select>
+</div>
+<div class="md:col-span-1 flex items-center justify-center">
+<button class="w-full h-full bg-secondary hover:bg-gilded-gold-hover text-white font-title py-md rounded-xl transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+                        تحديث النتائج
+                    </button>
+</div>
+</div>
+<!-- RESULTS COUNTER -->
+<div class="flex justify-between items-center mb-lg pb-sm border-b border-warm-border">
+<span class="font-label-sm text-label-sm text-faded-ink">تم العثور على 12 نتيجة لـ "إن مع العسر يسرا"</span>
+<div class="flex gap-sm">
+<button class="text-secondary font-label-sm text-label-sm flex items-center">
+                        الأكثر صلة <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- SEARCH RESULTS CARDS -->
+<div class="space-y-lg">
+<!-- Result Card 1 -->
+<div class="bg-white border border-warm-border p-lg rounded-xl hover:bg-warm-ash transition-all group relative overflow-hidden">
+<div class="absolute right-0 top-0 w-1 h-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline text-headline text-primary mb-xs">سورة الشرح - الآية ٥-٦</h3>
+<div class="flex gap-md">
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">الجزء ٣٠</span>
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">المجلد ٦</span>
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">ص ٤١٢</span>
+</div>
+</div>
+<button class="p-sm text-greyed-ink hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="bg-gilded-gold-light p-md rounded-lg mb-md text-center">
+<p class="font-verse text-verse text-primary leading-loose">
+<span class="quran-bracket">﴿</span> فَإِنَّ مَعَ <span class="highlight-match">الْعُسْرِ يُسْرًا</span> * إِنَّ مَعَ <span class="highlight-match">الْعُسْرِ يُسْرًا</span> <span class="quran-bracket">﴾</span>
+</p>
+</div>
+<div class="space-y-sm">
+<p class="font-body text-body text-on-surface-variant leading-relaxed">
+                            "...وهي لمسة الرأفة والرحمة بقلب النبي صلى الله عليه وسلم، وتأكيد لحقيقة أن <span class="highlight-match">مع العسر يسرا</span>، فلا يضيق الصدر، ولا يستبد القلق، فإن العسر لا ينفرد أبداً، بل يصحبه اليسر دائماً، وقد تكرر الوعد لترسيخه في النفس..."
+                        </p>
+<button class="text-secondary font-title text-title flex items-center gap-xs hover:gap-sm transition-all mt-md">
+                            اقرأ التفسير كاملاً
+                            <span class="material-symbols-outlined">arrow_left</span>
+</button>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="bg-white border border-warm-border p-lg rounded-xl hover:bg-warm-ash transition-all group relative overflow-hidden">
+<div class="absolute right-0 top-0 w-1 h-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline text-headline text-primary mb-xs">مقدمة السورة</h3>
+<div class="flex gap-md">
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">سورة الضحى</span>
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">المجلد ٦</span>
+</div>
+</div>
+<button class="p-sm text-greyed-ink hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="space-y-sm">
+<p class="font-body text-body text-on-surface-variant leading-relaxed">
+                            "إن الطبيعة البشرية حين يشتد عليها الضيق، وتتحرج بها الأمور، يرسل الله لها بشارات الفرج، فكان قوله تعالى <span class="highlight-match">إن مع العسر يسرا</span> في سورة الشرح متمماً لما جاء في سورة الضحى من وعد الله لنبيه..."
+                        </p>
+<button class="text-secondary font-title text-title flex items-center gap-xs hover:gap-sm transition-all mt-md">
+                            اقرأ التفسير كاملاً
+                            <span class="material-symbols-outlined">arrow_left</span>
+</button>
+</div>
+</div>
+<!-- Result Card 3 -->
+<div class="bg-white border border-warm-border p-lg rounded-xl hover:bg-warm-ash transition-all group relative overflow-hidden">
+<div class="absolute right-0 top-0 w-1 h-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline text-headline text-primary mb-xs">تأملات في المنهج الحركي</h3>
+<div class="flex gap-md">
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">سورة البقرة</span>
+<span class="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">المجلد ١</span>
+</div>
+</div>
+<button class="p-sm text-greyed-ink hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="space-y-sm">
+<p class="font-body text-body text-on-surface-variant leading-relaxed">
+                            "...وهكذا يطمئن المؤمن دائماً، فلا عسر مطلق، بل إن قانون الوجود يقتضي أن يكون <span class="highlight-match">مع العسر يسرا</span>، لكي تستمر القافلة في مسيرتها نحو الله دون يأس أو قنوط..."
+                        </p>
+<button class="text-secondary font-title text-title flex items-center gap-xs hover:gap-sm transition-all mt-md">
+                            اقرأ التفسير كاملاً
+                            <span class="material-symbols-outlined">arrow_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- PAGINATION -->
+<div class="flex justify-center items-center gap-md py-xxl">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-title">١</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors font-title">٢</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors font-title">٣</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+</section>
+</main>
+<!-- FLOATING ATMOSPHERIC DECORATION (Subtle) -->
+<div class="fixed bottom-0 left-0 p-xl opacity-20 pointer-events-none hidden md:block">
+<span class="font-verse text-[80px] text-primary select-none">﴿</span>
+</div>
+<!-- BOTTOM NAV (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-[64px] bg-parchment-cream/95 backdrop-blur-md border-t border-warm-border flex justify-around items-center px-md z-50">
+<button class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="book_2">book_2</span>
+<span class="text-[10px] font-label-sm">السور</span>
+</button>
+<button class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="segment">segment</span>
+<span class="text-[10px] font-label-sm">الأجزاء</span>
+</button>
+<button class="flex flex-col items-center gap-xs text-secondary">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] font-label-sm">البحث</span>
+</button>
+<button class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-[10px] font-label-sm">العلامات</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for search input focus
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+            searchInput.classList.add('shadow-xl');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+            searchInput.classList.remove('shadow-xl');
+        });
+
+        // Atmospheric effect: Subtle parallax on scroll for decorative elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const deco = document.querySelector('.fixed.bottom-0.left-0');
+            if(deco) deco.style.transform = `translateY(${scrolled * 0.05}px)`;
+        });
+    </script>
+</body></html>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import GoldDivider from "./GoldDivider";
 
 const VERSE_RE = /([^()]+?)\((\d+)\)/g;
 const PAGE_REF_RE = /^\s*\(\d+\/\d+\)/;
@@ -45,7 +46,7 @@ function isHeading(line: string): boolean {
   return line.startsWith("#") || line.startsWith("[سورة");
 }
 
-export default function QuranVerse({ content }: { content: string }) {
+export default function QuranVerse({ content, surahNumber, surahName }: { content: string; surahNumber?: number; surahName?: string }) {
   const nodes = useMemo(() => {
     const lines = content.split("\n");
     let lastWasVerse = false;
@@ -86,17 +87,23 @@ export default function QuranVerse({ content }: { content: string }) {
               <p className="font-verse text-verse leading-verse text-center mb-sm text-text">
                 {tokens.map((token, j) =>
                   token.type === "verse" ? (
-                    <span key={j}>
+                    <span key={j} className="relative group/verse">
                       <span className="quran-bracket">﴿</span>
                       {token.text}
                       <span className="quran-bracket">﴾</span>
-                      <span className="verse-badge mr-2">{token.number}</span>{" "}
+                      <span
+                        className="verse-badge mr-2"
+                        title={surahName && token.number ? `سورة ${surahName} - الآية ${token.number}` : undefined}
+                      >
+                        {token.number}
+                      </span>{" "}
                     </span>
                   ) : null
                 )}
               </p>
             </div>
           </div>,
+          <GoldDivider key={`divider-${i}`} variant="narrow" className="my-lg" />,
         ];
       }
 

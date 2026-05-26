@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ChevronRight, ChevronLeft } from "lucide-react";
 import type { SurahIndexEntry } from "@/lib/types";
 
 export default function SurahNavFooter({
@@ -10,19 +9,17 @@ export default function SurahNavFooter({
   next: SurahIndexEntry | null;
 }) {
   return (
-    <nav className="flex items-center justify-between gap-4 mt-12 pt-8 border-t border-[var(--color-border)]">
+    <nav className="flex items-center justify-between gap-4 mt-12 pt-8 border-t border-warm-border" aria-label="التنقل بين السور">
       {prev ? (
         <Link
           href={`/surah/${prev.number}`}
-          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl card-gilded"
+          aria-label={`السورة السابقة: ${prev.name}`}
+          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl bg-surface border border-warm-border hover:border-accent/30 hover:bg-surface-hover transition-all"
         >
-          <ChevronRight
-            size={20}
-            className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors shrink-0"
-          />
+          <span className="material-symbols-outlined text-text-muted group-hover:text-accent transition-colors">chevron_right</span>
           <div className="text-right min-w-0">
-            <div className="text-xs text-[var(--color-text-muted)] mb-0.5">السورة السابقة</div>
-            <div className="font-[var(--font-amiri-quran)] text-lg text-[var(--color-text)] truncate">
+            <div className="text-xs text-text-muted mb-0.5">السورة السابقة</div>
+            <div className="font-[var(--font-amiri-quran)] text-lg text-text truncate">
               {prev.name}
             </div>
           </div>
@@ -33,7 +30,8 @@ export default function SurahNavFooter({
 
       <Link
         href="/"
-        className="shrink-0 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors px-3"
+        aria-label="العودة إلى قائمة جميع السور"
+        className="shrink-0 text-sm text-text-muted hover:text-accent transition-colors px-3"
       >
         جميع السور
       </Link>
@@ -41,18 +39,16 @@ export default function SurahNavFooter({
       {next ? (
         <Link
           href={`/surah/${next.number}`}
-          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl card-gilded"
+          aria-label={`السورة التالية: ${next.name}`}
+          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl bg-surface border border-warm-border hover:border-accent/30 hover:bg-surface-hover transition-all"
         >
           <div className="text-left min-w-0">
-            <div className="text-xs text-[var(--color-text-muted)] mb-0.5">السورة التالية</div>
-            <div className="font-[var(--font-amiri-quran)] text-lg text-[var(--color-text)] truncate">
+            <div className="text-xs text-text-muted mb-0.5">السورة التالية</div>
+            <div className="font-[var(--font-amiri-quran)] text-lg text-text truncate">
               {next.name}
             </div>
           </div>
-          <ChevronLeft
-            size={20}
-            className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors shrink-0"
-          />
+          <span className="material-symbols-outlined text-text-muted group-hover:text-accent transition-colors">chevron_left</span>
         </Link>
       ) : (
         <div className="flex-1" />

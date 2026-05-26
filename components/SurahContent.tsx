@@ -96,6 +96,12 @@ export default function SurahContent({
               <BookmarkButton key={bookmarkToggle} surah={number} surahName={name} />
             </div>
 
+            <div className="mb-md opacity-20 select-none pointer-events-none">
+              <p className="font-verse text-5xl leading-relaxed text-gilded-gold">
+                {name}
+              </p>
+            </div>
+
             <h1 className="font-display text-display text-primary mb-sm">
               سورة {name}
             </h1>
@@ -115,47 +121,63 @@ export default function SurahContent({
             className="[&_p]:text-[var(--reader-font-size,18px)]"
             style={{ fontSize: "var(--reader-font-size, 18px)" }}
           >
-            <QuranVerse content={content} />
+            <QuranVerse content={content} surahNumber={number} surahName={name} />
           </div>
 
-          <div className="mt-xxl pt-lg border-t border-warm-border flex flex-col md:flex-row justify-between items-center gap-lg">
-            {prevNumber ? (
-              <button
-                onClick={() => router.push(`/surah/${prevNumber}`)}
-                className="flex items-center gap-md px-lg py-md bg-primary text-white rounded-xl shadow-lg shadow-primary/10 hover:bg-primary-hover active:scale-98 transition-all font-title text-sm"
-              >
-                <span className="material-symbols-outlined">arrow_forward</span>
-                <span>السورة السابقة</span>
-              </button>
-            ) : (
-              <div />
-            )}
-
-            <div className="flex gap-md">
-              <button className="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-warm-ash hover:text-secondary transition-all text-greyed-ink" aria-label="مشاركة">
-                <span className="material-symbols-outlined">share</span>
-              </button>
-              <button className="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-warm-ash hover:text-secondary transition-all text-greyed-ink" aria-label="إعدادات">
-                <span className="material-symbols-outlined">settings_suggest</span>
-              </button>
-            </div>
-
-            {nextNumber ? (
-              <button
-                onClick={() => router.push(`/surah/${nextNumber}`)}
-                className="flex items-center gap-md px-lg py-md border border-primary text-primary rounded-xl shadow-lg shadow-primary/10 hover:bg-warm-ash active:scale-98 transition-all font-title text-sm"
-              >
-                <span>السورة التالية</span>
-                <span className="material-symbols-outlined">arrow_back</span>
-              </button>
-            ) : (
-              <div />
-            )}
-          </div>
+          <div className="mt-xxl pt-lg border-t border-warm-border" />
         </div>
       </article>
 
       <FontSizeControl />
+
+      {/* Floating Navigation Pill */}
+      <div className="fixed bottom-24 lg:bottom-6 left-1/2 -translate-x-1/2 z-40">
+        <div className="flex items-center gap-1 bg-primary text-white p-2 rounded-full shadow-xl">
+          {prevNumber ? (
+            <button
+              onClick={() => router.push(`/surah/${prevNumber}`)}
+              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all"
+              aria-label="السورة السابقة"
+            >
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </button>
+          ) : <div className="w-10 h-10" />}
+
+          <div className="w-px h-6 bg-white/20" />
+
+          <button
+            onClick={() => { toggleBookmark(number, name); setBookmarkToggle(n => n + 1); }}
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all"
+            aria-label="حفظ"
+          >
+            <span className="material-symbols-outlined">bookmark</span>
+          </button>
+
+          <div className="w-px h-6 bg-white/20" />
+
+          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all" aria-label="مشاركة">
+            <span className="material-symbols-outlined">share</span>
+          </button>
+
+          <div className="w-px h-6 bg-white/20" />
+
+          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all" aria-label="إعدادات">
+            <span className="material-symbols-outlined">settings_suggest</span>
+          </button>
+
+          <div className="w-px h-6 bg-white/20" />
+
+          {nextNumber ? (
+            <button
+              onClick={() => router.push(`/surah/${nextNumber}`)}
+              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all"
+              aria-label="السورة التالية"
+            >
+              <span className="material-symbols-outlined">arrow_back</span>
+            </button>
+          ) : <div className="w-10 h-10" />}
+        </div>
+      </div>
 
       {showScrollTop && (
         <button

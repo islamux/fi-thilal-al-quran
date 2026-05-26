@@ -12,7 +12,7 @@ export default function SurahCard({ surah }: { surah: SurahIndexEntry }) {
   return (
     <Link
       href={`/surah/${surah.number}`}
-      className="group relative block bg-surface border border-warm-border p-md rounded-xl transition-all duration-300 hover:bg-warm-ash hover:border-secondary/30 cursor-pointer"
+      className="group relative block bg-surface border border-warm-border p-md rounded-xl transition-all duration-300 hover:bg-warm-ash hover:border-secondary/30 cursor-pointer active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-0 bg-secondary transition-all duration-300 group-hover:h-3/4" />
 

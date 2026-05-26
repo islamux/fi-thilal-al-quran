@@ -42,6 +42,19 @@ const serwist = new Serwist({
   ],
 });
 
+// Pre-cache search-data.json on activate so search works offline immediately
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open("search-data");
+      try {
+        const res = await fetch("/search-data.json");
+        if (res.ok) await cache.put("/search-data.json", res);
+      } catch {}
+    })()
+  );
+});
+
 serwist.addEventListeners();
 
 self.addEventListener("message", (event) => {

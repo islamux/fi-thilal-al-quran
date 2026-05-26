@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "في ظلال القرآن",
   description:
     "في ظلال القرآن — تفسير سيد قطب. رحلة تأملية في آيات الله.",
+  alternates: {
+    languages: {
+      "ar-SA": "/",
+    },
+  },
   openGraph: {
     title: "في ظلال القرآن",
     description: "تفسير سيد قطب — رحلة تأملية في آيات الله.",
@@ -39,10 +44,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" className={`${tajawal.variable} ${amiriQuran.variable}`}>
-      <body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-bg text-text font-tajawal antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--color-accent)] focus:text-white focus:text-sm"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-accent focus:text-white focus:text-sm"
         >
           تخطي إلى المحتوى الرئيسي
         </a>

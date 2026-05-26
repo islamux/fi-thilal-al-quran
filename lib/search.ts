@@ -16,8 +16,15 @@ let store: SearchChunk[] = [];
 
 async function getIndex() {
   if (indexInstance) return indexInstance;
-  const res = await fetch("/search-data.json");
-  const chunks: SearchChunk[] = await res.json();
+  let chunks: SearchChunk[];
+  try {
+    const res = await fetch("/search-data.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    chunks = await res.json();
+  } catch {
+    console.warn("Search index unavailable — running offline");
+    chunks = [];
+  }
   store = chunks;
   const index = new FlexSearch.Document<{
     id: string;

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { SurahIndexEntry } from "@/lib/types";
-import GoldDivider from "./GoldDivider";
 
 export default function JuzGrid({
   juz,
@@ -12,37 +11,36 @@ export default function JuzGrid({
   return (
     <section>
       <div className="text-center mb-10">
-        <GoldDivider variant="default" className="mb-4" />
-        <h1 className="font-[var(--font-amiri-quran)] text-4xl leading-relaxed gold-text">
+        <h1 className="font-bold text-3xl text-primary mb-2">
           الجزء {juz}
         </h1>
-        <div className="flex items-center justify-center gap-3 mt-4">
-          <div className="h-px w-12 bg-gradient-to-l from-[var(--color-accent)]/50 to-transparent" />
-          <div className="w-2 h-2 rotate-45 bg-[var(--color-accent)]" />
-          <div className="h-px w-12 bg-gradient-to-r from-[var(--color-accent)]/50 to-transparent" />
+        <div className="flex justify-center items-center gap-3 mt-4">
+          <div className="h-px w-12 bg-gradient-to-l from-accent/50 to-transparent" />
+          <span className="material-symbols-outlined text-accent text-base">auto_stories</span>
+          <div className="h-px w-12 bg-gradient-to-r from-accent/50 to-transparent" />
         </div>
-        <p className="mt-4 text-sm text-[var(--color-text-muted)]">
+        <p className="mt-4 text-sm text-text-muted">
           {surahs.length} سورة
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {surahs.map((surah) => (
           <Link
             key={surah.number}
             href={`/surah/${surah.number}`}
-            className="group block card-gilded p-5"
+            className="group relative block bg-surface border border-warm-border p-4 rounded-xl transition-all duration-300 hover:bg-surface-hover hover:border-accent/30"
           >
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl gold-bg text-white text-sm font-bold shadow-sm shrink-0 relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="relative">{surah.number}</span>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-0 bg-accent transition-all duration-300 group-hover:h-3/4 rounded-full" />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-accent-light border border-accent/20 flex items-center justify-center text-xs font-bold text-accent shrink-0">
+                {surah.number}
               </div>
               <div className="min-w-0">
-                <h3 className="font-[var(--font-amiri-quran)] text-lg leading-relaxed text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                <h3 className="font-[var(--font-amiri-quran)] text-lg text-text group-hover:text-accent transition-colors leading-relaxed truncate">
                   {surah.name}
                 </h3>
-                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
+                <p className="text-xs text-text-muted mt-0.5">
                   {surah.verses} آية
                 </p>
               </div>
