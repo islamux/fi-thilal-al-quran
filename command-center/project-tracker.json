@@ -8,14 +8,31 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "M12 — Full Offline PWA: Cache All Content",
-    "active_milestone": "M12 — Full Offline PWA: Cache All Content",
-    "next_priority": "M12_001: Runtime caching in sw.ts → then M18 (Core Design Gaps), M19 (Interaction/A11y), M20 (Polish)",
+    "current_focus": "M18 — Core Design Gaps: Floating nav, keyboard search, filter data",
+    "active_milestone": "M18 — Core Design Gaps",
+    "next_priority": "M18_001: Floating nav pill → M18_002: Keyboard search → M18_003: Filter data",
     "blockers": "None",
     "health": "on_track"
   },
   "milestones": {
     "backlog": [
+      {
+        "id": "M12",
+        "title": "Full Offline PWA — Cache All Content for Offline Reading",
+        "domain": "PWA",
+        "week": 7,
+        "phase": "features",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M12_001", "label": "Add runtime caching rules in sw.ts for search-data.json, static content, and navigation", "status": "todo", "priority": "P0" },
+          { "id": "M12_002", "label": "Create offline detection indicator — show banner when offline, removed cached pages still work", "status": "todo", "priority": "P1" },
+          { "id": "M12_003", "label": "Programmatic cache-all on first load — cache all 114 surah pages + 30 juz pages + home page", "status": "todo", "priority": "P0" },
+          { "id": "M12_004", "label": "Cache search data JSON — ensure /search-data.json is cached on service worker install/activate", "status": "todo", "priority": "P0" },
+          { "id": "M12_005", "label": "Add 'Available Offline' badge on saved content and a 'Save All for Offline' button in settings/sidebar", "status": "todo", "priority": "P2" },
+          { "id": "M12_006", "label": "Test full offline scenario — disable network, verify all 149 routes + search work", "status": "todo", "priority": "P0" }
+        ]
+      },
       {
         "id": "M20",
         "title": "Design_New Polish & Micro-interactions",
@@ -66,20 +83,17 @@
     ],
     "active": [
       {
-        "id": "M12",
-        "title": "Full Offline PWA — Cache All Content for Offline Reading",
-        "domain": "PWA",
-        "week": 7,
-        "phase": "features",
+        "id": "M18",
+        "title": "Design_New Core Design Gaps",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
         "drift_days": 0,
         "is_key_milestone": true,
         "subtasks": [
-          { "id": "M12_001", "label": "Add runtime caching rules in sw.ts for search-data.json, static content, and navigation", "status": "todo", "priority": "P0" },
-          { "id": "M12_002", "label": "Create offline detection indicator — show banner when offline, removed cached pages still work", "status": "todo", "priority": "P1" },
-          { "id": "M12_003", "label": "Programmatic cache-all on first load — cache all 114 surah pages + 30 juz pages + home page", "status": "todo", "priority": "P0" },
-          { "id": "M12_004", "label": "Cache search data JSON — ensure /search-data.json is cached on service worker install/activate", "status": "todo", "priority": "P0" },
-          { "id": "M12_005", "label": "Add 'Available Offline' badge on saved content and a 'Save All for Offline' button in settings/sidebar", "status": "todo", "priority": "P2" },
-          { "id": "M12_006", "label": "Test full offline scenario — disable network, verify all 149 routes + search work", "status": "todo", "priority": "P0" }
+          { "id": "M18_001", "label": "Replace inline prev/next with fixed floating nav pill (bottom-6 left-1/2, prev/next/bookmark) (next.js_blueprint.md:212-222)", "status": "todo", "priority": "P0" },
+          { "id": "M18_002", "label": "Add keyboard arrow key navigation + Enter in search results (design.md_1:225)", "status": "todo", "priority": "P0" },
+          { "id": "M18_003", "label": "Populate filter dropdowns with real surah/juz/volume data in search page (_2/code.html:197-222)", "status": "todo", "priority": "P0" }
         ]
       }
     ],
@@ -707,6 +721,12 @@
         "agent_id": "nextjs-specialist",
         "action": "milestones_created",
         "description": "M18 (Core Design Gaps — P0), M19 (Interaction & A11y — P1), M20 (Polish & Micro-interactions — P2) added to backlog. Derived from Design_New/ audit of 14 remaining gaps."
+      },
+      {
+        "timestamp": "2026-05-26T02:47:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestone_activated",
+        "description": "M18: Core Design Gaps — Activated. M12 moved to backlog. 3 P0 subtasks: floating nav pill, keyboard search navigation, real filter data."
       }
   ]
 }
