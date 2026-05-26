@@ -10,27 +10,57 @@
   "dashboard": {
     "current_focus": "M12 — Full Offline PWA: Cache All Content",
     "active_milestone": "M12 — Full Offline PWA: Cache All Content",
-    "next_priority": "M12_001: Runtime caching in sw.ts",
+    "next_priority": "M12_001: Runtime caching in sw.ts → then M18 (Core Design Gaps), M19 (Interaction/A11y), M20 (Polish)",
     "blockers": "None",
     "health": "on_track"
   },
   "milestones": {
     "backlog": [
       {
-        "id": "M15",
-        "title": "UI/UX Aesthetic Refinements (archived — covered by M16+M17)",
+        "id": "M20",
+        "title": "Design_New Polish & Micro-interactions",
         "domain": "Design",
-        "week": 5,
+        "week": 6,
         "phase": "polish",
         "drift_days": 0,
         "is_key_milestone": false,
         "subtasks": [
-          { "id": "M15_001", "label": "Refine Neutral Tones: update globals.css to rely on tonal depth rather than box-shadows", "status": "done", "priority": "P0" },
-          { "id": "M15_002", "label": "Accent Restraint: audit SurahGrid and remove overuse of gold", "status": "done", "priority": "P0" },
-          { "id": "M15_003", "label": "Glassmorphism Header: ensure nav-header has backdrop-filter blur and semi-transparent background", "status": "done", "priority": "P0" },
-          { "id": "M15_004", "label": "Typography: enforce font-tajawal for UI and font-amiri-quran for verses with 1.8+ line-height", "status": "done", "priority": "P0" },
-          { "id": "M15_005", "label": "Interaction Design: update easings to ease-out-quart, remove Y-axis lift on SurahCard hover", "status": "done", "priority": "P1" },
-          { "id": "M15_006", "label": "Dark Mode Implementation: ensure dark mode uses Deep Umber / Midnight Slate and slightly warmer gold", "status": "done", "priority": "P0" }
+          { "id": "M20_001", "label": "Fix reading progress bar height: 2px -> 3px (design.md_1:228)", "status": "todo", "priority": "P2" },
+          { "id": "M20_002", "label": "Add calligraphy image placeholder on surah header (next.js_blueprint.md:184, _1/code.html:212)", "status": "todo", "priority": "P2" },
+          { "id": "M20_003", "label": "Add decorative book icon on home page bottom-left (_3/code.html:313-315)", "status": "todo", "priority": "P2" },
+          { "id": "M20_004", "label": "Add search input scale animation on focus (_2/code.html:363-367)", "status": "todo", "priority": "P2" },
+          { "id": "M20_005", "label": "Wire GoldDivider component into QuranVerse.tsx for verse group breaks (_1/code.html:268-273)", "status": "todo", "priority": "P2" },
+          { "id": "M20_006", "label": "Add active:scale-98/95 to all interactive elements systematically", "status": "todo", "priority": "P2" },
+          { "id": "M20_007", "label": "Update SearchDialog results to 12 rounded cards design (design.md:225)", "status": "todo", "priority": "P2" }
+        ]
+      },
+      {
+        "id": "M19",
+        "title": "Design_New Interaction & Accessibility",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M19_001", "label": "Add expandable/collapsible juz groups in Sidebar with chevron toggle (design.md_1:220)", "status": "todo", "priority": "P1" },
+          { "id": "M19_002", "label": "Add verse hover tooltip showing surah-ayah reference (design.md_1:235)", "status": "todo", "priority": "P1" },
+          { "id": "M19_003", "label": "Add gold focus-visible:ring on all interactive elements (design.md_1:191)", "status": "todo", "priority": "P1" },
+          { "id": "M19_004", "label": "Add missing --color-secondary-fixed-dim token to globals.css (_3/code.html dark mode)", "status": "todo", "priority": "P1" }
+        ]
+      },
+      {
+        "id": "M18",
+        "title": "Design_New Core Design Gaps",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "subtasks": [
+          { "id": "M18_001", "label": "Replace inline prev/next with fixed floating nav pill (bottom-6 left-1/2, prev/next/bookmark) (next.js_blueprint.md:212-222)", "status": "todo", "priority": "P0" },
+          { "id": "M18_002", "label": "Add keyboard arrow key navigation + Enter in search results (design.md_1:225)", "status": "todo", "priority": "P0" },
+          { "id": "M18_003", "label": "Populate filter dropdowns with real surah/juz/volume data in search page (_2/code.html:197-222)", "status": "todo", "priority": "P0" }
         ]
       }
     ],
@@ -671,6 +701,12 @@
         "agent_id": "nextjs-specialist",
         "action": "milestone_activated",
         "description": "M12: Full Offline PWA — Moved to active. 6 subtasks for caching all 149 routes. Branch: refactor/design-new-remaining-gaps (create new branch before starting work)."
+      },
+      {
+        "timestamp": "2026-05-26T02:45:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestones_created",
+        "description": "M18 (Core Design Gaps — P0), M19 (Interaction & A11y — P1), M20 (Polish & Micro-interactions — P2) added to backlog. Derived from Design_New/ audit of 14 remaining gaps."
       }
   ]
 }
