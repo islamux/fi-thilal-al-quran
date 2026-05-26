@@ -8,9 +8,9 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "M17 — Design_New Remaining Alignment",
-    "active_milestone": "M17 — Design_New Remaining Alignment",
-    "next_priority": "M17_001: Add surah/juz reading context in desktop header",
+    "current_focus": "M15 — UI/UX Aesthetic Refinements (reassess)",
+    "active_milestone": "M15 — UI/UX Aesthetic Refinements (reassess)",
+    "next_priority": "Reassess M15 — most items may be covered by M16+M17",
     "blockers": "None",
     "health": "on_track"
   },
@@ -74,6 +74,25 @@
     ],
     "active": [
       {
+        "id": "M15",
+        "title": "UI/UX Aesthetic Refinements (reassess — may be covered by M16+M17)",
+        "domain": "Design",
+        "week": 5,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M15_001", "label": "Refine Neutral Tones: update globals.css to rely on tonal depth rather than box-shadows", "status": "todo", "priority": "P0" },
+          { "id": "M15_002", "label": "Accent Restraint: audit SurahGrid and remove overuse of gold", "status": "todo", "priority": "P0" },
+          { "id": "M15_003", "label": "Glassmorphism Header: ensure nav-header has backdrop-filter blur and semi-transparent background", "status": "todo", "priority": "P0" },
+          { "id": "M15_004", "label": "Typography: enforce font-tajawal for UI and font-amiri-quran for verses with 1.8+ line-height", "status": "todo", "priority": "P0" },
+          { "id": "M15_005", "label": "Interaction Design: update easings to ease-out-quart, remove Y-axis lift on SurahCard hover", "status": "todo", "priority": "P1" },
+          { "id": "M15_006", "label": "Dark Mode Implementation: ensure dark mode uses Deep Umber / Midnight Slate and slightly warmer gold", "status": "todo", "priority": "P0" }
+        ]
+      }
+    ],
+    "completed": [
+      {
         "id": "M17",
         "title": "Design_New Remaining Alignment — Prototype Gaps",
         "domain": "Design",
@@ -81,21 +100,20 @@
         "phase": "polish",
         "drift_days": 0,
         "is_key_milestone": false,
+        "completed_at": "2026-05-26T02:40:00.000Z",
         "subtasks": [
-          { "id": "M17_001", "label": "Add surah/juz reading context in desktop header (_1 lines 153-155)", "status": "in_progress", "priority": "P0" },
-          { "id": "M17_002", "label": "Add 'في ظلال الآية' label above tafsir paragraphs in QuranVerse (_1 line 230)", "status": "todo", "priority": "P0" },
-          { "id": "M17_003", "label": "Fix bottom nav button shapes: rounded-xl not rounded-full (_1 lines 293, 305)", "status": "todo", "priority": "P0" },
-          { "id": "M17_004", "label": "Add dark:border-outline-variant to header border (_3 line 150)", "status": "todo", "priority": "P0" },
-          { "id": "M17_005", "label": "Add font-extrabold tracking-tight to header title (_3 line 152)", "status": "todo", "priority": "P0" },
-          { "id": "M17_006", "label": "Search page: larger icon (text-[32px]), h-16 input, correct padding (_2 line 192)", "status": "todo", "priority": "P0" },
-          { "id": "M17_007", "label": "Search page: add 'الأكثر صلة' sort dropdown in results counter (_2 lines 233-236)", "status": "todo", "priority": "P1" },
-          { "id": "M17_008", "label": "Search results: add bookmark button, gold verse box, warm-stone tags, font-title link (_2)", "status": "todo", "priority": "P0" },
-          { "id": "M17_009", "label": "Update Sidebar profile to use img avatar pattern (_3 lines 196-198)", "status": "todo", "priority": "P2" },
-          { "id": "M17_010", "label": "Build verification after all M17 fixes", "status": "todo", "priority": "P0" }
+          { "id": "M17_001", "label": "Add surah/juz reading context in desktop header (_1 lines 153-155)", "status": "done", "priority": "P0" },
+          { "id": "M17_002", "label": "Add 'في ظلال الآية' label above tafsir paragraphs in QuranVerse (_1 line 230)", "status": "done", "priority": "P0" },
+          { "id": "M17_003", "label": "Fix bottom nav button shapes: rounded-xl not rounded-full (_1 lines 293, 305)", "status": "done", "priority": "P0" },
+          { "id": "M17_004", "label": "Add dark:border-outline-variant to header border (_3 line 150)", "status": "done", "priority": "P0" },
+          { "id": "M17_005", "label": "Add font-extrabold tracking-tight to header title (_3 line 152)", "status": "done", "priority": "P0" },
+          { "id": "M17_006", "label": "Search page: larger icon (text-[32px]), h-16 input, correct padding (_2 line 192)", "status": "done", "priority": "P0" },
+          { "id": "M17_007", "label": "Search page: add 'الأكثر صلة' sort dropdown in results counter (_2 lines 233-236)", "status": "done", "priority": "P1" },
+          { "id": "M17_008", "label": "Search results: add bookmark button, gold verse box, warm-stone tags, font-title link (_2)", "status": "done", "priority": "P0" },
+          { "id": "M17_009", "label": "Update Sidebar profile to use img avatar wrapper pattern (_3 lines 196-198)", "status": "done", "priority": "P2" },
+          { "id": "M17_010", "label": "Build verification after all M17 fixes", "status": "done", "priority": "P0" }
         ]
-      }
-    ],
-    "completed": [
+      },
       {
         "id": "M16",
         "title": "Design_New Theme Token Alignment",
@@ -667,6 +685,18 @@
         "agent_id": "nextjs-specialist",
         "action": "milestone_activated",
         "description": "M17: Design_New Remaining Alignment — Moved to active. 10 subtasks for remaining prototype gaps. Branch: refactor/design-new-remaining-gaps."
+      },
+      {
+        "timestamp": "2026-05-26T02:40:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestone_completed",
+        "description": "M17: Design_New Remaining Alignment — All 10 subtasks completed. Header: surah/juz reading context (desktop), font-extrabold tracking-tight title, dark:border-outline-variant. QuranVerse: في ظلال الآية label before tafsir paragraphs. SurahContent: nav buttons rounded-xl with shadow-lg shadow-primary/10. Search page: h-16 input with text-[32px] icon on RTL start, الأكثر صلة sort dropdown, bookmark buttons on results, gold verse highlight box, warm-stone tags, font-title links. Sidebar: img avatar overflow-hidden wrapper pattern. Build passes (150 routes). Branch: refactor/design-new-remaining-gaps."
+      },
+      {
+        "timestamp": "2026-05-26T02:40:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestone_activated",
+        "description": "M15: UI/UX Aesthetic Refinements — Moved to active from backlog. Most items may be covered by M16+M17 — needs reassessment."
       }
   ]
 }
