@@ -52,7 +52,7 @@ export default function QuranVerse({ content }: { content: string }) {
       if (isHeading(line)) return null;
       if (isPageRef(line)) {
         return (
-          <p key={i} className="text-xs text-[var(--color-text-muted)] text-center mt-6 mb-2 font-[var(--font-tajawal)]">
+          <p key={i} className="text-label-sm text-greyed-ink text-center mt-lg mb-sm">
             {line.trim()}
           </p>
         );
@@ -66,28 +66,39 @@ export default function QuranVerse({ content }: { content: string }) {
       const tokens = tokenizeLine(trimmed);
       if (tokens.length === 0) {
         return (
-          <p key={i} className="text-lg leading-relaxed mb-5">
+          <p key={i} className="text-body leading-body mb-lg text-text">
             {trimmed}
           </p>
         );
       }
 
+      const hasVerse = tokens.some((t) => t.type === "verse");
+
+      if (hasVerse) {
+        return (
+          <div key={i} className="mb-xxl verse-block group">
+            <div className="verse-content">
+              <p className="font-verse text-verse leading-verse text-center mb-sm text-text">
+                {tokens.map((token, j) =>
+                  token.type === "verse" ? (
+                    <span key={j}>
+                      <span className="quran-bracket">﴿</span>
+                      {token.text}
+                      <span className="quran-bracket">﴾</span>
+                      <span className="verse-badge mr-2">{token.number}</span>{" "}
+                    </span>
+                  ) : null
+                )}
+              </p>
+            </div>
+          </div>
+        );
+      }
+
       return (
-        <p key={i} className="text-lg leading-relaxed mb-5 group hover:bg-[var(--color-verse-bg)] transition-colors duration-200 rounded-lg px-2 -mx-2">
+        <p key={i} className="text-body leading-body mb-lg text-text">
           {tokens.map((token, j) =>
-            token.type === "verse" ? (
-              <span
-                key={j}
-                className="font-[var(--font-amiri-quran)] text-[1.3em] leading-relaxed"
-              >
-                <span className="verse-bracket">﴿</span>
-                {token.text}
-                <span className="verse-bracket">﴾</span>
-                <span className="verse-badge">{token.number}</span>{" "}
-              </span>
-            ) : (
-              <span key={j}>{token.text}</span>
-            )
+            <span key={j}>{token.text}</span>
           )}
         </p>
       );
