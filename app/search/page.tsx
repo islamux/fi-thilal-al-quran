@@ -38,15 +38,15 @@ export default function SearchPage() {
             </p>
           </div>
 
-          <div className="relative max-w-2xl mx-auto mb-lg">
+          <div className="relative max-w-3xl mx-auto mb-lg">
             <input
               type="text"
               value={input}
               onChange={(e) => handleChange(e.target.value)}
               placeholder="ابحث عن آية، كلمة، أو موضوع..."
-              className="w-full h-14 px-md rounded-xl border border-warm-border bg-surface focus:border-secondary focus:ring-0 text-lg outline-none transition-colors text-text placeholder:text-text-muted"
+              className="w-full h-16 pr-[64px] pl-md rounded-xl border border-warm-border bg-surface focus:border-secondary focus:ring-0 text-xl outline-none transition-colors text-text placeholder:text-text-muted shadow-sm"
             />
-            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-greyed-ink pointer-events-none">search</span>
+            <span className="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-greyed-ink text-[32px] pointer-events-none">search</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-md mb-lg">
@@ -75,31 +75,41 @@ export default function SearchPage() {
           </div>
 
           {input && (
-            <div className="flex justify-between items-center mb-md pb-md border-b border-warm-border">
-              <span className="text-label-sm text-greyed-ink">
+            <div className="flex justify-between items-center mb-lg pb-sm border-b border-warm-border">
+              <span className="font-label-sm text-label-sm text-faded-ink">
                 تم العثور على {results.length} نتيجة لـ &quot;{input}&quot;
               </span>
+              <div className="flex gap-sm">
+                <button className="text-secondary font-label-sm text-label-sm flex items-center">
+                  الأكثر صلة <span className="material-symbols-outlined text-[18px]">expand_more</span>
+                </button>
+              </div>
             </div>
           )}
 
           <div className="space-y-lg">
             {results.map((r) => (
               <div key={r.id} className="bg-surface border border-warm-border p-lg rounded-xl hover:bg-warm-ash transition-all group relative overflow-hidden">
-                <div className="absolute right-0 top-0 w-1 h-full bg-gilded-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute right-0 top-0 w-1 h-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex justify-between items-start mb-md">
                   <div>
                     <h3 className="font-headline text-headline text-primary mb-xs">{r.surahName}</h3>
-                    <div className="flex gap-sm">
-                      <span className="text-label-sm text-greyed-ink bg-gilded-gold-light px-sm py-xs rounded">الجزء {r.juz}</span>
+                    <div className="flex gap-md">
+                      <span className="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">الجزء {r.juz}</span>
                     </div>
                   </div>
+                  <button className="p-sm text-greyed-ink hover:text-secondary transition-colors" aria-label="حفظ">
+                    <span className="material-symbols-outlined">bookmark</span>
+                  </button>
                 </div>
-                <p className="font-body text-faded-ink leading-body">
-                  {highlightText(r.text.slice(0, 300), input)}
-                </p>
+                <div className="bg-gilded-gold-light p-md rounded-lg mb-md text-center">
+                  <p className="font-verse text-verse text-primary leading-loose">
+                    {highlightText(r.text.slice(0, 200), input)}
+                  </p>
+                </div>
                 <Link
                   href={`/surah/${r.surah}`}
-                  className="inline-flex items-center gap-xs text-secondary font-medium text-label-sm mt-md hover:gap-md transition-all"
+                  className="inline-flex items-center gap-xs text-secondary font-title text-title mt-md hover:gap-md transition-all"
                 >
                   اقرأ التفسير كاملاً
                   <span className="material-symbols-outlined text-sm">arrow_back</span>

@@ -48,34 +48,39 @@ function isHeading(line: string): boolean {
 export default function QuranVerse({ content }: { content: string }) {
   const nodes = useMemo(() => {
     const lines = content.split("\n");
-    return lines.map((line, i) => {
-      if (isHeading(line)) return null;
+    let lastWasVerse = false;
+    return lines.flatMap((line, i) => {
+      if (isHeading(line)) return [];
       if (isPageRef(line)) {
-        return (
+        lastWasVerse = false;
+        return [
           <p key={i} className="text-label-sm text-greyed-ink text-center mt-lg mb-sm">
             {line.trim()}
-          </p>
-        );
+          </p>,
+        ];
       }
 
       const trimmed = line.trim();
       if (!trimmed) {
-        return <div key={i} className="h-5" />;
+        lastWasVerse = false;
+        return [<div key={i} className="h-5" />];
       }
 
       const tokens = tokenizeLine(trimmed);
       if (tokens.length === 0) {
-        return (
+        lastWasVerse = false;
+        return [
           <p key={i} className="text-body leading-body mb-lg text-text">
             {trimmed}
-          </p>
-        );
+          </p>,
+        ];
       }
 
       const hasVerse = tokens.some((t) => t.type === "verse");
 
       if (hasVerse) {
-        return (
+        lastWasVerse = true;
+        return [
           <div key={i} className="mb-xxl verse-block group">
             <div className="verse-content">
               <p className="font-verse text-verse leading-verse text-center mb-sm text-text">
@@ -91,17 +96,27 @@ export default function QuranVerse({ content }: { content: string }) {
                 )}
               </p>
             </div>
-          </div>
-        );
+          </div>,
+        ];
       }
 
-      return (
+      const result = [];
+      if (lastWasVerse) {
+        result.push(
+          <h4 key={`label-${i}`} className="font-title text-primary mb-sm border-r-2 border-warm-border pr-sm mr-md">
+            في ظلال الآية
+          </h4>,
+        );
+      }
+      lastWasVerse = false;
+      result.push(
         <p key={i} className="text-body leading-body mb-lg text-text">
           {tokens.map((token, j) =>
             <span key={j}>{token.text}</span>
           )}
-        </p>
+        </p>,
       );
+      return result;
     });
   }, [content]);
 

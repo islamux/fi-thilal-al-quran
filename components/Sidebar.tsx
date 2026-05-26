@@ -65,7 +65,7 @@ export default function Sidebar({
 
       <div className="mt-auto p-md border-t border-warm-border/50 dark:border-outline-variant/50">
         <div className="flex items-center gap-sm p-sm">
-          <div className="w-8 h-8 rounded-full bg-warm-ash border border-warm-border flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full overflow-hidden bg-warm-ash border border-warm-border flex items-center justify-center">
             <span className="material-symbols-outlined text-secondary text-sm">person</span>
           </div>
           <div className="flex flex-col">

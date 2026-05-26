@@ -12,10 +12,14 @@ export default function ClientShell({
   children,
   surahs,
   activeNumber,
+  surahName,
+  juzNumber,
 }: {
   children: React.ReactNode;
   surahs?: SurahIndexEntry[];
   activeNumber?: number;
+  surahName?: string;
+  juzNumber?: number;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -78,7 +82,7 @@ export default function ClientShell({
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="glass-header fixed top-0 left-0 w-full h-14 z-50 flex items-center justify-between px-4 lg:px-8">
+      <header className="glass-header fixed top-0 left-0 w-full h-14 z-50 flex items-center justify-between px-4 lg:px-8 dark:border-outline-variant">
         <div className="flex items-center gap-4">
           {surahs && (
             <button
@@ -89,10 +93,19 @@ export default function ClientShell({
               <span className="material-symbols-outlined text-text">menu</span>
             </button>
           )}
-          <Link href="/" className="font-headline text-headline text-primary hover:text-secondary transition-colors tracking-tight">
+          <Link href="/" className="font-headline text-headline text-primary hover:text-secondary transition-colors tracking-tight font-extrabold">
             في ظلال القرآن
           </Link>
         </div>
+
+        {surahName && (
+          <div className="hidden md:flex items-center gap-xl">
+            <span className="text-secondary border-b-2 border-secondary font-medium">{surahName}</span>
+            <span className="text-on-surface-variant hover:bg-warm-ash px-sm py-xs rounded transition-all cursor-pointer">
+              الجزء {juzNumber}
+            </span>
+          </div>
+        )}
 
         <div className="flex items-center gap-sm">
           <div className="relative hidden md:block">

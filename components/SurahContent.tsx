@@ -122,7 +122,7 @@ export default function SurahContent({
             {prevNumber ? (
               <button
                 onClick={() => router.push(`/surah/${prevNumber}`)}
-                className="flex items-center gap-md px-lg py-md bg-primary text-white rounded-full shadow-md hover:bg-primary-hover active:scale-98 transition-all font-title text-sm"
+                className="flex items-center gap-md px-lg py-md bg-primary text-white rounded-xl shadow-lg shadow-primary/10 hover:bg-primary-hover active:scale-98 transition-all font-title text-sm"
               >
                 <span className="material-symbols-outlined">arrow_forward</span>
                 <span>السورة السابقة</span>
@@ -132,10 +132,10 @@ export default function SurahContent({
             )}
 
             <div className="flex gap-md">
-              <button className="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-surface-hover hover:text-secondary transition-all text-greyed-ink" aria-label="مشاركة">
+              <button className="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-warm-ash hover:text-secondary transition-all text-greyed-ink" aria-label="مشاركة">
                 <span className="material-symbols-outlined">share</span>
               </button>
-              <button className="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-surface-hover hover:text-secondary transition-all text-greyed-ink" aria-label="إعدادات">
+              <button className="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-warm-ash hover:text-secondary transition-all text-greyed-ink" aria-label="إعدادات">
                 <span className="material-symbols-outlined">settings_suggest</span>
               </button>
             </div>
@@ -143,7 +143,7 @@ export default function SurahContent({
             {nextNumber ? (
               <button
                 onClick={() => router.push(`/surah/${nextNumber}`)}
-                className="flex items-center gap-md px-lg py-md border border-primary text-primary rounded-full shadow-md hover:bg-surface-hover active:scale-98 transition-all font-title text-sm"
+                className="flex items-center gap-md px-lg py-md border border-primary text-primary rounded-xl shadow-lg shadow-primary/10 hover:bg-warm-ash active:scale-98 transition-all font-title text-sm"
               >
                 <span>السورة التالية</span>
                 <span className="material-symbols-outlined">arrow_back</span>

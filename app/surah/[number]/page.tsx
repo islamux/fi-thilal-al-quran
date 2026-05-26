@@ -39,7 +39,7 @@ export default async function SurahPage({
   const allSurahs = getAllSurahs() as SurahIndexEntry[];
 
   return (
-    <ClientShell surahs={allSurahs} activeNumber={num}>
+    <ClientShell surahs={allSurahs} activeNumber={num} surahName={surah.name} juzNumber={surah.juz}>
       <SurahContent
         number={surah.number}
         name={surah.name}
