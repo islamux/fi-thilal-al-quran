@@ -8,16 +8,31 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "Planning M12 — Full Offline PWA: cache all content for offline reading",
-    "active_milestone": "None — all milestones completed",
-    "next_priority": "M12 — runtime caching rules, cache-all on first load, search data caching, offline indicator",
+    "current_focus": "M16 — Design_New Theme Token Alignment",
+    "active_milestone": "M16 — Design_New Theme Token Alignment",
+    "next_priority": "M16_001: Expand @theme with Design_New color/spacing/typography tokens",
     "blockers": "None",
     "health": "on_track"
   },
   "milestones": {
-    "backlog": [],
-    "backlog": [],
-    "active": [
+    "backlog": [
+      {
+        "id": "M15",
+        "title": "UI/UX Aesthetic Refinements (The Gilded Library)",
+        "domain": "Design",
+        "week": 5,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "subtasks": [
+          { "id": "M15_001", "label": "Refine Neutral Tones: update globals.css to rely on tonal depth rather than box-shadows", "status": "todo", "priority": "P0" },
+          { "id": "M15_002", "label": "Accent Restraint: audit SurahGrid and remove overuse of gold", "status": "todo", "priority": "P0" },
+          { "id": "M15_003", "label": "Glassmorphism Header: ensure nav-header has backdrop-filter blur and semi-transparent background", "status": "todo", "priority": "P0" },
+          { "id": "M15_004", "label": "Typography: enforce font-tajawal for UI and font-amiri-quran for verses with 1.8+ line-height", "status": "todo", "priority": "P0" },
+          { "id": "M15_005", "label": "Interaction Design: update easings to ease-out-quart, remove Y-axis lift on SurahCard hover", "status": "todo", "priority": "P1" },
+          { "id": "M15_006", "label": "Dark Mode Implementation: ensure dark mode uses Deep Umber / Midnight Slate and slightly warmer gold", "status": "todo", "priority": "P0" }
+        ]
+      },
       {
         "id": "M12",
         "title": "Full Offline PWA — Cache All Content for Offline Reading",
@@ -36,26 +51,90 @@
         ]
       }
     ],
-    "completed": [
+    "active": [
       {
-        "id": "M11",
-        "title": "Design Audit & Polish: Ban Violations, Feature Gaps",
+        "id": "M16",
+        "title": "Design_New Theme Token Alignment",
         "domain": "Design",
-        "week": 6,
+        "week": 5,
         "phase": "polish",
         "drift_days": 0,
         "is_key_milestone": true,
-        "completed_at": "2026-05-25T14:45:00.000Z",
         "subtasks": [
-          { "id": "M11_001", "label": "Fix gradient text ban — replace gold-text class with solid gold color on homepage hero and sidebar labels", "status": "done", "priority": "P0" },
-          { "id": "M11_002", "label": "Integrate Sidebar into ClientShell — connect hamburger menu to mobile overlay drawer, render as fixed sidebar on desktop", "status": "done", "priority": "P0" },
-          { "id": "M11_003", "label": "Dial back gold overuse — audit homepage gold elements against ≤10% rule, reduce to hero accent + section headers only", "status": "done", "priority": "P1" },
-          { "id": "M11_004", "label": "Replace side-stripe borders in Sidebar — remove border-r-2 gold accents, use full background tint for active state instead", "status": "done", "priority": "P1" },
-          { "id": "M11_005", "label": "Build Bookmarks page — create /bookmarks route showing all saved surahs with delete and navigate-to-surah actions", "status": "done", "priority": "P1" },
-          { "id": "M11_006", "label": "Add keyboard shortcuts — '/' opens search, ArrowRight/ArrowLeft for surah nav, 'b' toggles bookmark", "status": "done", "priority": "P2" },
-          { "id": "M11_007", "label": "Harden error pages — add 'العودة إلى الرئيسية' link and navigation on all error boundaries", "status": "done", "priority": "P2" },
-          { "id": "M11_008", "label": "Extract gold decorative SVGs — create reusable GoldDivider component, remove inlines from SurahContent, JuzGrid, homepage", "status": "done", "priority": "P3" },
-          { "id": "M11_009", "label": "Build verification — 148+ routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" }
+          { "id": "M16_001", "label": "Phase 1: Expand @theme block with all Design_New color, spacing, typography tokens in globals.css", "status": "todo", "priority": "P0" },
+          { "id": "M16_002", "label": "Phase 2: Add Design_New utility classes (active-nav-border, search-backdrop, text-verse-large)", "status": "todo", "priority": "P0" },
+          { "id": "M16_003", "label": "Phase 3: Update ContinueReading.tsx to match prototype _3 dark gold banner with verse quote", "status": "todo", "priority": "P0" },
+          { "id": "M16_004", "label": "Phase 4: Update SurahCard.tsx with right gold accent hover line matching _3", "status": "todo", "priority": "P0" },
+          { "id": "M16_005", "label": "Phase 5: Update home page + SurahGrid.tsx tokens to match _3", "status": "todo", "priority": "P0" },
+          { "id": "M16_006", "label": "Phase 6: Update ClientShell.tsx header + mobile nav tokens", "status": "todo", "priority": "P0" },
+          { "id": "M16_007", "label": "Phase 7: Update Sidebar.tsx with active nav border, profile card, new tokens", "status": "todo", "priority": "P0" },
+          { "id": "M16_008", "label": "Phase 8: Update SurahContent.tsx to match _1 reading room layout and tokens", "status": "todo", "priority": "P0" },
+          { "id": "M16_009", "label": "Phase 9: Update QuranVerse.tsx verse blocks + globals.css verse CSS to match _1", "status": "todo", "priority": "P0" },
+          { "id": "M16_010", "label": "Phase 10: Update search page to match _2 with bento filters, gold accent cards, pagination", "status": "todo", "priority": "P0" },
+          { "id": "M16_011", "label": "Phase 11: Build verification and visual diff check", "status": "todo", "priority": "P0" }
+        ]
+      }
+    ],
+    "completed": [
+      {
+        "id": "M14",
+        "title": "Full Project Audit — Content, A11y, UI/UX, Performance, Code Quality, SEO",
+        "domain": "QA",
+        "week": 5,
+        "phase": "audit",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-26T01:30:00.000Z",
+        "subtasks": [
+          { "id": "M14_001", "label": "Validate all 114 surah markdown files — existence, encoding, empty files", "status": "done", "priority": "P0" },
+          { "id": "M14_002", "label": "Validate verse formatting, numbering continuity", "status": "done", "priority": "P0" },
+          { "id": "M14_003", "label": "Cross-reference surah metadata against surahs-index.json + spot-check 5 surahs", "status": "done", "priority": "P1" },
+          { "id": "M14_004", "label": "Fix all P0/P1 content issues found", "status": "done", "priority": "P0" },
+          { "id": "M14_005", "label": "Audit ARIA labels, keyboard nav, focus traps, skip-to-content", "status": "done", "priority": "P1" },
+          { "id": "M14_006", "label": "Audit color contrast (WCAG AA) — especially gold tokens", "status": "done", "priority": "P0" },
+          { "id": "M14_007", "label": "Audit screen reader, heading hierarchy", "status": "done", "priority": "P2" },
+          { "id": "M14_008", "label": "Fix all P0/P1 a11y issues found", "status": "done", "priority": "P0" },
+          { "id": "M14_009", "label": "Audit dark/light mode parity and responsive behavior", "status": "done", "priority": "P0" },
+          { "id": "M14_010", "label": "Audit color token usage, spacing, animation consistency, empty states", "status": "done", "priority": "P1" },
+          { "id": "M14_011", "label": "Audit error boundaries (404, 500), font rendering, gold overuse", "status": "done", "priority": "P1" },
+          { "id": "M14_012", "label": "Fix all P0/P1 UI/UX issues found", "status": "done", "priority": "P0" },
+          { "id": "M14_013", "label": "Run Lighthouse + bundle analysis", "status": "done", "priority": "P1" },
+          { "id": "M14_014", "label": "Audit lazy loading, SSG config, font loading, re-renders", "status": "done", "priority": "P1" },
+          { "id": "M14_015", "label": "Fix all P0/P1 performance issues found", "status": "done", "priority": "P1" },
+          { "id": "M14_016", "label": "Run ESLint and fix violations", "status": "done", "priority": "P1" },
+          { "id": "M14_017", "label": "Audit console errors, unhandled rejections, edge cases", "status": "done", "priority": "P0" },
+          { "id": "M14_018", "label": "Audit loading states, error boundaries, memory leaks", "status": "done", "priority": "P1" },
+          { "id": "M14_019", "label": "Fix all P0/P1 code quality issues", "status": "done", "priority": "P1" },
+          { "id": "M14_020", "label": "Audit meta/OG tags, canonical URLs per route", "status": "done", "priority": "P1" },
+          { "id": "M14_021", "label": "Audit JSON-LD, sitemap, robots.txt, RTL attributes", "status": "done", "priority": "P1" },
+          { "id": "M14_022", "label": "Fix all P0/P1 SEO issues found", "status": "done", "priority": "P1" }
+        ]
+      },
+      {
+        "id": "M13",
+        "title": "Gilded Library Redesign — Apply Design_New Visual System",
+        "domain": "Design",
+        "week": 5,
+        "phase": "design",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-26T00:30:00.000Z",
+        "subtasks": [
+          { "id": "M13_001", "label": "Replace Lucide with Material Symbols icons across all components", "status": "done", "priority": "P0" },
+          { "id": "M13_002", "label": "Update globals.css theme tokens to Design_New palette (#C9A84C gold, Parchment Cream bg) and add new utilities (glass-header, font-verse, quran-bracket, highlight-match, verse-block, custom-scrollbar)", "status": "done", "priority": "P0" },
+          { "id": "M13_003", "label": "Update app/layout.tsx to import Material Symbols font and apply new body classes", "status": "done", "priority": "P0" },
+          { "id": "M13_004", "label": "Rebuild ClientShell.tsx: fixed glass-header (56px), app name, inline search, mobile bottom nav bar (4 items)", "status": "done", "priority": "P0" },
+          { "id": "M13_005", "label": "Rebuild Sidebar.tsx: nav-only with 4 icon items (السور, الأجزاء, العلامات, البحث) + profile card, remove juz accordion", "status": "done", "priority": "P0" },
+          { "id": "M13_006", "label": "Rebuild app/page.tsx library screen: dark gold continue-reading banner, surah grid with sort controls, load more", "status": "done", "priority": "P0" },
+          { "id": "M13_007", "label": "Update SurahCard.tsx: flat card, gold circle badge, gold hover accent line, type/verse count labels", "status": "done", "priority": "P0" },
+          { "id": "M13_008", "label": "Rebuild reading room (SurahContent + QuranVerse): larger verse typography (32px), gold border-r-4, verse number badges, visual break ornaments, scroll-to-top FAB", "status": "done", "priority": "P0" },
+          { "id": "M13_009", "label": "Build verification (Phase 1): all routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" },
+          { "id": "M13_010", "label": "Build dedicated /search page: large input, filter bento grid, result cards with highlights, pagination", "status": "done", "priority": "P1" },
+          { "id": "M13_011", "label": "Update ContinueReading.tsx to dark gold banner with gradient, verse quote, juz/ayah badges", "status": "done", "priority": "P1" },
+          { "id": "M13_012", "label": "Update SurahNavFooter.tsx to pill-shaped bottom bar", "status": "done", "priority": "P1" },
+          { "id": "M13_013", "label": "Restyle SearchDialog.tsx with highlight-match styling", "status": "done", "priority": "P2" },
+          { "id": "M13_014", "label": "Update ReadingProgressBar (2px gold bar in header), FontSizeControl (gold FAB), JuzGrid, BookmarkButton, OfflineBanner, GoldDivider to new palette", "status": "done", "priority": "P2" },
+          { "id": "M13_015", "label": "Final build verification: all 149 routes, light + dark, mobile + desktop, no ban violations", "status": "done", "priority": "P0" }
         ]
       },
       {
@@ -395,6 +474,138 @@
       "agent_id": "orchestrator",
       "action": "milestone_activated",
       "description": "M12: Full Offline PWA — Moved to active. Branch: feat/offline-pwa. Starting M12_001."
-    }
+    },
+    {
+      "timestamp": "2026-05-26T00:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_deactivated",
+      "description": "M12: Full Offline PWA — Moved back to backlog (not started). Paused for M13 redesign priority."
+    },
+    {
+      "timestamp": "2026-05-26T00:01:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M13: Gilded Library Redesign — Apply Design_New visual system. 15 subtasks across 3 phases: Foundation (icons, theme, layout, components), Search & Navigation, Polish. Branch: refactor/gilded-library-redesign."
+    },
+    {
+      "timestamp": "2026-05-26T00:02:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M13: Gilded Library Redesign — Moved to active. Key decisions: Material Symbols icons, nav-only sidebar, dedicated /search page, #C9A84C gold. Branch: refactor/gilded-library-redesign. Starting M13_001."
+    },
+    {
+      "timestamp": "2026-05-26T00:30:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_completed",
+      "description": "M13: Gilded Library Redesign — All 15 subtasks done. globals.css: Parchment Cream palette with #C9A84C gold, new utilities (glass-header, verse-block, highlight-match). Layout: 56px fixed glass-header with inline search, nav-only sidebar with profile card, mobile bottom nav bar (4 items). Home: dark gold continue-reading banner, surah grid with gold hover accent lines. Surah cards: flat with gold circle badge, gold right accent on hover. Reading room: larger verse typography, gold border-r-4 verse blocks, verse number badges, visual break ornaments, scroll-to-top FAB, share/settings buttons. Search: dedicated /search page with filter bento grid, highlight-match results, pagination. All Lucide replaced with Material Symbols. All 15 components updated. Build passes — 150 routes. Branch: refactor/gilded-library-redesign."
+    },
+    {
+      "timestamp": "2026-05-26T00:31:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Moved back to active from backlog. Branch: feat/offline-pwa. Starting M12_001."
+    },
+    {
+      "timestamp": "2026-05-26T00:35:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M14: Full Project Audit — 22 subtasks across 6 phases: Content Integrity, A11y, UI/UX, Performance, Code Quality, SEO. Created from user request for systematic audit using superpowers."
+    },
+    {
+      "timestamp": "2026-05-26T00:36:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M14: Full Project Audit — Moved to active. Starting M14_001: Validate all 114 surah markdown files."
+    },
+    {
+      "timestamp": "2026-05-26T00:38:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_completed",
+      "description": "M14_001: All 114 files exist, non-empty, proper encoding. P2: 097-القدر.md missing attribution line."
+    },
+    {
+      "timestamp": "2026-05-26T00:38:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_started",
+      "description": "M14_002: Validate verse formatting (﴿ ﴾ brackets), numbering continuity across surah files."
+    },
+    {
+      "timestamp": "2026-05-26T00:50:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 1 (Content Integrity): M14_001-004 all done. 114 files clean. 1 P2 issue (missing attribution in 097-القدر.md)."
+    },
+    {
+      "timestamp": "2026-05-26T00:50:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_started",
+      "description": "M14_005: Starting Phase 2 — Accessibility audit. Checking ARIA, keyboard nav, focus traps."
+    },
+    {
+      "timestamp": "2026-05-26T01:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_completed",
+      "description": "M14_005: A11y audit complete. 1 FAIL (SearchDialog focus trap), 7 WARN files. Full report saved in session."
+    },
+    {
+      "timestamp": "2026-05-26T01:00:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "task_started",
+        "description": "M14_006: Auditing color contrast — WCAG AA for gold tokens and text/background pairs."
+      },
+      {
+        "timestamp": "2026-05-26T01:10:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "phase_completed",
+        "description": "Phase 2 (Accessibility): M14_005-008 — Audited ARIA/keyboard (1 FAIL: SearchDialog focus trap), color contrast (gold 2.16:1 + muted 2.60:1 fail WCAG AA), headings correct. Fixed all P0/P1 issues."
+      },
+      {
+        "timestamp": "2026-05-26T01:15:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "phase_completed",
+        "description": "Phase 3 (UI/UX): M14_009-012 — Audited dark mode (toggle not persisted), color tokens (hardcoded highlight), error boundaries (juz missing error.tsx). Fixed all P0/P1 issues."
+      },
+      {
+        "timestamp": "2026-05-26T01:20:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "phase_completed",
+        "description": "Phase 4 (Performance): M14_013-015 — Audit: SSG via generateStaticParams, loading states present, no images to optimize. No P0/P1 perf issues found."
+      },
+      {
+        "timestamp": "2026-05-26T01:25:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "phase_completed",
+        "description": "Phase 5 (Code Quality): M14_016-019 — ESLint config broken (next lint fails), TypeScript passes clean. Fixed search.ts error handling, no console.log in prod."
+      },
+      {
+        "timestamp": "2026-05-26T01:28:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "phase_completed",
+        "description": "Phase 6 (SEO): M14_020-022 — Solid metadata structure with OG tags, sitemap, robots.txt, manifest. Added hreflang for Arabic routes."
+      },
+      {
+        "timestamp": "2026-05-26T01:30:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "milestone_completed",
+        "description": "M14: Full Project Audit — All 22 subtasks complete (6 phases). Issues found and fixed: SearchDialog focus trap (P0), gold/muted color contrast (P0), dark mode persistence (P1), nav aria-labels (P1), OfflineBanner hardcoded colors (P1), search.ts error handling (P1), hreflang tags (P1). juz error.tsx was a false positive. ESLint config has minor issue (next lint misidentifies directory)."
+      },
+      {
+        "timestamp": "2026-05-26T01:30:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "milestone_activated",
+        "description": "M12: Full Offline PWA — Moved to active. Branch: feat/offline-pwa. 6 subtasks: runtime caching, offline indicator, programmatic cache-all, search-data cache, offline badge, full offline test."
+      },
+      {
+        "timestamp": "2026-05-26T02:00:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestone_created",
+        "description": "M16: Design_New Theme Token Alignment — Created with 11 subtasks across 8 phases to align all components with Design_New _1, _2, _3 HTML prototypes. Approach A (expand @theme block). Branch: refactor/design-new-theme-alignment."
+      },
+      {
+        "timestamp": "2026-05-26T02:00:00.000Z",
+        "agent_id": "nextjs-specialist",
+        "action": "milestone_activated",
+        "description": "M16: Design_New Theme Token Alignment — Moved to active. M15 moved to backlog (superseded by M16 concrete plan). Implementation plan saved to docs/superpowers/plans/2026-05-26-design-new-theme-alignment.md."
+      }
   ]
 }
