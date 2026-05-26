@@ -62,6 +62,7 @@ export default function SurahContent({
     saveProgress({
       surah: number,
       surahName: name,
+      juz,
       scrollPosition: 0,
       totalHeight: 0,
     });
@@ -74,6 +75,7 @@ export default function SurahContent({
       saveProgress({
         surah: number,
         surahName: name,
+        juz,
         scrollPosition,
         totalHeight,
       });

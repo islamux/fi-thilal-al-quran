@@ -7,6 +7,7 @@ const STORAGE_KEY = "fi-thilal-reading-progress";
 export interface ReadingEntry {
   surah: number;
   surahName: string;
+  juz?: number;
   scrollPosition: number;
   totalHeight: number;
   readAt: number;
