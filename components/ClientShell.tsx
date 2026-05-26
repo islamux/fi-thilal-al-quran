@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Search, Sun, Moon } from "lucide-react";
 import SearchDialog from "./SearchDialog";
 import Sidebar from "./Sidebar";
 import OfflineBanner from "./OfflineBanner";
@@ -24,6 +23,21 @@ export default function ClientShell({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark") {
+      setDark(true);
+      document.documentElement.classList.add("dark");
+    } else if (stored === "light") {
+      setDark(false);
+      document.documentElement.classList.remove("dark");
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "/" && !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)) {
         e.preventDefault();
@@ -36,11 +50,22 @@ export default function ClientShell({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const id = setTimeout(() => {
+    let attempts = 0;
+    const MAX_ATTEMPTS = 5;
+    const RETRY_DELAY = 2000;
+
+    function tryCache() {
       if (navigator.serviceWorker?.controller) {
         cacheAllPages();
+      } else {
+        attempts++;
+        if (attempts < MAX_ATTEMPTS) {
+          setTimeout(tryCache, RETRY_DELAY);
+        }
       }
-    }, 3000);
+    }
+
+    const id = setTimeout(tryCache, 3000);
     return () => clearTimeout(id);
   }, []);
 
@@ -48,91 +73,96 @@ export default function ClientShell({
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Gold top accent bar - very visible */}
-      <div className="gold-bar" />
-
-      <header className="sticky top-0 z-50 glass border-b border-[var(--color-border)]">
-        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-accent)]/50 to-transparent" />
-
-        <div className="flex items-center justify-between px-5 h-16 max-w-7xl mx-auto w-full">
-          <div className="flex items-center gap-2">
-            {surahs && (
-              <button
-                className="md:hidden p-2 rounded-xl hover:bg-[var(--color-surface-hover)] transition-colors"
-                onClick={() => setMenuOpen(!menuOpen)}
-                aria-label="القائمة"
-              >
-                <Menu size={22} />
-              </button>
-            )}
-            <div className="hidden md:block w-72" />
-          </div>
-
-          <Link href="/" className="flex items-center gap-3 group">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="shrink-0">
-              <rect width="32" height="32" rx="7" fill="var(--color-accent)"/>
-              <rect x="1" y="1" width="30" height="30" rx="6" fill="var(--color-accent)" opacity="0.15"/>
-              <path d="M9 9h4v14H9V9zm10 0h4v14h-4V9z" fill="white" opacity="0.9"/>
-              <path d="M13 9h6v14h-6V9z" fill="white"/>
-            </svg>
-            <span className="text-lg font-[var(--font-amiri-quran)] font-bold text-[var(--color-text)] group-hover:gold-text transition-all duration-200">
-              في ظلال القرآن
-            </span>
+      <header className="glass-header fixed top-0 left-0 w-full h-14 z-50 flex items-center justify-between px-4 lg:px-8">
+        <div className="flex items-center gap-4">
+          {surahs && (
+            <button
+              className="md:hidden p-sm hover:bg-warm-ash rounded-full transition-colors duration-150"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="القائمة"
+            >
+              <span className="material-symbols-outlined text-text">menu</span>
+            </button>
+          )}
+          <Link href="/" className="font-headline text-headline text-primary hover:text-secondary transition-colors tracking-tight">
+            في ظلال القرآن
           </Link>
+        </div>
 
-          <div className="flex items-center gap-1">
-            <button
-              className="p-2.5 rounded-xl hover:bg-[var(--color-surface-hover)] transition-colors text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
-              onClick={() => setSearchOpen(true)}
-              aria-label="البحث"
-            >
-              <Search size={20} />
-            </button>
-            <div className="w-px h-5 bg-[var(--color-border-light)] mx-1" />
-            <button
-              className="p-2.5 rounded-xl hover:bg-[var(--color-surface-hover)] transition-colors text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
-              onClick={toggleDark}
-              aria-label={dark ? "الوضع النهاري" : "الوضع الليلي"}
-            >
-              {dark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+        <div className="flex items-center gap-sm">
+          <div className="relative hidden md:block">
+            <input
+              type="text"
+              placeholder="بحث في السور والآيات..."
+              className="w-64 bg-surface border border-warm-border rounded-xl px-md py-xs text-label-sm focus:border-secondary outline-none transition-colors text-text placeholder:text-text-muted"
+              onFocus={() => setSearchOpen(true)}
+              readOnly
+            />
+            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
           </div>
+          <button
+            className="p-sm hover:bg-warm-ash rounded-full transition-colors active:scale-95 duration-150"
+            onClick={() => setSearchOpen(true)}
+            aria-label="البحث"
+          >
+            <span className="material-symbols-outlined md:hidden text-primary">search</span>
+          </button>
+          <button
+            className="p-sm hover:bg-warm-ash rounded-full transition-colors active:scale-95 duration-150"
+            onClick={toggleDark}
+            aria-label={dark ? "الوضع النهاري" : "الوضع الليلي"}
+          >
+            <span className="material-symbols-outlined text-primary">{dark ? "light_mode" : "dark_mode"}</span>
+          </button>
         </div>
       </header>
 
       <div className="flex-1 flex relative">
-        {/* Desktop sidebar — fixed panel */}
         {surahs && (
-          <div className="hidden md:block fixed top-16 right-0 bottom-0 z-30">
+          <div className="hidden lg:block fixed right-0 top-14 bottom-0 z-30 w-[280px]">
             <Sidebar surahs={surahs} activeNumber={activeNumber} />
           </div>
         )}
 
-        {/* Mobile sidebar — overlay drawer */}
         {surahs && menuOpen && (
           <>
             <div
-              className="fixed inset-0 bg-black/40 z-40 md:hidden"
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
               onClick={() => setMenuOpen(false)}
               aria-hidden="true"
             />
-            <div className="fixed inset-y-0 right-0 z-50 md:hidden">
+            <div className="fixed inset-y-0 right-0 z-50 lg:hidden">
               <Sidebar surahs={surahs} activeNumber={activeNumber} onClose={() => setMenuOpen(false)} />
             </div>
           </>
         )}
 
-        <main className={`flex-1 min-w-0 ${surahs ? 'md:mr-72' : ''}`}>{children}</main>
+        <main className={`flex-1 min-w-0 pt-14 ${surahs ? 'lg:mr-[280px]' : ''}`}>{children}</main>
       </div>
 
-      <footer className="relative py-6 text-center text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border-light)]">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-accent)]/50 to-transparent" />
-        <span>في ظلال القرآن — سيد قطب</span>
-      </footer>
+      <nav className="lg:hidden fixed bottom-0 left-0 w-full bg-parchment-cream/95 dark:bg-dark-bg/95 backdrop-blur-md border-t border-warm-border flex justify-around items-center h-16 z-50">
+        <Link href="/" className="flex flex-col items-center gap-1 text-secondary">
+          <span className="material-symbols-outlined filled">book_2</span>
+          <span className="text-[10px] font-medium">السور</span>
+        </Link>
+        <Link href="/juz/1" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+          <span className="material-symbols-outlined">segment</span>
+          <span className="text-[10px] font-medium">الأجزاء</span>
+        </Link>
+        <Link href="/search" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+          <span className="material-symbols-outlined">search</span>
+          <span className="text-[10px] font-medium">البحث</span>
+        </Link>
+        <Link href="/bookmarks" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+          <span className="material-symbols-outlined">bookmark</span>
+          <span className="text-[10px] font-medium">العلامات</span>
+        </Link>
+      </nav>
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <OfflineBanner />

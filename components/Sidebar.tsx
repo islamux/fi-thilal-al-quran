@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ChevronDown, ChevronLeft, Bookmark, Download } from "lucide-react";
 import type { SurahIndexEntry } from "@/lib/types";
-import { cacheAllPages, useCacheProgress } from "@/lib/useOffline";
 
 export default function Sidebar({
-  surahs,
   activeNumber,
   onClose,
 }: {
@@ -15,103 +11,70 @@ export default function Sidebar({
   activeNumber?: number;
   onClose?: () => void;
 }) {
-  const [expandedJuz, setExpandedJuz] = useState<number | null>(null);
-
-  const grouped = surahs.reduce<Record<number, SurahIndexEntry[]>>((acc, s) => {
-    (acc[s.juz] ??= []).push(s);
-    return acc;
-  }, {});
-
-  const juzList = Object.entries(grouped).sort(
-    (a, b) => parseInt(a[0]) - parseInt(b[0])
-  );
+  const navItems = [
+    { icon: "book_2", label: "السور", href: "/", isActive: true },
+    { icon: "segment", label: "الأجزاء", href: "/juz/1", isActive: false },
+    { icon: "bookmark", label: "العلامات", href: "/bookmarks", isActive: false },
+    { icon: "search", label: "البحث", href: "/search", isActive: false },
+  ];
 
   return (
-    <aside className="w-72 h-full overflow-y-auto border-l border-[var(--color-border)] bg-[var(--color-background-secondary)]">
-      <div className="flex items-center justify-between p-4 border-b border-[var(--color-border)] bg-[var(--color-surface)]">
-        <h2 className="font-bold text-sm flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect width="16" height="16" rx="3" fill="var(--color-accent)"/>
-            <path d="M4 4h2v8H4V4zm6 0h2v8h-2V4z" fill="white" opacity="0.9"/>
-            <path d="M6 4h4v8H6V4z" fill="white"/>
-          </svg>
-          فهرس السور
-        </h2>
+    <aside className="w-[280px] h-full flex flex-col bg-warm-stone dark:bg-dark-surface border-l border-warm-border dark:border-outline-variant overflow-y-auto custom-scrollbar">
+      <div className="pt-4 px-4 mb-6">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-headline text-title">
+            ق
+          </div>
+          <div className={onClose ? "ml-8" : ""}>
+            <h2 className="font-headline text-title text-primary dark:text-dark-primary">المكتبة القرآنية</h2>
+            <p className="font-label-sm text-label-sm text-on-surface-variant">تصفح في ظلال القرآن</p>
+          </div>
+        </div>
         {onClose && (
-          <button onClick={onClose} className="p-1 rounded-lg hover:bg-[var(--color-surface-hover)] transition-colors" aria-label="إغلاق القائمة">
-            <X size={16} />
+          <button
+            onClick={onClose}
+            className="absolute top-3 left-3 p-1 rounded-lg hover:bg-warm-ash transition-colors lg:hidden"
+            aria-label="إغلاق"
+          >
+            <span className="material-symbols-outlined text-text-muted text-xl">close</span>
           </button>
         )}
       </div>
 
-      <div className="p-2">
-        <Link
-          href="/bookmarks"
-          className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-accent)] transition-colors"
-        >
-          <Bookmark size={16} />
-          المفضلة
-        </Link>
+      <nav className="flex flex-col gap-xs px-2 flex-grow">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onClose}
+            className={`flex items-center gap-md p-md rounded-lg transition-all font-label-sm text-label-sm active:scale-98 ${
+              item.isActive
+                ? "text-secondary dark:text-secondary-fixed-dim bg-warm-ash dark:bg-tertiary-container border-r-2 border-secondary"
+                : "text-on-surface-variant dark:text-on-tertiary-container hover:bg-warm-ash dark:hover:bg-tertiary-container"
+            }`}
+          >
+            <span
+              className={`material-symbols-outlined ${item.isActive ? "filled" : ""}`}
+            >
+              {item.icon}
+            </span>
+            <span>{item.label}</span>
+          </Link>
+        ))}
+      </nav>
 
-        <button
-          onClick={cacheAllPages}
-          className="flex items-center gap-2 px-3 py-2.5 mb-2 w-full rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface)] hover:text-[var(--color-accent)] transition-colors"
-        >
-          <Download size={16} />
-          حفظ الكل للاستخدام دون اتصال
-        </button>
-
-        {juzList.map(([juz, surahList]) => {
-          const isOpen = expandedJuz === parseInt(juz);
-          return (
-            <div key={juz} className="mb-1">
-              <div className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-all ${
-                isOpen ? "bg-[var(--color-surface)] border border-[var(--color-border-light)]" : "hover:bg-[var(--color-surface)]"
-              }`}>
-                <Link
-                  href={`/juz/${juz}`}
-                  className="flex-1 font-medium text-[var(--color-text)]"
-                  onClick={() => setExpandedJuz(isOpen ? null : parseInt(juz))}
-                >
-                  <span className="gold-text ml-1 font-bold">الجزء</span> {juz}
-                </Link>
-                <button
-                  onClick={() => setExpandedJuz(isOpen ? null : parseInt(juz))}
-                  className="p-0.5 rounded hover:bg-[var(--color-surface-hover)] transition-colors"
-                  aria-label={isOpen ? "طي" : "توسيع"}
-                  aria-expanded={isOpen}
-                >
-                  {isOpen ? <ChevronDown size={14} className="text-[var(--color-accent)]" /> : <ChevronLeft size={14} className="text-[var(--color-text-muted)]" />}
-                </button>
-              </div>
-
-              {isOpen && (
-                <div className="mr-3 pr-2 mt-1 space-y-0.5 border-r-2 border-transparent">
-                  {surahList.map((s) => (
-                    <Link
-                      key={s.number}
-                      href={`/surah/${s.number}`}
-                      className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-lg transition-all ${
-                        s.number === activeNumber
-                          ? "bg-[var(--color-accent-light)] text-[var(--color-accent)] font-medium"
-                          : "hover:bg-[var(--color-surface)] text-[var(--color-text-secondary)]"
-                      }`}
-                    >
-                      <span className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                        s.number === activeNumber
-                          ? "gold-bg text-white"
-                          : "bg-[var(--color-background-secondary)] text-[var(--color-text-muted)]"
-                      }`}>
-                        {s.number}
-                      </span>
-                      <span className="font-[var(--font-amiri-quran)]">{s.name}</span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
+      <div className="mt-auto p-md border-t border-warm-border/50 dark:border-outline-variant/50">
+        <div className="flex items-center gap-sm p-sm">
+          <div className="w-8 h-8 rounded-full bg-warm-ash border border-warm-border flex items-center justify-center">
+            <span className="material-symbols-outlined text-secondary text-sm">person</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-label-sm text-label-sm font-bold text-primary dark:text-dark-primary">
+              أحمد القارئ
+            </span>
+            <span className="text-[10px] text-greyed-ink">قارئ نشط</span>
+          </div>
+        </div>
       </div>
     </aside>
   );
