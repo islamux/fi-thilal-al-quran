@@ -4,37 +4,41 @@ import type { SurahIndexEntry } from "@/lib/types";
 export default function SurahCard({ surah }: { surah: SurahIndexEntry }) {
   const isMakkan = surah.number <= 57;
 
+  const basmalah =
+    surah.number === 1 || surah.number === 9
+      ? ""
+      : "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+
   return (
     <Link
       href={`/surah/${surah.number}`}
-      className="group block card-gilded p-5"
+      className="group relative block bg-surface border border-warm-border p-md rounded-xl transition-all duration-300 hover:bg-warm-ash hover:border-secondary/30 cursor-pointer"
     >
-      <div className="flex items-center gap-4">
-        <div className="flex items-center justify-center w-12 h-12 rounded-xl gold-bg text-white text-sm font-bold shadow-sm shrink-0 relative overflow-hidden">
-          <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-          <span className="relative">{surah.number}</span>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-0 bg-secondary transition-all duration-300 group-hover:h-3/4" />
+
+      <div className="flex justify-between items-start mb-md">
+        <div className="w-10 h-10 rounded-full bg-gilded-gold-light border border-secondary/20 flex items-center justify-center font-label-sm text-secondary font-bold">
+          {surah.number}
         </div>
-
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between gap-2">
-            <h3 className="font-[var(--font-amiri-quran)] text-xl leading-relaxed text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
-              {surah.name}
-            </h3>
-            <span className="shrink-0 text-[10px] px-2.5 py-0.5 rounded-full bg-[var(--color-background-secondary)] text-[var(--color-text-muted)] border border-[var(--color-border-light)]">
-              {isMakkan ? "مكية" : "مدنية"}
-            </span>
-          </div>
-
-          <div className="mt-1.5 font-[var(--font-amiri-quran)] text-sm text-[var(--color-text-muted)] leading-relaxed">
-            {surah.number === 1 || surah.number === 9 ? "" : "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"}
-          </div>
-
-          <div className="flex items-center gap-2 mt-2 text-xs text-[var(--color-text-muted)]">
-            <span>الجزء {surah.juz}</span>
-            <span className="w-1 h-1 rounded-full bg-[var(--color-accent)]" />
-            <span>{surah.verses} آية</span>
-          </div>
+        <div className="text-left">
+          <span className="block font-label-sm text-greyed-ink text-xs uppercase tracking-tight">
+            {isMakkan ? "مكية" : "مدنية"}
+          </span>
+          <span className="block font-label-sm text-greyed-ink text-xs">
+            {surah.verses} آيات
+          </span>
         </div>
+      </div>
+
+      <div className="text-right">
+        <h3 className="font-headline text-headline text-primary mb-xs group-hover:text-secondary transition-colors">
+          {surah.name}
+        </h3>
+        {basmalah && (
+          <p className="font-verse text-on-surface-variant opacity-70 text-sm truncate">
+            {basmalah}
+          </p>
+        )}
       </div>
     </Link>
   );
