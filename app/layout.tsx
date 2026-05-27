@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Tajawal, Amiri_Quran } from "next/font/google";
 import "./globals.css";
+import { APP_NAME, APP_DESCRIPTION, OG_DESCRIPTION, THEME_COLOR } from "@/lib/constants";
 
 const tajawal = Tajawal({
   weight: ["400", "700"],
@@ -17,24 +18,23 @@ const amiriQuran = Amiri_Quran({
 });
 
 export const metadata: Metadata = {
-  title: "في ظلال القرآن",
-  description:
-    "في ظلال القرآن — تفسير سيد قطب. رحلة تأملية في آيات الله.",
+  title: APP_NAME,
+  description: APP_DESCRIPTION,
   alternates: {
     languages: {
       "ar-SA": "/",
     },
   },
   openGraph: {
-    title: "في ظلال القرآن",
-    description: "تفسير سيد قطب — رحلة تأملية في آيات الله.",
+    title: APP_NAME,
+    description: OG_DESCRIPTION,
     locale: "ar_SA",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1a365d",
+  themeColor: THEME_COLOR,
 };
 
 export default function RootLayout({

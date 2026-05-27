@@ -30,7 +30,7 @@ export default function SurahGrid({ surahs }: { surahs: SurahIndexEntry[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="ابحث عن سورة..."
-            className="w-full bg-surface border border-warm-border rounded-xl px-md py-md text-label-sm focus:border-secondary outline-none transition-colors text-text placeholder:text-text-muted"
+            className="w-full bg-surface border border-warm-border rounded-xl px-md py-md text-label-sm focus:border-secondary outline-none transition-colors text-text placeholder:text-text-muted shadow-subtle"
           />
           <span className="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
         </div>

@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import FlexSearch from "flexsearch";
 
-interface SearchChunk {
+export interface SearchChunk {
   id: string;
   surah: number;
   surahName: string;

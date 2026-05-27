@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SW_CACHE_ALL, SW_CACHE_PROGRESS, SURAH_COUNT, JUZ_COUNT } from "./constants";
 
 export function useOffline() {
   const [offline, setOffline] = useState(false);
@@ -25,7 +26,7 @@ export function useCacheProgress() {
 
   useEffect(() => {
     const handler = (event: MessageEvent) => {
-      if (event.data?.type === "CACHE_PROGRESS") {
+      if (event.data?.type === SW_CACHE_PROGRESS) {
         setProgress({ total: event.data.total, done: event.data.done });
       }
     };
@@ -41,67 +42,15 @@ export function cacheAllPages() {
 
   const urls: string[] = ["/"];
 
-  for (let i = 1; i <= 114; i++) {
+  for (let i = 1; i <= SURAH_COUNT; i++) {
     urls.push(`/surah/${i}`);
   }
-  for (let i = 1; i <= 30; i++) {
+  for (let i = 1; i <= JUZ_COUNT; i++) {
     urls.push(`/juz/${i}`);
   }
 
   navigator.serviceWorker.controller.postMessage({
-    type: "CACHE_ALL_PAGES",
+    type: SW_CACHE_ALL,
     urls,
   });
-}
-
-/** Check if a URL is cached in any Cache Storage. */
-export async function isCached(url: string): Promise<boolean> {
-  if (typeof caches === "undefined") return false;
-  const keys = await caches.keys();
-  for (const key of keys) {
-    const cache = await caches.open(key);
-    const match = await cache.match(url);
-    if (match) return true;
-  }
-  return false;
-}
-
-/** React hook: returns a Set of surah numbers that are cached for offline. */
-export function useCachedSurahs(): Set<number> {
-  const [cached, setCached] = useState<Set<number>>(new Set());
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function scan() {
-      if (typeof caches === "undefined") return;
-      const surahNumbers = new Set<number>();
-      const keys = await caches.keys();
-      for (const key of keys) {
-        const cache = await caches.open(key);
-        const requests = await cache.keys();
-        for (const req of requests) {
-          const match = req.url.match(/\/surah\/(\d+)/);
-          if (match) {
-            const n = parseInt(match[1]!);
-            if (!isNaN(n)) surahNumbers.add(n);
-          }
-        }
-      }
-      if (!cancelled) setCached(surahNumbers);
-    }
-
-    // Re-scan when cache progress messages arrive
-    const handler = () => scan();
-    navigator.serviceWorker?.addEventListener("message", handler);
-
-    scan();
-
-    return () => {
-      cancelled = true;
-      navigator.serviceWorker?.removeEventListener("message", handler);
-    };
-  }, []);
-
-  return cached;
 }

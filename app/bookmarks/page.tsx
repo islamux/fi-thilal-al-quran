@@ -43,7 +43,7 @@ export default function BookmarksPage() {
             {bookmarks.map((b) => (
               <div
                 key={`${b.surah}-${b.verse ?? ""}`}
-                className="flex items-center justify-between p-4 rounded-xl bg-surface border border-warm-border"
+                className="flex items-center justify-between p-4 rounded-xl bg-surface border border-warm-border shadow-subtle hover:shadow-subtle-hover hover:-translate-y-0.5 transition-all duration-200"
               >
                 <Link
                   href={`/surah/${b.surah}`}

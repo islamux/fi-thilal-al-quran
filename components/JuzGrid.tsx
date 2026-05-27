@@ -29,7 +29,7 @@ export default function JuzGrid({
           <Link
             key={surah.number}
             href={`/surah/${surah.number}`}
-            className="group relative block bg-surface border border-warm-border p-4 rounded-xl transition-all duration-300 hover:bg-surface-hover hover:border-accent/30"
+            className="group relative block bg-surface border border-warm-border p-4 rounded-xl shadow-subtle hover:shadow-subtle-hover hover:-translate-y-0.5 transition-all duration-200 hover:bg-surface-hover hover:border-accent/30"
           >
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-0 bg-accent transition-all duration-300 group-hover:h-3/4 rounded-full" />
             <div className="flex items-center gap-3">

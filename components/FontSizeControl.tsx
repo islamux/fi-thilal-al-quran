@@ -46,7 +46,7 @@ export default function FontSizeControl() {
   return (
     <div className="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-2">
       {open && (
-        <div className="flex items-center gap-2 bg-glass backdrop-blur-[12px] border border-warm-border rounded-xl px-3 py-2 anim-scale-in">
+        <div className="flex items-center gap-2 bg-glass backdrop-blur-[12px] border border-warm-border rounded-xl px-3 py-2 shadow-subtle anim-scale-in">
           <button
             onClick={() => change(-STEP)}
             disabled={atMin}

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { SurahIndexEntry } from "@/lib/types";
+import { MECCAN_BOUNDARY } from "@/lib/constants";
 
 export default function SurahCard({ surah }: { surah: SurahIndexEntry }) {
-  const isMakkan = surah.number <= 57;
+  const isMakkan = surah.number <= MECCAN_BOUNDARY;
 
   const basmalah =
     surah.number === 1 || surah.number === 9
@@ -12,7 +13,7 @@ export default function SurahCard({ surah }: { surah: SurahIndexEntry }) {
   return (
     <Link
       href={`/surah/${surah.number}`}
-      className="group relative block bg-surface border border-warm-border p-md rounded-xl transition-all duration-300 hover:bg-warm-ash hover:border-secondary/30 cursor-pointer active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      className="group relative block bg-surface border border-warm-border p-md rounded-xl shadow-subtle hover:shadow-subtle-hover hover:-translate-y-0.5 transition-all duration-200 hover:bg-warm-ash hover:border-secondary/30 cursor-pointer active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[2px] h-0 bg-secondary transition-all duration-300 group-hover:h-3/4" />
 

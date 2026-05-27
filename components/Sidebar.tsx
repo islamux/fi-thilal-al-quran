@@ -125,7 +125,7 @@ export default function Sidebar({
       </div>
 
       <div className="mt-auto p-md border-t border-warm-border/50 dark:border-outline-variant/50">
-        <div className="flex items-center gap-sm p-sm">
+        <div className="flex items-center gap-sm p-sm shadow-subtle rounded-lg bg-surface dark:bg-dark-surface">
           <div className="w-8 h-8 rounded-full overflow-hidden bg-warm-ash border border-warm-border flex items-center justify-center">
             <span className="material-symbols-outlined text-secondary text-sm">person</span>
           </div>

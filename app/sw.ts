@@ -6,6 +6,8 @@ declare const self: ServiceWorkerGlobalScope & {
   __SW_MANIFEST: (PrecacheEntry | string)[];
 };
 
+const DAY = 60 * 60 * 24;
+
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
   skipWaiting: true,
@@ -17,7 +19,7 @@ const serwist = new Serwist({
       handler: new CacheFirst({
         cacheName: "search-data",
         plugins: [
-          new ExpirationPlugin({ maxEntries: 2, maxAgeSeconds: 60 * 60 * 24 * 90 }),
+          new ExpirationPlugin({ maxEntries: 2, maxAgeSeconds: DAY * 90 }),
         ],
       }),
     },
@@ -26,7 +28,7 @@ const serwist = new Serwist({
       handler: new NetworkFirst({
         cacheName: "next-image",
         plugins: [
-          new ExpirationPlugin({ maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 }),
+          new ExpirationPlugin({ maxEntries: 100, maxAgeSeconds: DAY * 30 }),
         ],
       }),
     },
@@ -35,7 +37,7 @@ const serwist = new Serwist({
       handler: new CacheFirst({
         cacheName: "app-icons",
         plugins: [
-          new ExpirationPlugin({ maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 }),
+          new ExpirationPlugin({ maxEntries: 20, maxAgeSeconds: DAY * 365 }),
         ],
       }),
     },

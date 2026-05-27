@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import SearchDialog from "./SearchDialog";
 import Sidebar from "./Sidebar";
+import AppHeader from "./AppHeader";
+import MobileNav from "./MobileNav";
 import OfflineBanner from "./OfflineBanner";
 import { cacheAllPages } from "@/lib/useOffline";
+import { STORAGE_KEY_THEME } from "@/lib/constants";
 import type { SurahIndexEntry } from "@/lib/types";
 
 export default function ClientShell({
@@ -27,7 +29,7 @@ export default function ClientShell({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("theme");
+    const stored = localStorage.getItem(STORAGE_KEY_THEME);
     if (stored === "dark") {
       setDark(true);
       document.documentElement.classList.add("dark");
@@ -77,63 +79,20 @@ export default function ClientShell({
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    localStorage.setItem(STORAGE_KEY_THEME, next ? "dark" : "light");
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="glass-header fixed top-0 left-0 w-full h-14 z-50 flex items-center justify-between px-4 lg:px-8 dark:border-outline-variant">
-        <div className="flex items-center gap-4">
-          {surahs && (
-            <button
-              className="md:hidden p-sm hover:bg-warm-ash rounded-full transition-colors duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="القائمة"
-            >
-              <span className="material-symbols-outlined text-text">menu</span>
-            </button>
-          )}
-          <Link href="/" className="font-headline text-headline text-primary hover:text-secondary transition-colors tracking-tight font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
-            في ظلال القرآن
-          </Link>
-        </div>
-
-        {surahName && (
-          <div className="hidden md:flex items-center gap-xl">
-            <span className="text-secondary border-b-2 border-secondary font-medium">{surahName}</span>
-            <span className="text-on-surface-variant hover:bg-warm-ash px-sm py-xs rounded transition-all cursor-pointer">
-              الجزء {juzNumber}
-            </span>
-          </div>
-        )}
-
-        <div className="flex items-center gap-sm">
-          <div className="relative hidden md:block">
-            <input
-              type="text"
-              placeholder="بحث في السور والآيات..."
-              className="w-64 bg-surface border border-warm-border rounded-xl px-md py-xs text-label-sm focus:border-secondary outline-none transition-colors text-text placeholder:text-text-muted focus-visible:ring-2 focus-visible:ring-accent"
-              onFocus={() => setSearchOpen(true)}
-              readOnly
-            />
-            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
-          </div>
-          <button
-            className="p-sm hover:bg-warm-ash rounded-full transition-colors active:scale-95 duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            onClick={() => setSearchOpen(true)}
-            aria-label="البحث"
-          >
-            <span className="material-symbols-outlined md:hidden text-primary">search</span>
-          </button>
-          <button
-            className="p-sm hover:bg-warm-ash rounded-full transition-colors active:scale-95 duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            onClick={toggleDark}
-            aria-label={dark ? "الوضع النهاري" : "الوضع الليلي"}
-          >
-            <span className="material-symbols-outlined text-primary">{dark ? "light_mode" : "dark_mode"}</span>
-          </button>
-        </div>
-      </header>
+      <AppHeader
+        surahName={surahName}
+        juzNumber={juzNumber}
+        onMenuToggle={surahs ? () => setMenuOpen(!menuOpen) : undefined}
+        onSearchOpen={() => setSearchOpen(true)}
+        dark={dark}
+        onToggleDark={toggleDark}
+        showMenu={!!surahs}
+      />
 
       <div className="flex-1 flex relative">
         {surahs && (
@@ -158,25 +117,7 @@ export default function ClientShell({
         <main className={`flex-1 min-w-0 pt-14 ${surahs ? 'lg:mr-[280px]' : ''}`}>{children}</main>
       </div>
 
-      <nav className="lg:hidden fixed bottom-0 left-0 w-full bg-parchment-cream/95 dark:bg-dark-bg/95 backdrop-blur-md border-t border-warm-border flex justify-around items-center h-16 z-50">
-        <Link href="/" className="flex flex-col items-center gap-1 text-secondary active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
-          <span className="material-symbols-outlined filled">book_2</span>
-          <span className="text-[10px] font-medium">السور</span>
-        </Link>
-        <Link href="/juz/1" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
-          <span className="material-symbols-outlined">segment</span>
-          <span className="text-[10px] font-medium">الأجزاء</span>
-        </Link>
-        <Link href="/search" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
-          <span className="material-symbols-outlined">search</span>
-          <span className="text-[10px] font-medium">البحث</span>
-        </Link>
-        <Link href="/bookmarks" className="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
-          <span className="material-symbols-outlined">bookmark</span>
-          <span className="text-[10px] font-medium">العلامات</span>
-        </Link>
-      </nav>
-
+      <MobileNav />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <OfflineBanner />
     </div>

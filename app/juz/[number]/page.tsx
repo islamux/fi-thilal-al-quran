@@ -4,8 +4,7 @@ import ClientShell from "@/components/ClientShell";
 import JuzGrid from "@/components/JuzGrid";
 import { getSurahsByJuz, getAllSurahs } from "@/lib/contentLoader";
 import type { SurahIndexEntry } from "@/lib/types";
-
-const JUZ_COUNT = 30;
+import { APP_NAME, JUZ_COUNT } from "@/lib/constants";
 
 export async function generateStaticParams() {
   return Array.from({ length: JUZ_COUNT }, (_, i) => ({
@@ -20,8 +19,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { number } = await params;
   return {
-    title: `الجزء ${number} - في ظلال القرآن`,
-    description: `سور الجزء ${number} من تفسير في ظلال القرآن لسيد قطب`,
+    title: `الجزء ${number} - ${APP_NAME}`,
+    description: `سور الجزء ${number} من تفسير ${APP_NAME} لسيد قطب`,
   };
 }
 
@@ -34,8 +33,8 @@ export default async function JuzPage({
   const juz = parseInt(number);
   if (juz < 1 || juz > JUZ_COUNT) notFound();
 
-  const surahs = getSurahsByJuz(juz) as SurahIndexEntry[];
-  const allSurahs = getAllSurahs() as SurahIndexEntry[];
+  const surahs = getSurahsByJuz(juz);
+  const allSurahs = getAllSurahs();
 
   return (
     <ClientShell surahs={allSurahs}>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { loadJSON, saveJSON } from "./storage";
 
 const STORAGE_KEY = "fi-thilal-reading-progress";
 
@@ -13,39 +14,26 @@ export interface ReadingEntry {
   readAt: number;
 }
 
-function loadAll(): ReadingEntry[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveAll(entries: ReadingEntry[]) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
-  } catch {}
-}
-
 export function useReadingProgress() {
   const [entries, setEntries] = useState<ReadingEntry[]>([]);
+  const entriesRef = useRef(entries);
+  entriesRef.current = entries;
 
   useEffect(() => {
-    setEntries(loadAll());
+    setEntries(loadJSON<ReadingEntry[]>(STORAGE_KEY, []));
   }, []);
 
   const saveProgress = useCallback(
     (entry: Omit<ReadingEntry, "readAt">) => {
+      const current = entriesRef.current;
       const updated = [
         { ...entry, readAt: Date.now() },
-        ...entries.filter((e) => e.surah !== entry.surah),
+        ...current.filter((e) => e.surah !== entry.surah),
       ];
       setEntries(updated);
-      saveAll(updated);
+      saveJSON(STORAGE_KEY, updated);
     },
-    [entries]
+    []
   );
 
   const getLastRead = useCallback((): ReadingEntry | null => {

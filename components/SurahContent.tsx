@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import QuranVerse from "./QuranVerse";
 import FontSizeControl from "./FontSizeControl";
 import BookmarkButton from "./BookmarkButton";
 import ReadingProgressBar from "./ReadingProgressBar";
+import FloatingNavPill from "./FloatingNavPill";
 import { useReadingProgress } from "@/lib/readingProgress";
 import { toggleBookmark } from "@/lib/bookmarks";
+import { MECCAN_BOUNDARY, SCROLL_TOP_THRESHOLD } from "@/lib/constants";
 
 export default function SurahContent({
   number,
@@ -26,7 +27,6 @@ export default function SurahContent({
   prevNumber?: number;
   nextNumber?: number;
 }) {
-  const router = useRouter();
   const { saveProgress } = useReadingProgress();
   const saved = useRef(false);
   const [bookmarkToggle, setBookmarkToggle] = useState(0);
@@ -37,53 +37,32 @@ export default function SurahContent({
     const handler = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement).tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
-
       if (e.key === "b") {
         e.preventDefault();
         toggleBookmark(number, name);
         setBookmarkToggle((n) => n + 1);
       }
-      if (e.key === "ArrowRight" && nextNumber) {
-        e.preventDefault();
-        router.push(`/surah/${nextNumber}`);
-      }
-      if (e.key === "ArrowLeft" && prevNumber) {
-        e.preventDefault();
-        router.push(`/surah/${prevNumber}`);
-      }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [number, name, prevNumber, nextNumber, router]);
+  }, [number, name]);
 
   useEffect(() => {
     if (saved.current) return;
     saved.current = true;
-    saveProgress({
-      surah: number,
-      surahName: name,
-      juz,
-      scrollPosition: 0,
-      totalHeight: 0,
-    });
-  }, [number, name, saveProgress]);
+    saveProgress({ surah: number, surahName: name, juz, scrollPosition: 0, totalHeight: 0 });
+  }, [number, name, juz, saveProgress]);
 
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      saveProgress({
-        surah: number,
-        surahName: name,
-        juz,
-        scrollPosition,
-        totalHeight,
-      });
-      setShowScrollTop(scrollPosition > 300);
+      saveProgress({ surah: number, surahName: name, juz, scrollPosition, totalHeight });
+      setShowScrollTop(scrollPosition > SCROLL_TOP_THRESHOLD);
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [number, name, saveProgress]);
+  }, [number, name, juz, saveProgress]);
 
   return (
     <>
@@ -97,17 +76,13 @@ export default function SurahContent({
             </div>
 
             <div className="mb-md opacity-20 select-none pointer-events-none">
-              <p className="font-verse text-5xl leading-relaxed text-gilded-gold">
-                {name}
-              </p>
+              <p className="font-verse text-5xl leading-relaxed text-gilded-gold">{name}</p>
             </div>
 
-            <h1 className="font-display text-display text-primary mb-sm">
-              سورة {name}
-            </h1>
+            <h1 className="font-display text-display text-primary mb-sm">سورة {name}</h1>
 
             <p className="font-body text-faded-ink italic">
-              {number <= 57 ? "مكية" : "مدنية"} | {verses} آيات
+              {number <= MECCAN_BOUNDARY ? "مكية" : "مدنية"} | {verses} آيات
             </p>
 
             <div className="mt-lg flex justify-center items-center">
@@ -121,7 +96,7 @@ export default function SurahContent({
             className="[&_p]:text-[var(--reader-font-size,18px)]"
             style={{ fontSize: "var(--reader-font-size, 18px)" }}
           >
-            <QuranVerse content={content} surahNumber={number} surahName={name} />
+            <QuranVerse content={content} surahName={name} />
           </div>
 
           <div className="mt-xxl pt-lg border-t border-warm-border" />
@@ -129,55 +104,13 @@ export default function SurahContent({
       </article>
 
       <FontSizeControl />
-
-      {/* Floating Navigation Pill */}
-      <div className="fixed bottom-24 lg:bottom-6 left-1/2 -translate-x-1/2 z-40">
-        <div className="flex items-center gap-1 bg-primary text-white p-2 rounded-full shadow-xl">
-          {prevNumber ? (
-            <button
-              onClick={() => router.push(`/surah/${prevNumber}`)}
-              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all"
-              aria-label="السورة السابقة"
-            >
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
-          ) : <div className="w-10 h-10" />}
-
-          <div className="w-px h-6 bg-white/20" />
-
-          <button
-            onClick={() => { toggleBookmark(number, name); setBookmarkToggle(n => n + 1); }}
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all"
-            aria-label="حفظ"
-          >
-            <span className="material-symbols-outlined">bookmark</span>
-          </button>
-
-          <div className="w-px h-6 bg-white/20" />
-
-          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all" aria-label="مشاركة">
-            <span className="material-symbols-outlined">share</span>
-          </button>
-
-          <div className="w-px h-6 bg-white/20" />
-
-          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all" aria-label="إعدادات">
-            <span className="material-symbols-outlined">settings_suggest</span>
-          </button>
-
-          <div className="w-px h-6 bg-white/20" />
-
-          {nextNumber ? (
-            <button
-              onClick={() => router.push(`/surah/${nextNumber}`)}
-              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-95 transition-all"
-              aria-label="السورة التالية"
-            >
-              <span className="material-symbols-outlined">arrow_back</span>
-            </button>
-          ) : <div className="w-10 h-10" />}
-        </div>
-      </div>
+      <FloatingNavPill
+        number={number}
+        name={name}
+        prevNumber={prevNumber}
+        nextNumber={nextNumber}
+        onBookmarkToggle={() => setBookmarkToggle((n) => n + 1)}
+      />
 
       {showScrollTop && (
         <button

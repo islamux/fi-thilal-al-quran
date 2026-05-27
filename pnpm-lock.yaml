@@ -14,12 +14,6 @@ importers:
       '@serwist/sw':
         specifier: 9.5.11
         version: 9.5.11(browserslist@4.28.2)(typescript@6.0.3)
-      blessed:
-        specifier: 0.1.81
-        version: 0.1.81
-      chokidar:
-        specifier: ^5.0.0
-        version: 5.0.0
       flexsearch:
         specifier: 0.8.212
         version: 0.8.212
@@ -57,6 +51,12 @@ importers:
       '@types/react-dom':
         specifier: ^19.0.0
         version: 19.2.3(@types/react@19.2.15)
+      blessed:
+        specifier: 0.1.81
+        version: 0.1.81
+      chokidar:
+        specifier: ^5.0.0
+        version: 5.0.0
       eslint:
         specifier: ^9.0.0
         version: 9.39.4(jiti@2.7.0)

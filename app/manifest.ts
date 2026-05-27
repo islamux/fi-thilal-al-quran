@@ -1,16 +1,17 @@
 import type { MetadataRoute } from "next";
+import { APP_NAME, APP_DESCRIPTION_SHORT, BACKGROUND_COLOR, THEME_COLOR } from "@/lib/constants";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "في ظلال القرآن",
-    short_name: "في ظلال القرآن",
-    description: "تفسير في ظلال القرآن لسيد قطب",
+    name: APP_NAME,
+    short_name: APP_NAME,
+    description: APP_DESCRIPTION_SHORT,
     lang: "ar",
     dir: "rtl",
     start_url: "/",
     display: "standalone",
-    background_color: "#faf8f5",
-    theme_color: "#1a365d",
+    background_color: BACKGROUND_COLOR,
+    theme_color: THEME_COLOR,
     orientation: "portrait-primary",
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },

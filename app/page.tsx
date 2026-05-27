@@ -2,10 +2,9 @@ import ClientShell from "@/components/ClientShell";
 import SurahGrid from "@/components/SurahGrid";
 import ContinueReading from "@/components/ContinueReading";
 import { getAllSurahs } from "@/lib/contentLoader";
-import type { SurahIndexEntry } from "@/lib/types";
 
 export default function Home() {
-  const surahList = getAllSurahs() as SurahIndexEntry[];
+  const surahList = getAllSurahs();
 
   return (
     <ClientShell surahs={surahList}>

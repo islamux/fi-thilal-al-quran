@@ -14,7 +14,7 @@ export default function SurahNavFooter({
         <Link
           href={`/surah/${prev.number}`}
           aria-label={`السورة السابقة: ${prev.name}`}
-          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl bg-surface border border-warm-border hover:border-accent/30 hover:bg-surface-hover transition-all"
+          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl bg-surface border border-warm-border shadow-subtle hover:shadow-subtle-hover hover:-translate-y-0.5 transition-all duration-200 hover:border-accent/30 hover:bg-surface-hover"
         >
           <span className="material-symbols-outlined text-text-muted group-hover:text-accent transition-colors">chevron_right</span>
           <div className="text-right min-w-0">
@@ -40,7 +40,7 @@ export default function SurahNavFooter({
         <Link
           href={`/surah/${next.number}`}
           aria-label={`السورة التالية: ${next.name}`}
-          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl bg-surface border border-warm-border hover:border-accent/30 hover:bg-surface-hover transition-all"
+          className="group flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl bg-surface border border-warm-border shadow-subtle hover:shadow-subtle-hover hover:-translate-y-0.5 transition-all duration-200 hover:border-accent/30 hover:bg-surface-hover"
         >
           <div className="text-left min-w-0">
             <div className="text-xs text-text-muted mb-0.5">السورة التالية</div>

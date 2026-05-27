@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import ClientShell from "@/components/ClientShell";
+import SearchFilters from "@/components/SearchFilters";
+import SearchResultCard from "@/components/SearchResultCard";
 import { useSearch } from "@/lib/search";
 import type { SurahIndexEntry } from "@/lib/types";
 
@@ -31,21 +32,6 @@ export default function SearchClient({ surahs }: { surahs: SurahIndexEntry[] }) 
     }
   }
 
-  function highlightText(text: string, q: string): React.ReactNode {
-    if (!q.trim()) return text;
-    const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const parts = text.split(new RegExp(`(${escaped})`, "gi"));
-    return parts.map((part, i) =>
-      part.toLowerCase() === q.toLowerCase() ? (
-        <mark key={i} className="highlight-match">{part}</mark>
-      ) : (
-        part
-      )
-    );
-  }
-
-  const uniqueJuzs = [...new Set(surahs.map((s) => s.juz))].sort((a, b) => a - b);
-
   return (
     <ClientShell>
       <div className="pt-6 px-4 lg:px-8 min-h-screen pb-24 lg:pb-8">
@@ -69,39 +55,7 @@ export default function SearchClient({ surahs }: { surahs: SurahIndexEntry[] }) 
             <span className="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-greyed-ink text-[32px] pointer-events-none">search</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-md mb-lg">
-            <div className="bg-bg-secondary p-md rounded-xl border border-warm-border">
-              <label className="block text-label-sm text-greyed-ink mb-xs">السورة</label>
-              <select className="w-full bg-transparent border-none focus:ring-0 font-bold p-0 text-primary outline-none">
-                <option>الكل</option>
-                {surahs.map((s) => (
-                  <option key={s.number}>{s.name}</option>
-                ))}
-              </select>
-            </div>
-            <div className="bg-bg-secondary p-md rounded-xl border border-warm-border">
-              <label className="block text-label-sm text-greyed-ink mb-xs">الجزء</label>
-              <select className="w-full bg-transparent border-none focus:ring-0 font-bold p-0 text-primary outline-none">
-                <option>الكل</option>
-                {uniqueJuzs.map((j) => (
-                  <option key={j}>الجزء {j}</option>
-                ))}
-              </select>
-            </div>
-            <div className="bg-bg-secondary p-md rounded-xl border border-warm-border">
-              <label className="block text-label-sm text-greyed-ink mb-xs">المجلد</label>
-              <select className="w-full bg-transparent border-none focus:ring-0 font-bold p-0 text-primary outline-none">
-                <option>الكل</option>
-                {[1, 2, 3, 4].map((v) => (
-                  <option key={v}>المجلد {v}</option>
-                ))}
-              </select>
-            </div>
-            <button className="bg-gilded-gold hover:bg-gilded-gold-hover text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-md active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              <span className="material-symbols-outlined">tune</span>
-              تحديث النتائج
-            </button>
-          </div>
+          <SearchFilters surahs={surahs} />
 
           {input && (
             <div className="flex justify-between items-center mb-lg pb-sm border-b border-warm-border">
@@ -118,37 +72,12 @@ export default function SearchClient({ surahs }: { surahs: SurahIndexEntry[] }) 
 
           <div className="space-y-lg" onKeyDown={handleKey}>
             {results.map((r, idx) => (
-              <div
+              <SearchResultCard
                 key={r.id}
-                className={`bg-surface border border-warm-border p-lg rounded-xl hover:bg-warm-ash transition-all group relative overflow-hidden ${
-                  focusedIndex === idx ? "ring-2 ring-accent bg-warm-ash" : ""
-                }`}
-              >
-                <div className="absolute right-0 top-0 w-1 h-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex justify-between items-start mb-md">
-                  <div>
-                    <h3 className="font-headline text-headline text-primary mb-xs">{r.surahName}</h3>
-                    <div className="flex gap-md">
-                      <span className="font-label-sm text-label-sm text-greyed-ink bg-warm-stone px-sm py-1 rounded">الجزء {r.juz}</span>
-                    </div>
-                  </div>
-                  <button className="p-sm text-greyed-ink hover:text-secondary transition-colors" aria-label="حفظ">
-                    <span className="material-symbols-outlined">bookmark</span>
-                  </button>
-                </div>
-                <div className="bg-gilded-gold-light p-md rounded-lg mb-md text-center">
-                  <p className="font-verse text-verse text-primary leading-loose">
-                    {highlightText(r.text.slice(0, 200), input)}
-                  </p>
-                </div>
-                <Link
-                  href={`/surah/${r.surah}`}
-                  className="inline-flex items-center gap-xs text-secondary font-title text-title mt-md hover:gap-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
-                >
-                  اقرأ التفسير كاملاً
-                  <span className="material-symbols-outlined text-sm">arrow_back</span>
-                </Link>
-              </div>
+                result={r}
+                query={input}
+                focused={focusedIndex === idx}
+              />
             ))}
           </div>
 
@@ -171,7 +100,7 @@ export default function SearchClient({ surahs }: { surahs: SurahIndexEntry[] }) 
               <button className="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                 <span className="material-symbols-outlined">chevron_right</span>
               </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-medium shadow-md">١</button>
+              <button className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-medium shadow-subtle">١</button>
               <button className="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">٢</button>
               <button className="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">٣</button>
               <button className="w-10 h-10 flex items-center justify-center rounded-full border border-warm-border text-primary hover:bg-warm-ash transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
