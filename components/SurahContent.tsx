@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import QuranVerse from "./QuranVerse";
 import FontSizeControl from "./FontSizeControl";
 import BookmarkButton from "./BookmarkButton";
 import ReadingProgressBar from "./ReadingProgressBar";
-import GoldDivider from "./GoldDivider";
+import FloatingNavPill from "./FloatingNavPill";
 import { useReadingProgress } from "@/lib/readingProgress";
 import { toggleBookmark } from "@/lib/bookmarks";
+import { MECCAN_BOUNDARY, SCROLL_TOP_THRESHOLD } from "@/lib/constants";
 
 export default function SurahContent({
   number,
@@ -27,104 +27,100 @@ export default function SurahContent({
   prevNumber?: number;
   nextNumber?: number;
 }) {
-  const router = useRouter();
   const { saveProgress } = useReadingProgress();
   const saved = useRef(false);
   const [bookmarkToggle, setBookmarkToggle] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const handler = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement).tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
-
       if (e.key === "b") {
         e.preventDefault();
         toggleBookmark(number, name);
         setBookmarkToggle((n) => n + 1);
       }
-      if (e.key === "ArrowRight" && nextNumber) {
-        e.preventDefault();
-        router.push(`/surah/${nextNumber}`);
-      }
-      if (e.key === "ArrowLeft" && prevNumber) {
-        e.preventDefault();
-        router.push(`/surah/${prevNumber}`);
-      }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [number, name, prevNumber, nextNumber, router]);
+  }, [number, name]);
 
   useEffect(() => {
     if (saved.current) return;
     saved.current = true;
-    saveProgress({
-      surah: number,
-      surahName: name,
-      scrollPosition: 0,
-      totalHeight: 0,
-    });
-  }, [number, name, saveProgress]);
+    saveProgress({ surah: number, surahName: name, juz, scrollPosition: 0, totalHeight: 0 });
+  }, [number, name, juz, saveProgress]);
 
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      saveProgress({
-        surah: number,
-        surahName: name,
-        scrollPosition,
-        totalHeight,
-      });
+      saveProgress({ surah: number, surahName: name, juz, scrollPosition, totalHeight });
+      setShowScrollTop(scrollPosition > SCROLL_TOP_THRESHOLD);
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [number, name, saveProgress]);
+  }, [number, name, juz, saveProgress]);
 
   return (
     <>
       <ReadingProgressBar />
 
-      <article className="max-w-4xl mx-auto px-4 py-10">
-        <header className="text-center mb-12">
-          <div className="flex justify-center mb-2">
-            <BookmarkButton key={bookmarkToggle} surah={number} surahName={name} />
-          </div>
+      <article className="pt-6 lg:mr-0 min-h-screen pb-24 lg:pb-8 px-4 lg:px-8">
+        <div className="max-w-[70ch] mx-auto">
+          <header className="text-center mb-xxl">
+            <div className="flex justify-center mb-md">
+              <BookmarkButton key={bookmarkToggle} surah={number} surahName={name} />
+            </div>
 
-          <GoldDivider variant="wide" className="mb-4" />
+            <div className="mb-md opacity-20 select-none pointer-events-none">
+              <p className="font-verse text-5xl leading-relaxed text-gilded-gold">{name}</p>
+            </div>
 
-          <h1 className="font-[var(--font-amiri-quran)] text-4xl md:text-5xl leading-relaxed text-[var(--color-text)] mb-4">
-            سورة {name}
-          </h1>
+            <h1 className="font-display text-display text-primary mb-sm">سورة {name}</h1>
 
-          <div className="flex items-center justify-center gap-4 text-sm text-[var(--color-text-muted)]">
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-              الجزء {juz}
-            </span>
-            <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-              {verses} آية
-            </span>
-          </div>
+            <p className="font-body text-faded-ink italic">
+              {number <= MECCAN_BOUNDARY ? "مكية" : "مدنية"} | {verses} آيات
+            </p>
 
-          <GoldDivider variant="narrow" className="my-6" />
-        </header>
+            <div className="mt-lg flex justify-center items-center">
+              <div className="h-px w-1/3 bg-gradient-to-l from-transparent via-warm-border to-transparent" />
+              <span className="material-symbols-outlined text-gilded-gold mx-md">auto_stories</span>
+              <div className="h-px w-1/3 bg-gradient-to-r from-transparent via-warm-border to-transparent" />
+            </div>
+          </header>
 
-        {/* Reading pane */}
-        <div className="card-gilded p-6 md:p-10">
           <div
             className="[&_p]:text-[var(--reader-font-size,18px)]"
             style={{ fontSize: "var(--reader-font-size, 18px)" }}
           >
-            <QuranVerse content={content} />
+            <QuranVerse content={content} surahName={name} />
           </div>
+
+          <div className="mt-xxl pt-lg border-t border-warm-border" />
         </div>
       </article>
 
       <FontSizeControl />
+      <FloatingNavPill
+        number={number}
+        name={name}
+        prevNumber={prevNumber}
+        nextNumber={nextNumber}
+        onBookmarkToggle={() => setBookmarkToggle((n) => n + 1)}
+      />
+
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-20 lg:bottom-8 left-6 w-14 h-14 bg-secondary text-white rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 z-50"
+          aria-label="العودة للأعلى"
+        >
+          <span className="material-symbols-outlined">arrow_upward</span>
+        </button>
+      )}
     </>
   );
 }

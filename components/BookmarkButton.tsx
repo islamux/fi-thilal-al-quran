@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Bookmark } from "lucide-react";
 import { isBookmarked, toggleBookmark } from "@/lib/bookmarks";
 
 export default function BookmarkButton({
@@ -29,12 +28,12 @@ export default function BookmarkButton({
       onClick={handleToggle}
       className={`p-2 rounded-lg transition-all duration-200 ${
         active
-          ? "text-[var(--color-accent)] bg-[var(--color-accent-light)] scale-110"
-          : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-hover)] hover:scale-105"
+          ? "text-accent bg-accent-light scale-110"
+          : "text-text-muted hover:bg-surface-hover hover:scale-105"
       }`}
       aria-label={active ? "إزالة الإشارة المرجعية" : "إضافة إشارة مرجعية"}
     >
-      <Bookmark size={18} fill={active ? "currentColor" : "none"} />
+      <span className={`material-symbols-outlined text-xl ${active ? "filled" : ""}`}>bookmark</span>
     </button>
   );
 }

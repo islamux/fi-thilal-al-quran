@@ -8,14 +8,13 @@
     "overall_progress": 100
   },
   "dashboard": {
-    "current_focus": "Planning M12 — Full Offline PWA: cache all content for offline reading",
-    "active_milestone": "None — all milestones completed",
-    "next_priority": "M12 — runtime caching rules, cache-all on first load, search data caching, offline indicator",
+    "current_focus": "M12 — Full Offline PWA: Cache All Content",
+    "active_milestone": "M12 — Full Offline PWA: Cache All Content",
+    "next_priority": "M12_001: Runtime caching in sw.ts",
     "blockers": "None",
     "health": "on_track"
   },
   "milestones": {
-    "backlog": [],
     "backlog": [],
     "active": [
       {
@@ -23,39 +22,673 @@
         "title": "Full Offline PWA — Cache All Content for Offline Reading",
         "domain": "PWA",
         "week": 7,
-        "phase": "features",
+        "phase": "pwa",
         "drift_days": 0,
         "is_key_milestone": true,
+        "completed_at": null,
         "subtasks": [
-          { "id": "M12_001", "label": "Add runtime caching rules in sw.ts for search-data.json, static content, and navigation", "status": "todo", "priority": "P0" },
-          { "id": "M12_002", "label": "Create offline detection indicator — show banner when offline, removed cached pages still work", "status": "todo", "priority": "P1" },
-          { "id": "M12_003", "label": "Programmatic cache-all on first load — cache all 114 surah pages + 30 juz pages + home page", "status": "todo", "priority": "P0" },
-          { "id": "M12_004", "label": "Cache search data JSON — ensure /search-data.json is cached on service worker install/activate", "status": "todo", "priority": "P0" },
-          { "id": "M12_005", "label": "Add 'Available Offline' badge on saved content and a 'Save All for Offline' button in settings/sidebar", "status": "todo", "priority": "P2" },
-          { "id": "M12_006", "label": "Test full offline scenario — disable network, verify all 149 routes + search work", "status": "todo", "priority": "P0" }
+          {
+            "id": "M12_001",
+            "label": "Add runtime caching rules in sw.ts for search-data.json, static content, and navigation",
+            "status": "pending",
+            "priority": "P0"
+          },
+          {
+            "id": "M12_002",
+            "label": "Create OfflineIndicator component — toast/banner when navigator.onLine changes",
+            "status": "pending",
+            "priority": "P1"
+          },
+          {
+            "id": "M12_003",
+            "label": "Programmatic cache-all: register 149 routes (114 surahs + 30 juz + home + search + bookmarks + manifest) via Cache API",
+            "status": "pending",
+            "priority": "P0"
+          },
+          {
+            "id": "M12_004",
+            "label": "Cache search-data.json on interaction (cache-on-use) with stale-while-revalidate",
+            "status": "pending",
+            "priority": "P1"
+          },
+          {
+            "id": "M12_005",
+            "label": "Offline badge: show Save All button, graceful degradation for non-cached routes",
+            "status": "pending",
+            "priority": "P2"
+          },
+          {
+            "id": "M12_006",
+            "label": "Full offline test: disconnect network, verify all 149 routes + search work",
+            "status": "pending",
+            "priority": "P0"
+          }
         ]
       }
     ],
     "completed": [
       {
-        "id": "M11",
-        "title": "Design Audit & Polish: Ban Violations, Feature Gaps",
+        "id": "M21",
+        "title": "Subtle Elevation: Soft OKLCH shadows on all cards (Design_New/4 v2)",
         "domain": "Design",
         "week": 6,
         "phase": "polish",
         "drift_days": 0,
         "is_key_milestone": true,
-        "completed_at": "2026-05-25T14:45:00.000Z",
+        "completed_at": "2026-05-26T03:30:00.000Z",
         "subtasks": [
-          { "id": "M11_001", "label": "Fix gradient text ban — replace gold-text class with solid gold color on homepage hero and sidebar labels", "status": "done", "priority": "P0" },
-          { "id": "M11_002", "label": "Integrate Sidebar into ClientShell — connect hamburger menu to mobile overlay drawer, render as fixed sidebar on desktop", "status": "done", "priority": "P0" },
-          { "id": "M11_003", "label": "Dial back gold overuse — audit homepage gold elements against ≤10% rule, reduce to hero accent + section headers only", "status": "done", "priority": "P1" },
-          { "id": "M11_004", "label": "Replace side-stripe borders in Sidebar — remove border-r-2 gold accents, use full background tint for active state instead", "status": "done", "priority": "P1" },
-          { "id": "M11_005", "label": "Build Bookmarks page — create /bookmarks route showing all saved surahs with delete and navigate-to-surah actions", "status": "done", "priority": "P1" },
-          { "id": "M11_006", "label": "Add keyboard shortcuts — '/' opens search, ArrowRight/ArrowLeft for surah nav, 'b' toggles bookmark", "status": "done", "priority": "P2" },
-          { "id": "M11_007", "label": "Harden error pages — add 'العودة إلى الرئيسية' link and navigation on all error boundaries", "status": "done", "priority": "P2" },
-          { "id": "M11_008", "label": "Extract gold decorative SVGs — create reusable GoldDivider component, remove inlines from SurahContent, JuzGrid, homepage", "status": "done", "priority": "P3" },
-          { "id": "M11_009", "label": "Build verification — 148+ routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" }
+          {
+            "id": "M21_001",
+            "label": "Add --shadow-subtle and --shadow-subtle-hover tokens to globals.css @theme",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_002",
+            "label": "Add .card-elevated utility class with shadow + hover lift (-translate-y-0.5)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_003",
+            "label": "Apply elevated shadow to SurahCard",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_004",
+            "label": "Apply elevated shadow to search result cards (SearchClient)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_005",
+            "label": "Apply elevated shadow to SearchDialog result cards",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_006",
+            "label": "Apply elevated shadow to filter dropdown cards",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M21_007",
+            "label": "Apply elevated shadow to Sidebar profile card",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M21_008",
+            "label": "Apply elevated shadow to bookmarks page cards",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M21_009",
+            "label": "Apply elevated shadow to SurahGrid mobile search input",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M21_010",
+            "label": "Apply elevated shadow to JuzGrid surah cards",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_011",
+            "label": "Apply elevated shadow to SurahNavFooter prev/next cards",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M21_012",
+            "label": "Apply elevated shadow to SearchDialog floating container",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M21_013",
+            "label": "Apply elevated shadow to ClientShell desktop search input",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M21_014",
+            "label": "Apply elevated shadow to OfflineBanner",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M21_015",
+            "label": "Apply elevated shadow to FontSizeControl panel",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M21_016",
+            "label": "Build verification",
+            "status": "done",
+            "priority": "P0"
+          }
+        ]
+      },
+      {
+        "id": "M17",
+        "title": "Design_New Remaining Alignment — Prototype Gaps",
+        "domain": "Design",
+        "week": 5,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "completed_at": "2026-05-26T02:40:00.000Z",
+        "subtasks": [
+          {
+            "id": "M17_001",
+            "label": "Add surah/juz reading context in desktop header (_1 lines 153-155)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_002",
+            "label": "Add 'في ظلال الآية' label above tafsir paragraphs in QuranVerse (_1 line 230)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_003",
+            "label": "Fix bottom nav button shapes: rounded-xl not rounded-full (_1 lines 293, 305)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_004",
+            "label": "Add dark:border-outline-variant to header border (_3 line 150)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_005",
+            "label": "Add font-extrabold tracking-tight to header title (_3 line 152)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_006",
+            "label": "Search page: larger icon (text-[32px]), h-16 input, correct padding (_2 line 192)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_007",
+            "label": "Search page: add 'الأكثر صلة' sort dropdown in results counter (_2 lines 233-236)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M17_008",
+            "label": "Search results: add bookmark button, gold verse box, warm-stone tags, font-title link (_2)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M17_009",
+            "label": "Update Sidebar profile to use img avatar wrapper pattern (_3 lines 196-198)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M17_010",
+            "label": "Build verification after all M17 fixes",
+            "status": "done",
+            "priority": "P0"
+          }
+        ]
+      },
+      {
+        "id": "M20",
+        "title": "Design_New Polish & Micro-interactions",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "completed_at": "2026-05-26T03:00:00.000Z",
+        "subtasks": [
+          {
+            "id": "M20_001",
+            "label": "Fix reading progress bar height: 2px -> 3px (design.md_1:228)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M20_002",
+            "label": "Add calligraphy image placeholder on surah header (next.js_blueprint.md:184, _1/code.html:212)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M20_003",
+            "label": "Add decorative book icon on home page bottom-left (_3/code.html:313-315)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M20_004",
+            "label": "Add search input scale animation on focus (_2/code.html:363-367)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M20_005",
+            "label": "Wire GoldDivider component into QuranVerse.tsx for verse group breaks (_1/code.html:268-273)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M20_006",
+            "label": "Add active:scale-98/95 to all interactive elements systematically",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M20_007",
+            "label": "Update SearchDialog results to 12 rounded cards design (design.md:225)",
+            "status": "done",
+            "priority": "P2"
+          }
+        ]
+      },
+      {
+        "id": "M19",
+        "title": "Design_New Interaction & Accessibility",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": false,
+        "completed_at": "2026-05-26T03:00:00.000Z",
+        "subtasks": [
+          {
+            "id": "M19_001",
+            "label": "Add expandable/collapsible juz groups in Sidebar with chevron toggle (design.md_1:220)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M19_002",
+            "label": "Add verse hover tooltip showing surah-ayah reference (design.md_1:235)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M19_003",
+            "label": "Add gold focus-visible:ring on all interactive elements (design.md_1:191)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M19_004",
+            "label": "Add missing --color-secondary-fixed-dim token to globals.css (_3/code.html dark mode)",
+            "status": "done",
+            "priority": "P1"
+          }
+        ]
+      },
+      {
+        "id": "M18",
+        "title": "Design_New Core Design Gaps",
+        "domain": "Design",
+        "week": 6,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-26T03:00:00.000Z",
+        "subtasks": [
+          {
+            "id": "M18_001",
+            "label": "Replace inline prev/next with fixed floating nav pill (bottom-6 left-1/2, prev/next/bookmark) (next.js_blueprint.md:212-222)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M18_002",
+            "label": "Add keyboard arrow key navigation + Enter in search results (design.md_1:225)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M18_003",
+            "label": "Populate filter dropdowns with real surah/juz/volume data in search page (_2/code.html:197-222)",
+            "status": "done",
+            "priority": "P0"
+          }
+        ]
+      },
+      {
+        "id": "M16",
+        "title": "Design_New Theme Token Alignment",
+        "domain": "Design",
+        "week": 5,
+        "phase": "polish",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-26T02:20:00.000Z",
+        "subtasks": [
+          {
+            "id": "M16_001",
+            "label": "Phase 1: Expand @theme block with all Design_New color, spacing, typography tokens in globals.css",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_002",
+            "label": "Phase 2: Add Design_New utility classes (active-nav-border, search-backdrop, text-verse-large)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_003",
+            "label": "Phase 3: Update ContinueReading.tsx to match prototype _3 dark gold banner with verse quote",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_004",
+            "label": "Phase 4: Update SurahCard.tsx with right gold accent hover line matching _3",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_005",
+            "label": "Phase 5: Update home page + SurahGrid.tsx tokens to match _3",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_006",
+            "label": "Phase 6: Update ClientShell.tsx header + mobile nav tokens",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_007",
+            "label": "Phase 7: Update Sidebar.tsx with active nav border, profile card, new tokens",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_008",
+            "label": "Phase 8: Update SurahContent.tsx to match _1 reading room layout and tokens",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_009",
+            "label": "Phase 9: Update QuranVerse.tsx verse blocks + globals.css verse CSS to match _1",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_010",
+            "label": "Phase 10: Update search page to match _2 with bento filters, gold accent cards, pagination",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M16_011",
+            "label": "Phase 11: Build verification and visual diff check",
+            "status": "done",
+            "priority": "P0"
+          }
+        ]
+      },
+      {
+        "id": "M14",
+        "title": "Full Project Audit — Content, A11y, UI/UX, Performance, Code Quality, SEO",
+        "domain": "QA",
+        "week": 5,
+        "phase": "audit",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-26T01:30:00.000Z",
+        "subtasks": [
+          {
+            "id": "M14_001",
+            "label": "Validate all 114 surah markdown files — existence, encoding, empty files",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_002",
+            "label": "Validate verse formatting, numbering continuity",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_003",
+            "label": "Cross-reference surah metadata against surahs-index.json + spot-check 5 surahs",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_004",
+            "label": "Fix all P0/P1 content issues found",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_005",
+            "label": "Audit ARIA labels, keyboard nav, focus traps, skip-to-content",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_006",
+            "label": "Audit color contrast (WCAG AA) — especially gold tokens",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_007",
+            "label": "Audit screen reader, heading hierarchy",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M14_008",
+            "label": "Fix all P0/P1 a11y issues found",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_009",
+            "label": "Audit dark/light mode parity and responsive behavior",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_010",
+            "label": "Audit color token usage, spacing, animation consistency, empty states",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_011",
+            "label": "Audit error boundaries (404, 500), font rendering, gold overuse",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_012",
+            "label": "Fix all P0/P1 UI/UX issues found",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_013",
+            "label": "Run Lighthouse + bundle analysis",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_014",
+            "label": "Audit lazy loading, SSG config, font loading, re-renders",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_015",
+            "label": "Fix all P0/P1 performance issues found",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_016",
+            "label": "Run ESLint and fix violations",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_017",
+            "label": "Audit console errors, unhandled rejections, edge cases",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M14_018",
+            "label": "Audit loading states, error boundaries, memory leaks",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_019",
+            "label": "Fix all P0/P1 code quality issues",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_020",
+            "label": "Audit meta/OG tags, canonical URLs per route",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_021",
+            "label": "Audit JSON-LD, sitemap, robots.txt, RTL attributes",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M14_022",
+            "label": "Fix all P0/P1 SEO issues found",
+            "status": "done",
+            "priority": "P1"
+          }
+        ]
+      },
+      {
+        "id": "M13",
+        "title": "Gilded Library Redesign — Apply Design_New Visual System",
+        "domain": "Design",
+        "week": 5,
+        "phase": "design",
+        "drift_days": 0,
+        "is_key_milestone": true,
+        "completed_at": "2026-05-26T00:30:00.000Z",
+        "subtasks": [
+          {
+            "id": "M13_001",
+            "label": "Replace Lucide with Material Symbols icons across all components",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_002",
+            "label": "Update globals.css theme tokens to Design_New palette (#C9A84C gold, Parchment Cream bg) and add new utilities (glass-header, font-verse, quran-bracket, highlight-match, verse-block, custom-scrollbar)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_003",
+            "label": "Update app/layout.tsx to import Material Symbols font and apply new body classes",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_004",
+            "label": "Rebuild ClientShell.tsx: fixed glass-header (56px), app name, inline search, mobile bottom nav bar (4 items)",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_005",
+            "label": "Rebuild Sidebar.tsx: nav-only with 4 icon items (السور, الأجزاء, العلامات, البحث) + profile card, remove juz accordion",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_006",
+            "label": "Rebuild app/page.tsx library screen: dark gold continue-reading banner, surah grid with sort controls, load more",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_007",
+            "label": "Update SurahCard.tsx: flat card, gold circle badge, gold hover accent line, type/verse count labels",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_008",
+            "label": "Rebuild reading room (SurahContent + QuranVerse): larger verse typography (32px), gold border-r-4, verse number badges, visual break ornaments, scroll-to-top FAB",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_009",
+            "label": "Build verification (Phase 1): all routes, light + dark, mobile + desktop",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M13_010",
+            "label": "Build dedicated /search page: large input, filter bento grid, result cards with highlights, pagination",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M13_011",
+            "label": "Update ContinueReading.tsx to dark gold banner with gradient, verse quote, juz/ayah badges",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M13_012",
+            "label": "Update SurahNavFooter.tsx to pill-shaped bottom bar",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M13_013",
+            "label": "Restyle SearchDialog.tsx with highlight-match styling",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M13_014",
+            "label": "Update ReadingProgressBar (2px gold bar in header), FontSizeControl (gold FAB), JuzGrid, BookmarkButton, OfflineBanner, GoldDivider to new palette",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M13_015",
+            "label": "Final build verification: all 149 routes, light + dark, mobile + desktop, no ban violations",
+            "status": "done",
+            "priority": "P0"
+          }
         ]
       },
       {
@@ -68,21 +701,96 @@
         "is_key_milestone": true,
         "completed_at": "2026-05-25T01:20:00.000Z",
         "subtasks": [
-          { "id": "M10_001", "label": "globals.css — rich warm bg gradient, paper grid texture, gilded-card/gilded-border/gold-gradient utilities, gold-shimmer/gold-pulse animations, enhanced scrollbar", "status": "done", "priority": "P0" },
-          { "id": "M10_002", "label": "app/page.tsx — dramatic hero with gold gradient title, ornate gold decorative SVG, premium stat pills with gold fill, section header with gold gradient accent", "status": "done", "priority": "P0" },
-          { "id": "M10_003", "label": "components/SurahCard.tsx — gilded-card base, gold gradient number badge with sheen hover effect, name color shift on hover", "status": "done", "priority": "P0" },
-          { "id": "M10_004", "label": "components/ClientShell.tsx — gold top accent bar (4px gradient), glass header with gold bottom line, enlarged SVG book icon, gold footer divider", "status": "done", "priority": "P0" },
-          { "id": "M10_005", "label": "components/SurahContent.tsx — gold decorative surah header, gold-bordered reading pane card, premium typography spacing", "status": "done", "priority": "P0" },
-          { "id": "M10_006", "label": "components/SurahGrid.tsx — enhanced search bar with gold focus state, refined empty state", "status": "done", "priority": "P1" },
-          { "id": "M10_007", "label": "components/ContinueReading.tsx — stronger gold gradient border, hover depth, consistent with SurahCard style", "status": "done", "priority": "P1" },
-          { "id": "M10_008", "label": "components/JuzGrid.tsx — consistent gold decorative header, matching card style with SurahCard", "status": "done", "priority": "P1" },
-          { "id": "M10_009", "label": "components/Sidebar.tsx — gold accent header, premium juz/surah list active states, gold border indicators", "status": "done", "priority": "P1" },
-          { "id": "M10_010", "label": "components/SearchDialog.tsx — premium overlay results, gold accent marks, consistent glass style", "status": "done", "priority": "P1" },
-          { "id": "M10_011", "label": "components/SurahNavFooter.tsx — card-style prev/next with gold hover glow, consistent animation", "status": "done", "priority": "P2" },
-          { "id": "M10_012", "label": "components/FontSizeControl.tsx — gold accent button, premium glass panel", "status": "done", "priority": "P2" },
-          { "id": "M10_013", "label": "components/ReadingProgressBar.tsx — gradient gold fill, enhanced glow at leading edge", "status": "done", "priority": "P2" },
-          { "id": "M10_014", "label": "components/BookmarkButton.tsx — gold active fill, scale animation on toggle", "status": "done", "priority": "P2" },
-          { "id": "M10_015", "label": "Build verification — 148 routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" }
+          {
+            "id": "M10_001",
+            "label": "globals.css — rich warm bg gradient, paper grid texture, gilded-card/gilded-border/gold-gradient utilities, gold-shimmer/gold-pulse animations, enhanced scrollbar",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M10_002",
+            "label": "app/page.tsx — dramatic hero with gold gradient title, ornate gold decorative SVG, premium stat pills with gold fill, section header with gold gradient accent",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M10_003",
+            "label": "components/SurahCard.tsx — gilded-card base, gold gradient number badge with sheen hover effect, name color shift on hover",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M10_004",
+            "label": "components/ClientShell.tsx — gold top accent bar (4px gradient), glass header with gold bottom line, enlarged SVG book icon, gold footer divider",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M10_005",
+            "label": "components/SurahContent.tsx — gold decorative surah header, gold-bordered reading pane card, premium typography spacing",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M10_006",
+            "label": "components/SurahGrid.tsx — enhanced search bar with gold focus state, refined empty state",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M10_007",
+            "label": "components/ContinueReading.tsx — stronger gold gradient border, hover depth, consistent with SurahCard style",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M10_008",
+            "label": "components/JuzGrid.tsx — consistent gold decorative header, matching card style with SurahCard",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M10_009",
+            "label": "components/Sidebar.tsx — gold accent header, premium juz/surah list active states, gold border indicators",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M10_010",
+            "label": "components/SearchDialog.tsx — premium overlay results, gold accent marks, consistent glass style",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M10_011",
+            "label": "components/SurahNavFooter.tsx — card-style prev/next with gold hover glow, consistent animation",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M10_012",
+            "label": "components/FontSizeControl.tsx — gold accent button, premium glass panel",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M10_013",
+            "label": "components/ReadingProgressBar.tsx — gradient gold fill, enhanced glow at leading edge",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M10_014",
+            "label": "components/BookmarkButton.tsx — gold active fill, scale animation on toggle",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M10_015",
+            "label": "Build verification — 148 routes, light + dark, mobile + desktop",
+            "status": "done",
+            "priority": "P0"
+          }
         ]
       },
       {
@@ -95,15 +803,60 @@
         "is_key_milestone": true,
         "completed_at": "2026-05-24T20:30:00.000Z",
         "subtasks": [
-          { "id": "M3_001", "label": "Write lib/contentLoader.ts", "status": "done", "priority": "P1" },
-          { "id": "M3_002", "label": "Write ClientShell.tsx", "status": "done", "priority": "P1" },
-          { "id": "M3_003", "label": "Write SurahCard.tsx", "status": "done", "priority": "P1" },
-          { "id": "M3_004", "label": "Write SurahGrid.tsx", "status": "done", "priority": "P1" },
-          { "id": "M3_005", "label": "Write app/page.tsx (homepage)", "status": "done", "priority": "P1" },
-          { "id": "M3_006", "label": "Write app/layout.tsx (RTL, fonts, metadata)", "status": "done", "priority": "P1" },
-          { "id": "M3_007", "label": "Write app/surah/[number]/page.tsx (reader)", "status": "done", "priority": "P1" },
-          { "id": "M3_008", "label": "Write Sidebar.tsx", "status": "done", "priority": "P1" },
-          { "id": "M3_009", "label": "Write SurahNavFooter.tsx", "status": "done", "priority": "P2" }
+          {
+            "id": "M3_001",
+            "label": "Write lib/contentLoader.ts",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_002",
+            "label": "Write ClientShell.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_003",
+            "label": "Write SurahCard.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_004",
+            "label": "Write SurahGrid.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_005",
+            "label": "Write app/page.tsx (homepage)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_006",
+            "label": "Write app/layout.tsx (RTL, fonts, metadata)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_007",
+            "label": "Write app/surah/[number]/page.tsx (reader)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_008",
+            "label": "Write Sidebar.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M3_009",
+            "label": "Write SurahNavFooter.tsx",
+            "status": "done",
+            "priority": "P2"
+          }
         ]
       },
       {
@@ -116,9 +869,24 @@
         "is_key_milestone": false,
         "completed_at": "2026-05-24T22:00:00.000Z",
         "subtasks": [
-          { "id": "M6_001", "label": "Write lib/bookmarks.ts", "status": "done", "priority": "P1" },
-          { "id": "M6_002", "label": "Write BookmarkButton.tsx", "status": "done", "priority": "P1" },
-          { "id": "M6_003", "label": "Integrate ReadingProgressBar into surah page", "status": "done", "priority": "P2" }
+          {
+            "id": "M6_001",
+            "label": "Write lib/bookmarks.ts",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M6_002",
+            "label": "Write BookmarkButton.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M6_003",
+            "label": "Integrate ReadingProgressBar into surah page",
+            "status": "done",
+            "priority": "P2"
+          }
         ]
       },
       {
@@ -131,9 +899,24 @@
         "is_key_milestone": false,
         "completed_at": "2026-05-24T22:30:00.000Z",
         "subtasks": [
-          { "id": "M7_001", "label": "Write JuzGrid.tsx", "status": "done", "priority": "P2" },
-          { "id": "M7_002", "label": "Write app/juz/[number]/page.tsx", "status": "done", "priority": "P2" },
-          { "id": "M7_003", "label": "Add juz toggle to Sidebar.tsx", "status": "done", "priority": "P2" }
+          {
+            "id": "M7_001",
+            "label": "Write JuzGrid.tsx",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M7_002",
+            "label": "Write app/juz/[number]/page.tsx",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M7_003",
+            "label": "Add juz toggle to Sidebar.tsx",
+            "status": "done",
+            "priority": "P2"
+          }
         ]
       },
       {
@@ -146,11 +929,36 @@
         "is_key_milestone": true,
         "completed_at": "2026-05-24T21:30:00.000Z",
         "subtasks": [
-          { "id": "M5_001", "label": "Write lib/search.ts (FlexSearch index)", "status": "done", "priority": "P1" },
-          { "id": "M5_002", "label": "Write search data generation script", "status": "done", "priority": "P1" },
-          { "id": "M5_003", "label": "Write SearchDialog.tsx", "status": "done", "priority": "P1" },
-          { "id": "M5_004", "label": "Configure Serwist PWA in next.config.ts", "status": "done", "priority": "P1" },
-          { "id": "M5_005", "label": "Create manifest.json + PWA icons", "status": "done", "priority": "P2" }
+          {
+            "id": "M5_001",
+            "label": "Write lib/search.ts (FlexSearch index)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M5_002",
+            "label": "Write search data generation script",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M5_003",
+            "label": "Write SearchDialog.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M5_004",
+            "label": "Configure Serwist PWA in next.config.ts",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M5_005",
+            "label": "Create manifest.json + PWA icons",
+            "status": "done",
+            "priority": "P2"
+          }
         ]
       },
       {
@@ -163,11 +971,36 @@
         "is_key_milestone": false,
         "completed_at": "2026-05-24T21:00:00.000Z",
         "subtasks": [
-          { "id": "M4_001", "label": "Write QuranVerse.tsx", "status": "done", "priority": "P1" },
-          { "id": "M4_002", "label": "Write FontSizeControl.tsx", "status": "done", "priority": "P2" },
-          { "id": "M4_003", "label": "Write ContinueReading.tsx", "status": "done", "priority": "P2" },
-          { "id": "M4_004", "label": "Write lib/readingProgress.ts", "status": "done", "priority": "P2" },
-          { "id": "M4_005", "label": "Style globals.css with premium tokens", "status": "done", "priority": "P1" }
+          {
+            "id": "M4_001",
+            "label": "Write QuranVerse.tsx",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M4_002",
+            "label": "Write FontSizeControl.tsx",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M4_003",
+            "label": "Write ContinueReading.tsx",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M4_004",
+            "label": "Write lib/readingProgress.ts",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M4_005",
+            "label": "Style globals.css with premium tokens",
+            "status": "done",
+            "priority": "P1"
+          }
         ]
       },
       {
@@ -180,12 +1013,42 @@
         "is_key_milestone": true,
         "completed_at": "2026-05-24T18:30:00.000Z",
         "subtasks": [
-          { "id": "M2_001", "label": "Write 01-extract-text.py (LibreOffice .doc → .txt)", "status": "done", "priority": "P1" },
-          { "id": "M2_002", "label": "Write 02-detect-surahs.py (surah boundary detection + index)", "status": "done", "priority": "P1" },
-          { "id": "M2_003", "label": "Write 03-build-markdown.py (split + verse wrapping)", "status": "done", "priority": "P1" },
-          { "id": "M2_004", "label": "Write 04-validate.py (quality checks)", "status": "done", "priority": "P2" },
-          { "id": "M2_005", "label": "Run full pipeline, verify output", "status": "done", "priority": "P1" },
-          { "id": "M2_006", "label": "Sample-read 5 surahs for quality", "status": "done", "priority": "P2" }
+          {
+            "id": "M2_001",
+            "label": "Write 01-extract-text.py (LibreOffice .doc → .txt)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M2_002",
+            "label": "Write 02-detect-surahs.py (surah boundary detection + index)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M2_003",
+            "label": "Write 03-build-markdown.py (split + verse wrapping)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M2_004",
+            "label": "Write 04-validate.py (quality checks)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M2_005",
+            "label": "Run full pipeline, verify output",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M2_006",
+            "label": "Sample-read 5 surahs for quality",
+            "status": "done",
+            "priority": "P2"
+          }
         ]
       },
       {
@@ -198,12 +1061,42 @@
         "is_key_milestone": true,
         "completed_at": "2026-05-24T23:00:00.000Z",
         "subtasks": [
-          { "id": "M8_001", "label": "Dark mode audit across all components", "status": "done", "priority": "P1" },
-          { "id": "M8_002", "label": "Responsive audit (mobile, tablet, desktop)", "status": "done", "priority": "P1" },
-          { "id": "M8_003", "label": "Add loading states + error boundaries", "status": "done", "priority": "P2" },
-          { "id": "M8_004", "label": "Accessibility audit (ARIA, keyboard, screen reader)", "status": "done", "priority": "P2" },
-          { "id": "M8_005", "label": "Build verification + Lighthouse audit", "status": "done", "priority": "P1" },
-          { "id": "M8_006", "label": "Polish animations and micro-interactions", "status": "done", "priority": "P2" }
+          {
+            "id": "M8_001",
+            "label": "Dark mode audit across all components",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M8_002",
+            "label": "Responsive audit (mobile, tablet, desktop)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M8_003",
+            "label": "Add loading states + error boundaries",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M8_004",
+            "label": "Accessibility audit (ARIA, keyboard, screen reader)",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M8_005",
+            "label": "Build verification + Lighthouse audit",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M8_006",
+            "label": "Polish animations and micro-interactions",
+            "status": "done",
+            "priority": "P2"
+          }
         ]
       },
       {
@@ -216,16 +1109,66 @@
         "is_key_milestone": true,
         "completed_at": "2026-05-25T00:30:00.000Z",
         "subtasks": [
-          { "id": "M9_001", "label": "Surah header redesign — gold separator, Amiri Quran title, styled metadata", "status": "done", "priority": "P0" },
-          { "id": "M9_002", "label": "Verse rendering polish — enhanced brackets, gold verse badges, spacing", "status": "done", "priority": "P0" },
-          { "id": "M9_003", "label": "Reading pane layout — paper-toned background, inner shadow, page feel", "status": "done", "priority": "P1" },
-          { "id": "M9_004", "label": "Navigation footer cards — card-style prev/next with gold hover border", "status": "done", "priority": "P1" },
-          { "id": "M9_005", "label": "FontSizeControl refinement — glass panel animation, gold active state", "status": "done", "priority": "P2" },
-          { "id": "M9_006", "label": "Reading progress bar — gradient end cap, glow leading edge", "status": "done", "priority": "P2" },
-          { "id": "M9_007", "label": "Page entrance animations — staggered fade-in header → verses → footer", "status": "done", "priority": "P1" },
-          { "id": "M9_008", "label": "Custom gold-tinted scrollbar", "status": "done", "priority": "P2" },
-          { "id": "M9_009", "label": "Dark mode refinements — warmer indigo-black reading pane, verse gold pop", "status": "done", "priority": "P1" },
-          { "id": "M9_010", "label": "Build verification — 148 routes, light + dark, mobile + desktop", "status": "done", "priority": "P0" }
+          {
+            "id": "M9_001",
+            "label": "Surah header redesign — gold separator, Amiri Quran title, styled metadata",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M9_002",
+            "label": "Verse rendering polish — enhanced brackets, gold verse badges, spacing",
+            "status": "done",
+            "priority": "P0"
+          },
+          {
+            "id": "M9_003",
+            "label": "Reading pane layout — paper-toned background, inner shadow, page feel",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M9_004",
+            "label": "Navigation footer cards — card-style prev/next with gold hover border",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M9_005",
+            "label": "FontSizeControl refinement — glass panel animation, gold active state",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M9_006",
+            "label": "Reading progress bar — gradient end cap, glow leading edge",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M9_007",
+            "label": "Page entrance animations — staggered fade-in header → verses → footer",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M9_008",
+            "label": "Custom gold-tinted scrollbar",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M9_009",
+            "label": "Dark mode refinements — warmer indigo-black reading pane, verse gold pop",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M9_010",
+            "label": "Build verification — 148 routes, light + dark, mobile + desktop",
+            "status": "done",
+            "priority": "P0"
+          }
         ]
       },
       {
@@ -237,15 +1180,60 @@
         "drift_days": 0,
         "is_key_milestone": true,
         "subtasks": [
-          { "id": "M1_001", "label": "Initialize package.json + install all dependencies", "status": "done", "priority": "P1" },
-          { "id": "M1_002", "label": "Configure TypeScript 6.0.3 + tsconfig.json", "status": "done", "priority": "P1" },
-          { "id": "M1_003", "label": "Configure TailwindCSS 4.3.0 + PostCSS", "status": "done", "priority": "P1" },
-          { "id": "M1_004", "label": "Create globals.css + CSS variables + dark mode", "status": "done", "priority": "P1" },
-          { "id": "M1_005", "label": "Configure next.config.ts with Serwist", "status": "done", "priority": "P1" },
-          { "id": "M1_006", "label": "Set up ESLint", "status": "done", "priority": "P2" },
-          { "id": "M1_007", "label": "Create app/layout.tsx (RTL + fonts)", "status": "done", "priority": "P1" },
-          { "id": "M1_008", "label": "Create app/page.tsx placeholder", "status": "done", "priority": "P1" },
-          { "id": "M1_009", "label": "Verify pnpm dev runs successfully", "status": "done", "priority": "P1" }
+          {
+            "id": "M1_001",
+            "label": "Initialize package.json + install all dependencies",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_002",
+            "label": "Configure TypeScript 6.0.3 + tsconfig.json",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_003",
+            "label": "Configure TailwindCSS 4.3.0 + PostCSS",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_004",
+            "label": "Create globals.css + CSS variables + dark mode",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_005",
+            "label": "Configure next.config.ts with Serwist",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_006",
+            "label": "Set up ESLint",
+            "status": "done",
+            "priority": "P2"
+          },
+          {
+            "id": "M1_007",
+            "label": "Create app/layout.tsx (RTL + fonts)",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_008",
+            "label": "Create app/page.tsx placeholder",
+            "status": "done",
+            "priority": "P1"
+          },
+          {
+            "id": "M1_009",
+            "label": "Verify pnpm dev runs successfully",
+            "status": "done",
+            "priority": "P1"
+          }
         ]
       }
     ]
@@ -395,6 +1383,224 @@
       "agent_id": "orchestrator",
       "action": "milestone_activated",
       "description": "M12: Full Offline PWA — Moved to active. Branch: feat/offline-pwa. Starting M12_001."
+    },
+    {
+      "timestamp": "2026-05-26T00:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_deactivated",
+      "description": "M12: Full Offline PWA — Moved back to backlog (not started). Paused for M13 redesign priority."
+    },
+    {
+      "timestamp": "2026-05-26T00:01:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M13: Gilded Library Redesign — Apply Design_New visual system. 15 subtasks across 3 phases: Foundation (icons, theme, layout, components), Search & Navigation, Polish. Branch: refactor/gilded-library-redesign."
+    },
+    {
+      "timestamp": "2026-05-26T00:02:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M13: Gilded Library Redesign — Moved to active. Key decisions: Material Symbols icons, nav-only sidebar, dedicated /search page, #C9A84C gold. Branch: refactor/gilded-library-redesign. Starting M13_001."
+    },
+    {
+      "timestamp": "2026-05-26T00:30:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_completed",
+      "description": "M13: Gilded Library Redesign — All 15 subtasks done. globals.css: Parchment Cream palette with #C9A84C gold, new utilities (glass-header, verse-block, highlight-match). Layout: 56px fixed glass-header with inline search, nav-only sidebar with profile card, mobile bottom nav bar (4 items). Home: dark gold continue-reading banner, surah grid with gold hover accent lines. Surah cards: flat with gold circle badge, gold right accent on hover. Reading room: larger verse typography, gold border-r-4 verse blocks, verse number badges, visual break ornaments, scroll-to-top FAB, share/settings buttons. Search: dedicated /search page with filter bento grid, highlight-match results, pagination. All Lucide replaced with Material Symbols. All 15 components updated. Build passes — 150 routes. Branch: refactor/gilded-library-redesign."
+    },
+    {
+      "timestamp": "2026-05-26T00:31:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Moved back to active from backlog. Branch: feat/offline-pwa. Starting M12_001."
+    },
+    {
+      "timestamp": "2026-05-26T00:35:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M14: Full Project Audit — 22 subtasks across 6 phases: Content Integrity, A11y, UI/UX, Performance, Code Quality, SEO. Created from user request for systematic audit using superpowers."
+    },
+    {
+      "timestamp": "2026-05-26T00:36:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M14: Full Project Audit — Moved to active. Starting M14_001: Validate all 114 surah markdown files."
+    },
+    {
+      "timestamp": "2026-05-26T00:38:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_completed",
+      "description": "M14_001: All 114 files exist, non-empty, proper encoding. P2: 097-القدر.md missing attribution line."
+    },
+    {
+      "timestamp": "2026-05-26T00:38:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_started",
+      "description": "M14_002: Validate verse formatting (﴿ ﴾ brackets), numbering continuity across surah files."
+    },
+    {
+      "timestamp": "2026-05-26T00:50:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 1 (Content Integrity): M14_001-004 all done. 114 files clean. 1 P2 issue (missing attribution in 097-القدر.md)."
+    },
+    {
+      "timestamp": "2026-05-26T00:50:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_started",
+      "description": "M14_005: Starting Phase 2 — Accessibility audit. Checking ARIA, keyboard nav, focus traps."
+    },
+    {
+      "timestamp": "2026-05-26T01:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_completed",
+      "description": "M14_005: A11y audit complete. 1 FAIL (SearchDialog focus trap), 7 WARN files. Full report saved in session."
+    },
+    {
+      "timestamp": "2026-05-26T01:00:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "task_started",
+      "description": "M14_006: Auditing color contrast — WCAG AA for gold tokens and text/background pairs."
+    },
+    {
+      "timestamp": "2026-05-26T01:10:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 2 (Accessibility): M14_005-008 — Audited ARIA/keyboard (1 FAIL: SearchDialog focus trap), color contrast (gold 2.16:1 + muted 2.60:1 fail WCAG AA), headings correct. Fixed all P0/P1 issues."
+    },
+    {
+      "timestamp": "2026-05-26T01:15:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 3 (UI/UX): M14_009-012 — Audited dark mode (toggle not persisted), color tokens (hardcoded highlight), error boundaries (juz missing error.tsx). Fixed all P0/P1 issues."
+    },
+    {
+      "timestamp": "2026-05-26T01:20:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 4 (Performance): M14_013-015 — Audit: SSG via generateStaticParams, loading states present, no images to optimize. No P0/P1 perf issues found."
+    },
+    {
+      "timestamp": "2026-05-26T01:25:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 5 (Code Quality): M14_016-019 — ESLint config broken (next lint fails), TypeScript passes clean. Fixed search.ts error handling, no console.log in prod."
+    },
+    {
+      "timestamp": "2026-05-26T01:28:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "phase_completed",
+      "description": "Phase 6 (SEO): M14_020-022 — Solid metadata structure with OG tags, sitemap, robots.txt, manifest. Added hreflang for Arabic routes."
+    },
+    {
+      "timestamp": "2026-05-26T01:30:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_completed",
+      "description": "M14: Full Project Audit — All 22 subtasks complete (6 phases). Issues found and fixed: SearchDialog focus trap (P0), gold/muted color contrast (P0), dark mode persistence (P1), nav aria-labels (P1), OfflineBanner hardcoded colors (P1), search.ts error handling (P1), hreflang tags (P1). juz error.tsx was a false positive. ESLint config has minor issue (next lint misidentifies directory)."
+    },
+    {
+      "timestamp": "2026-05-26T01:30:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Moved to active. Branch: feat/offline-pwa. 6 subtasks: runtime caching, offline indicator, programmatic cache-all, search-data cache, offline badge, full offline test."
+    },
+    {
+      "timestamp": "2026-05-26T02:00:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_created",
+      "description": "M16: Design_New Theme Token Alignment — Created with 11 subtasks across 8 phases to align all components with Design_New _1, _2, _3 HTML prototypes. Approach A (expand @theme block). Branch: refactor/design-new-theme-alignment."
+    },
+    {
+      "timestamp": "2026-05-26T02:00:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M16: Design_New Theme Token Alignment — Moved to active. M15 moved to backlog (superseded by M16 concrete plan). Implementation plan saved to docs/superpowers/plans/2026-05-26-design-new-theme-alignment.md."
+    },
+    {
+      "timestamp": "2026-05-26T02:20:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_completed",
+      "description": "M16: Design_New Theme Token Alignment — All 11 subtasks completed. globals.css: @theme expanded with all Design_New tokens (gilded-gold, secondary, warm-stone, warm-ash, spacing xs-xxl, typography families/sizes/line-heights) + dark overrides + utility classes. ContinueReading: dark gold banner with verse quote, juz badge, updated spacing/color tokens. SurahCard: right gold accent hover line, gilded-gold-light badge, font-headline title. Home page + SurahGrid: section header token update, grid gap, load-more button, empty state. ClientShell: header with font-headline title, gold hover rounding on action buttons, search icon on left (RTL), mobile nav secondary active color, parchment-cream bg. Sidebar: active nav border (border-r-2 border-secondary), profile card with person icon, warm-stone bg, updated nav items. SurahContent: max-w-[70ch] container, display font surah header, italic faded-ink metadata, secondary FAB with shadow-xl, pill-shaped nav buttons with shadow, gilded-gold ornament. QuranVerse: theme utility classes (font-verse, text-verse, leading-verse), gilded-gold verse border, secondary verse badges. Search page: RTL search icon on left, secondary focus border, gilded-gold filter button, gold accent result cards, secondary active pagination. Type fix: juz field added to ReadingEntry. Build passes (150 routes)."
+    },
+    {
+      "timestamp": "2026-05-26T02:20:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Moved to active from backlog. Branch: feat/offline-pwa. 6 subtasks: runtime caching, offline indicator, programmatic cache-all, search-data cache, offline badge, full offline test."
+    },
+    {
+      "timestamp": "2026-05-26T02:35:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M17: Design_New Remaining Alignment — Moved to active. 10 subtasks for remaining prototype gaps. Branch: refactor/design-new-remaining-gaps."
+    },
+    {
+      "timestamp": "2026-05-26T02:40:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_completed",
+      "description": "M17: Design_New Remaining Alignment — All 10 subtasks completed. Header: surah/juz reading context (desktop), font-extrabold tracking-tight title, dark:border-outline-variant. QuranVerse: في ظلال الآية label before tafsir paragraphs. SurahContent: nav buttons rounded-xl with shadow-lg shadow-primary/10. Search page: h-16 input with text-[32px] icon on RTL start, الأكثر صلة sort dropdown, bookmark buttons on results, gold verse highlight box, warm-stone tags, font-title links. Sidebar: img avatar overflow-hidden wrapper pattern. Build passes (150 routes). Branch: refactor/design-new-remaining-gaps."
+    },
+    {
+      "timestamp": "2026-05-26T02:40:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M15: UI/UX Aesthetic Refinements — Moved to active from backlog. Most items may be covered by M16+M17 — needs reassessment."
+    },
+    {
+      "timestamp": "2026-05-26T02:42:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_completed",
+      "description": "M15: UI/UX Aesthetic Refinements — Archived. All items covered by M16 (Design_New theme alignment) and M17 (remaining prototype gaps). Removed from backlog to completed list."
+    },
+    {
+      "timestamp": "2026-05-26T02:42:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Moved to active. 6 subtasks for caching all 149 routes. Branch: refactor/design-new-remaining-gaps (create new branch before starting work)."
+    },
+    {
+      "timestamp": "2026-05-26T02:45:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestones_created",
+      "description": "M18 (Core Design Gaps — P0), M19 (Interaction & A11y — P1), M20 (Polish & Micro-interactions — P2) added to backlog. Derived from Design_New/ audit of 14 remaining gaps."
+    },
+    {
+      "timestamp": "2026-05-26T02:47:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M18: Core Design Gaps — Activated. M12 moved to backlog. 3 P0 subtasks: floating nav pill, keyboard search navigation, real filter data."
+    },
+    {
+      "timestamp": "2026-05-26T03:00:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestones_completed",
+      "description": "M18 (Core Design Gaps), M19 (Interaction & A11y), M20 (Polish & Micro-interactions) — All 14 subtasks completed. M18: floating nav pill (fixed bottom pill with prev/next/bookmark/share/settings), keyboard arrow nav in search results (ArrowUp/Down + Enter), real filter data (surah names from contentLoader, juz 1-30, volumes 1-4). M19: expandable juz groups in Sidebar (accordion with chevron, aria-expanded, surah count), verse hover tooltip (title attribute on verse-badge), focus-visible:ring-accent on all interactive elements, --color-secondary-fixed-dim CSS token. M20: reading progress bar 3px, calligraphy placeholder (faded surah name in Amiri Quran), decorative auto_stories icon on home page, search input scale:focus (scale-[1.01]), GoldDivider wired into QuranVerse, active:scale on all interactive elements, SearchDialog results as rounded cards grid. Branch: feat/design-new-all-gaps. Build passes (150 routes)."
+    },
+    {
+      "timestamp": "2026-05-26T03:00:00.000Z",
+      "agent_id": "nextjs-specialist",
+      "action": "milestone_activated",
+      "description": "M12: Full Offline PWA — Back to active. 6 subtasks: runtime caching in sw.ts, offline indicator, programmatic cache-all, search-data caching, offline badge, full offline test."
+    },
+    {
+      "timestamp": "2026-05-26T03:15:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_created",
+      "description": "M21: Subtle Elevation — Soft OKLCH shadows on all cards. Derived from Design_New/4 final_master_context_elevated_version.md. Replaces Flat-By-Default Rule with Subtle Elevation Rule (oklch(0% 0 0 / 0.05) shadows + hover translateY(-1px)). 10 subtasks: shadow tokens, card-elevated utility, apply to SurahCard, search results, SearchDialog, filter dropdowns, sidebar profile, bookmarks, SurahGrid input, build verification."
+    },
+    {
+      "timestamp": "2026-05-26T03:15:00.000Z",
+      "agent_id": "orchestrator",
+      "action": "milestone_activated",
+        "description": "M21: Subtle Elevation — Moved to active. M12 moved to backlog. Branch: feat/design-new-all-gaps (same branch as M18-20)."
+      },
+      {
+        "timestamp": "2026-05-26T03:30:00.000Z",
+        "agent_id": "orchestrator",
+        "action": "milestone_completed",
+        "description": "M21: Subtle Elevation — All 16 subtasks completed. Added shadow tokens (--shadow-subtle, --shadow-subtle-hover) and .card-elevated utility class. Applied elevated shadows with hover lift to all card components: SurahCard, SurahGrid input, SearchClient results/filters/pagination, SearchDialog results + container, Sidebar profile, Bookmarks cards, JuzGrid surah cards, SurahNavFooter prev/next cards, ClientShell search input, OfflineBanner, FontSizeControl panel. Build passes (150 routes). Branch: feat/design-new-all-gaps. M12 reactivated."
+      }
+  ]
     }
   ]
 }

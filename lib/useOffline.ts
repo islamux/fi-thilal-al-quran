@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SW_CACHE_ALL, SW_CACHE_PROGRESS, SURAH_COUNT, JUZ_COUNT } from "./constants";
 
 export function useOffline() {
-  const [offline, setOffline] = useState(
-    typeof navigator !== "undefined" ? !navigator.onLine : false
-  );
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
+    setOffline(!navigator.onLine);
     const goOffline = () => setOffline(true);
     const goOnline = () => setOffline(false);
     window.addEventListener("offline", goOffline);
@@ -26,7 +26,7 @@ export function useCacheProgress() {
 
   useEffect(() => {
     const handler = (event: MessageEvent) => {
-      if (event.data?.type === "CACHE_PROGRESS") {
+      if (event.data?.type === SW_CACHE_PROGRESS) {
         setProgress({ total: event.data.total, done: event.data.done });
       }
     };
@@ -42,15 +42,15 @@ export function cacheAllPages() {
 
   const urls: string[] = ["/"];
 
-  for (let i = 1; i <= 114; i++) {
+  for (let i = 1; i <= SURAH_COUNT; i++) {
     urls.push(`/surah/${i}`);
   }
-  for (let i = 1; i <= 30; i++) {
+  for (let i = 1; i <= JUZ_COUNT; i++) {
     urls.push(`/juz/${i}`);
   }
 
   navigator.serviceWorker.controller.postMessage({
-    type: "CACHE_ALL_PAGES",
+    type: SW_CACHE_ALL,
     urls,
   });
 }

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&amp;family=Amiri+Quran&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e8e5ff",
+                      "primary-container": "#1a365d",
+                      "secondary-fixed-dim": "#e6c364",
+                      "primary-fixed": "#d6e3ff",
+                      "outline": "#74777f",
+                      "inverse-surface": "#2f2e43",
+                      "brick-red": "#9B2C2C",
+                      "surface-tint": "#455f88",
+                      "warm-border": "#E2DCD0",
+                      "secondary-container": "#fed977",
+                      "gilded-gold-hover": "#D4B85A",
+                      "on-tertiary-fixed-variant": "#474745",
+                      "on-secondary-container": "#785d00",
+                      "tertiary": "#20211f",
+                      "outline-variant": "#c4c6cf",
+                      "on-surface-variant": "#43474e",
+                      "dark-primary": "#7EB8E8",
+                      "parchment-cream": "#FAF8F5",
+                      "on-secondary-fixed": "#241a00",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#adc7f7",
+                      "dark-text": "#E8E4DE",
+                      "faded-ink": "#5A5A6E",
+                      "dark-bg": "#0F0F1A",
+                      "secondary-fixed": "#ffe08f",
+                      "on-secondary-fixed-variant": "#584400",
+                      "background": "#fcf8ff",
+                      "warm-stone": "#F0ECE4",
+                      "on-primary-fixed": "#001b3c",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#86a0cd",
+                      "on-surface": "#1a1a2e",
+                      "greyed-ink": "#9A9AAE",
+                      "surface-container": "#efecff",
+                      "dark-surface": "#1E1E32",
+                      "on-primary": "#ffffff",
+                      "ink-navy-hover": "#2A4A7F",
+                      "surface": "#fcf8ff",
+                      "primary": "#002045",
+                      "primary-fixed-dim": "#adc7f7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#dad7f3",
+                      "tertiary-container": "#353634",
+                      "inverse-on-surface": "#f2efff",
+                      "surface-container-highest": "#e2e0fc",
+                      "forest-green": "#2D6A4F",
+                      "on-background": "#1a1a2e",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#c8c6c4",
+                      "on-secondary": "#ffffff",
+                      "gilded-gold-light": "#F5E6B8",
+                      "error": "#ba1a1a",
+                      "secondary": "#755b00",
+                      "warm-ash": "#F5F0E8",
+                      "surface-variant": "#e2e0fc",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e4e2df",
+                      "on-tertiary-container": "#9f9e9c",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "surface-container-low": "#f5f2ff",
+                      "surface-bright": "#fcf8ff",
+                      "on-tertiary-fixed": "#1b1c1a",
+                      "gilded-gold": "#C5A028"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "xxl": "48px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "max-content-width": "1200px"
+              },
+              "fontFamily": {
+                      "display": ["Tajawal"],
+                      "verse": ["Amiri Quran"],
+                      "body": ["Tajawal"],
+                      "title": ["Tajawal"],
+                      "label-sm": ["Tajawal"],
+                      "headline": ["Tajawal"],
+                      "display-mobile": ["Tajawal"]
+              },
+              "fontSize": {
+                      "display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "verse": ["32px", {"lineHeight": "60px", "fontWeight": "400"}],
+                      "body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                      "title": ["18px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                      "label-sm": ["14px", {"lineHeight": "21px", "fontWeight": "400"}],
+                      "headline": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #FAF8F5; /* parchment-cream */
+            overflow-x: hidden;
+        }
+        .reading-container {
+            max-width: 70ch;
+            margin: 0 auto;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F0ECE4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E2DCD0;
+            border-radius: 4px;
+        }
+        .progress-indicator {
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full h-[56px] flex justify-between items-center px-md lg:px-xl bg-parchment-cream/80 backdrop-blur-md z-50 border-b border-warm-border">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-sm hover:bg-warm-ash rounded-full transition-colors duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline text-headline text-primary">في ظلال القرآن</h1>
+</div>
+<div class="hidden md:flex items-center gap-xl">
+<span class="text-secondary border-b-2 border-secondary font-medium">سورة الكهف</span>
+<span class="text-on-surface-variant hover:bg-warm-ash px-sm py-xs rounded transition-all cursor-pointer">الجزء الخامس عشر</span>
+</div>
+<div class="flex items-center gap-md">
+<button aria-label="Search" class="p-sm hover:bg-warm-ash rounded-full transition-colors duration-150">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button aria-label="Dark Mode" class="p-sm hover:bg-warm-ash rounded-full transition-colors duration-150">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<!-- Progress Bar Overlay -->
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-warm-border">
+<div class="progress-indicator h-full bg-secondary w-1/4" id="readingProgress"></div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed right-0 top-0 h-full w-[280px] bg-warm-stone flex flex-col p-md z-40 hidden lg:flex border-l border-warm-border pt-[72px]">
+<div class="mb-xl">
+<h2 class="font-headline text-title text-primary mb-xs">المكتبة القرآنية</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">تصفح في ظلال القرآن</p>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-md p-md rounded-lg text-secondary bg-warm-ash border-r-2 border-secondary transition-all active:scale-98" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">book_2</span>
+<span class="font-label-sm">السور</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-warm-ash transition-all active:scale-98" href="#">
+<span class="material-symbols-outlined">segment</span>
+<span class="font-label-sm">الأجزاء</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-warm-ash transition-all active:scale-98" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-sm">العلامات</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-warm-ash transition-all active:scale-98" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm">البحث</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-warm-border pt-md">
+<div class="flex items-center gap-md p-sm hover:bg-warm-ash rounded-xl cursor-pointer transition-colors">
+<div class="w-10 h-10 rounded-full bg-gilded-gold-light flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="font-title text-label-sm">حساب القارئ</p>
+<p class="text-xs text-greyed-ink">جلسة قراءة نشطة</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] lg:mr-[280px] min-h-screen pb-xxl px-md">
+<div class="reading-container">
+<!-- Surah Header Section -->
+<section class="text-center mb-xxl">
+<div class="mb-md inline-block">
+<img alt="Surah Al-Kahf Header" class="w-full h-auto max-w-[400px] mx-auto rounded-xl" data-alt="A highly detailed, elegant minimalist Arabic calligraphy of Surah Al-Kahf displayed on an aged parchment texture with subtle gold flecking. The scene is illuminated by soft, natural morning light casting gentle shadows across the surface. The aesthetic is reverent, intellectual, and academic, intentionally avoiding overly ornate traditional patterns for a modern, clean composition using soft ivory and ink navy tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMSLmAEznufBkU-c7cb47vQ4A6ttWyWrIF46-4MYp0qP31Hx-PODlgNW7Ty18-baxEIPC4gxFdSMXsoKMn12svDqWhtckSjZcVsAfMbHHOWnhNa_mSPXN0SbLNN0HLFDlknhlMGE84TwemMx0h4-y98_zVzAwiSAdze3ZErLjgluw6WjNhHk_z4NNLd8dcIrFd3gR5W4aTcZVOZveTdwQwipF4uQ8po0ZY2xs6n_IdXo5P-mTGpFU1y64emFEz_Zzh4ceydwWQiR4"/>
+</div>
+<h2 class="font-display text-display text-primary mb-sm">سورة الكهف</h2>
+<p class="font-body text-faded-ink italic">مكية | ١١٠ آيات</p>
+</section>
+<!-- Verse & Tafsir Iteration -->
+<article class="space-y-xl">
+<!-- Verse 1 -->
+<div class="verse-block group">
+<div class="p-xl bg-gilded-gold-light/10 border-r-4 border-gilded-gold rounded-l-xl transition-all duration-300">
+<p class="font-verse text-verse text-primary text-center mb-md leading-loose">
+<span class="text-gilded-gold">﴿</span>
+                            الْحَمْدُ لِلَّهِ الَّذِي أَنْزَلَ عَلَىٰ عَبْدِهِ الْكِتَابَ وَلَمْ يَجْعَلْ لَهُ عِوَجًا ۜ
+                            <span class="text-gilded-gold">﴾</span>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gilded-gold text-xs font-bold text-secondary mr-2">١</span>
+</p>
+</div>
+<div class="mt-lg px-md md:px-xl">
+<h4 class="font-title text-primary mb-sm border-r-2 border-warm-border pr-sm">في ظلال الآية</h4>
+<p class="font-body text-on-surface-variant leading-[1.8] text-justify">
+                            تبدأ السورة بالحمد، وهو المطلع الذي يتناسب مع جو السورة التي تعرض نماذج من التوحيد والاستقامة. الكتاب هنا هو القرآن الكريم، أُنزل على النبي ﷺ هدايةً للبشرية. واللافت في الآية هو التوازن بين الإثبات والنفي؛ إثبات إنزال الكتاب ونفي العوج عنه، مما يؤكد تمام الاستقامة والوضوح في هذا المنهج الإلهي.
+                        </p>
+</div>
+</div>
+<!-- Verse 2 -->
+<div class="verse-block group">
+<div class="p-xl hover:bg-warm-ash border-r-4 border-transparent hover:border-warm-border rounded-l-xl transition-all duration-300">
+<p class="font-verse text-verse text-primary text-center mb-md leading-loose">
+<span class="text-gilded-gold">﴿</span>
+                            قَيِّمًا لِيُنْذِرَ بَأْسًا شَدِيدًا مِنْ لَدُنْهُ وَيُبَشِّرَ الْمُؤْمِنِينَ الَّذِينَ يَعْمَلُونَ الصَّالِحَاتِ أَنَّ لَهُمْ أَجْرًا حَسَنًا
+                            <span class="text-gilded-gold">﴾</span>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gilded-gold text-xs font-bold text-secondary mr-2">٢</span>
+</p>
+</div>
+<div class="mt-lg px-md md:px-xl">
+<p class="font-body text-on-surface-variant leading-[1.8] text-justify">
+                            كلمة "قيماً" تأتي لتؤكد وظيفة هذا الكتاب؛ فهو القائم على مصالح العباد، وهو الميزان الذي لا يميل. الإنذار والتبشير هما جناحي الدعوة، فالبأس الشديد لمن أعرض، والأجر الحسن للمؤمنين الذين قرنوا إيمانهم بالعمل الصالح، فلا قيمة لإيمان بلا ثمرة عملية تظهر في واقع الحياة.
+                        </p>
+</div>
+</div>
+<!-- Verse 3 -->
+<div class="verse-block group">
+<div class="p-xl hover:bg-warm-ash border-r-4 border-transparent hover:border-warm-border rounded-l-xl transition-all duration-300">
+<p class="font-verse text-verse text-primary text-center mb-md leading-loose">
+<span class="text-gilded-gold">﴿</span>
+                            مَاكِثِينَ فِيهِ أَبَدًا
+                            <span class="text-gilded-gold">﴾</span>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gilded-gold text-xs font-bold text-secondary mr-2">٣</span>
+</p>
+</div>
+<div class="mt-lg px-md md:px-xl">
+<p class="font-body text-on-surface-variant leading-[1.8] text-justify">
+                            الخلود في النعيم هو الجائزة الكبرى، وهو ما يبعث الطمأنينة في قلب المؤمن. ليس هو نعيماً زائلاً كنعم الدنيا، بل هو مستمر لا ينقطع، مما يجعل التعب في الدنيا في سبيل الله ثمناً بخساً لهذه السعادة الأبدية.
+                        </p>
+</div>
+</div>
+<!-- Visual Break / Atmosphere -->
+<div class="my-xxl py-xl flex justify-center opacity-70">
+<div class="w-1/3 h-px bg-gradient-to-l from-transparent via-warm-border to-transparent"></div>
+<span class="material-symbols-outlined text-gilded-gold mx-md">auto_stories</span>
+<div class="w-1/3 h-px bg-gradient-to-r from-transparent via-warm-border to-transparent"></div>
+</div>
+<!-- Verse 4 -->
+<div class="verse-block group">
+<div class="p-xl hover:bg-warm-ash border-r-4 border-transparent hover:border-warm-border rounded-l-xl transition-all duration-300">
+<p class="font-verse text-verse text-primary text-center mb-md leading-loose">
+<span class="text-gilded-gold">﴿</span>
+                            وَيُنْذِرَ الَّذِينَ قَالُوا اتَّخَذَ اللَّهُ وَلَدًا
+                            <span class="text-gilded-gold">﴾</span>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gilded-gold text-xs font-bold text-secondary mr-2">٤</span>
+</p>
+</div>
+<div class="mt-lg px-md md:px-xl">
+<p class="font-body text-on-surface-variant leading-[1.8] text-justify">
+                            ينتقل السياق لمواجهة أشد أنواع الانحراف العقدي؛ الزعم بنسبة الولد لله عز وجل. السورة هنا لا تناقش الأمر بجدل كلامي جاف، بل بتقرير الحقيقة الكبرى وتفنيد الادعاء الذي لا يستند إلى علم ولا بصيرة.
+                        </p>
+</div>
+</div>
+</article>
+<!-- Bottom Context Bar -->
+<div class="mt-xxl pt-xl border-t border-warm-border flex flex-col md:flex-row justify-between items-center gap-md">
+<button class="flex items-center gap-sm px-xl py-md bg-primary text-white rounded-xl hover:bg-ink-navy-hover transition-colors shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined">arrow_forward</span>
+<span class="font-title">السورة السابقة: الإسراء</span>
+</button>
+<div class="flex gap-md">
+<button class="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-warm-ash transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center border border-warm-border rounded-full hover:bg-warm-ash transition-all">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</div>
+<button class="flex items-center gap-sm px-xl py-md border border-primary text-primary rounded-xl hover:bg-warm-ash transition-colors">
+<span class="font-title">السورة التالية: مريم</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - Suppression Logic Applied: Hidden on detail pages but useful for "Go to Top" in long reading views -->
+<button class="fixed bottom-xl left-xl w-14 h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl opacity-0 translate-y-10 transition-all duration-300 hover:scale-110 active:scale-95 z-50" id="scrollTopBtn">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+</button>
+<script>
+        // Reading Progress Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("readingProgress").style.width = scrolled + "%";
+
+            // Show Scroll Top Button
+            const btn = document.getElementById("scrollTopBtn");
+            if (winScroll > 300) {
+                btn.classList.remove('opacity-0', 'translate-y-10');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-10');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+
+        // Scroll Top Interaction
+        document.getElementById("scrollTopBtn").addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Subtle atmospheric interactions for verses
+        const verseBlocks = document.querySelectorAll('.verse-block');
+        verseBlocks.forEach(block => {
+            block.addEventListener('mouseenter', () => {
+                // Future expansion: sound effects or highlighting tools
+            });
+        });
+    </script>
+</body></html>

@@ -4,7 +4,8 @@ import ClientShell from "@/components/ClientShell";
 import SurahNavFooter from "@/components/SurahNavFooter";
 import SurahContent from "@/components/SurahContent";
 import { getSurah, getAdjacentSurahs, getAllSurahs } from "@/lib/contentLoader";
-import type { SurahIndexEntry, SurahData } from "@/lib/types";
+import type { SurahIndexEntry } from "@/lib/types";
+import { APP_NAME } from "@/lib/constants";
 
 export async function generateStaticParams() {
   const surahs = getAllSurahs();
@@ -20,8 +21,8 @@ export async function generateMetadata({
   const surah = getSurah(parseInt(number));
   if (!surah) return {};
   return {
-    title: `سورة ${surah.name} - في ظلال القرآن`,
-    description: `تفسير سورة ${surah.name} من في ظلال القرآن لسيد قطب`,
+    title: `سورة ${surah.name} - ${APP_NAME}`,
+    description: `تفسير سورة ${surah.name} من ${APP_NAME} لسيد قطب`,
   };
 }
 
@@ -32,14 +33,14 @@ export default async function SurahPage({
 }) {
   const { number } = await params;
   const num = parseInt(number);
-  const surah = getSurah(num) as SurahData | null;
+  const surah = getSurah(num);
   if (!surah) notFound();
 
   const { prev, next } = getAdjacentSurahs(num);
-  const allSurahs = getAllSurahs() as SurahIndexEntry[];
+  const allSurahs = getAllSurahs();
 
   return (
-    <ClientShell surahs={allSurahs} activeNumber={num}>
+    <ClientShell surahs={allSurahs} activeNumber={num} surahName={surah.name} juzNumber={surah.juz}>
       <SurahContent
         number={surah.number}
         name={surah.name}
